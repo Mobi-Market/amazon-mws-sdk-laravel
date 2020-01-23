@@ -1,12 +1,14 @@
 <?php
-/*******************************************************************************
+
+declare(strict_types=1);
+/*
  * Copyright 2009-2018 Amazon Services. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * Licensed under the Apache License, Version 2.0 (the "License");
  *
- * You may not use this file except in compliance with the License. 
+ * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
- * This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
- * CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+ * This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
  * PHP Version 5
@@ -20,71 +22,234 @@
 /**
  *  @see MWSEasyShipSectionService_Interface
  */
-require_once (dirname(__FILE__) . '/Interface.php');
+require_once __DIR__ . '/Interface.php';
 
 /**
- * MWSEasyShipSectionService_Client is an implementation of MWSEasyShipSectionService
- *
+ * MWSEasyShipSectionService_Client is an implementation of MWSEasyShipSectionService.
  */
 class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Interface
 {
-
-    const SERVICE_VERSION = '2018-09-01';
-    const MWS_CLIENT_VERSION = '2018-09-01';
-
-    /** @var string */
-    private  $_awsAccessKeyId = null;
+    public const SERVICE_VERSION    = '2018-09-01';
+    public const MWS_CLIENT_VERSION = '2018-09-01';
 
     /** @var string */
-    private  $_awsSecretAccessKey = null;
+    private $_awsAccessKeyId = null;
+
+    /** @var string */
+    private $_awsSecretAccessKey = null;
 
     /** @var array */
-    private  $_config = array ('ServiceURL' => null,
-                               'UserAgent' => 'MWSEasyShipSectionService PHP5 Library',
-                               'SignatureVersion' => 2,
-                               'SignatureMethod' => 'HmacSHA256',
-                               'ProxyHost' => null,
-                               'ProxyPort' => -1,
-                               'ProxyUsername' => null,
-                               'ProxyPassword' => null,
-                               'MaxErrorRetry' => 3,
-                               'Headers' => array()
-                               );
+    private $_config = ['ServiceURL' => null,
+        'UserAgent'                  => 'MWSEasyShipSectionService PHP5 Library',
+        'SignatureVersion'           => 2,
+        'SignatureMethod'            => 'HmacSHA256',
+        'ProxyHost'                  => null,
+        'ProxyPort'                  => -1,
+        'ProxyUsername'              => null,
+        'ProxyPassword'              => null,
+        'MaxErrorRetry'              => 3,
+        'Headers'                    => [],
+    ];
 
+    /**
+     * Construct new Client.
+     *
+     * @param string $awsAccessKeyId     AWS Access Key ID
+     * @param string $awsSecretAccessKey AWS Secret Access Key
+     * @param array  $config             configuration options.
+     *                                   Valid configuration options are:
+     *                                   <ul>
+     *                                   <li>ServiceURL</li>
+     *                                   <li>UserAgent</li>
+     *                                   <li>SignatureVersion</li>
+     *                                   <li>TimesRetryOnError</li>
+     *                                   <li>ProxyHost</li>
+     *                                   <li>ProxyPort</li>
+     *                                   <li>ProxyUsername<li>
+     *                                   <li>ProxyPassword<li>
+     *                                   <li>MaxErrorRetry</li>
+     *                                   </ul>
+     * @param mixed  $applicationName
+     * @param mixed  $applicationVersion
+     */
+    public function __construct($awsAccessKeyId, $awsSecretAccessKey, $applicationName, $applicationVersion, $config = null)
+    {
+        iconv_set_encoding('output_encoding', 'UTF-8');
+        iconv_set_encoding('input_encoding', 'UTF-8');
+        iconv_set_encoding('internal_encoding', 'UTF-8');
+
+        $this->_awsAccessKeyId     = $awsAccessKeyId;
+        $this->_awsSecretAccessKey = $awsSecretAccessKey;
+        if (null !== $config) {
+            $this->_config = array_merge($this->_config, $config);
+        }
+        $this->setUserAgentHeader($applicationName, $applicationVersion);
+    }
 
     /**
      * Create Scheduled Package
      * This operation schedules the order for pickup and returns scheduled package details.
      *
      * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_CreateScheduledPackage request or MWSEasyShipSectionService_Model_CreateScheduledPackage object itself
+     *
      * @see MWSEasyShipSectionService_Model_CreateScheduledPackageRequest
-     * @return MWSEasyShipSectionService_Model_CreateScheduledPackageResponse
      *
      * @throws MWSEasyShipSectionService_Exception
+     *
+     * @return MWSEasyShipSectionService_Model_CreateScheduledPackageResponse
      */
     public function createScheduledPackage($request)
     {
         if (!($request instanceof MWSEasyShipSectionService_Model_CreateScheduledPackageRequest)) {
-            require_once (dirname(__FILE__) . '/Model/CreateScheduledPackageRequest.php');
+            require_once __DIR__ . '/Model/CreateScheduledPackageRequest.php';
             $request = new MWSEasyShipSectionService_Model_CreateScheduledPackageRequest($request);
         }
-        $parameters = $request->toQueryParameterArray();
+        $parameters           = $request->toQueryParameterArray();
         $parameters['Action'] = 'CreateScheduledPackage';
-        $httpResponse = $this->_invoke($parameters);
+        $httpResponse         = $this->_invoke($parameters);
 
-        require_once (dirname(__FILE__) . '/Model/CreateScheduledPackageResponse.php');
+        require_once __DIR__ . '/Model/CreateScheduledPackageResponse.php';
         $response = MWSEasyShipSectionService_Model_CreateScheduledPackageResponse::fromXML($httpResponse['ResponseBody']);
         $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+
         return $response;
     }
 
+    /**
+     * Get Scheduled Package
+     * This operation returns the scheduled package details of an already scheduled order.
+     *
+     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_GetScheduledPackage request or MWSEasyShipSectionService_Model_GetScheduledPackage object itself
+     *
+     * @see MWSEasyShipSectionService_Model_GetScheduledPackageRequest
+     *
+     * @throws MWSEasyShipSectionService_Exception
+     *
+     * @return MWSEasyShipSectionService_Model_GetScheduledPackageResponse
+     */
+    public function getScheduledPackage($request)
+    {
+        if (!($request instanceof MWSEasyShipSectionService_Model_GetScheduledPackageRequest)) {
+            require_once __DIR__ . '/Model/GetScheduledPackageRequest.php';
+            $request = new MWSEasyShipSectionService_Model_GetScheduledPackageRequest($request);
+        }
+        $parameters           = $request->toQueryParameterArray();
+        $parameters['Action'] = 'GetScheduledPackage';
+        $httpResponse         = $this->_invoke($parameters);
+
+        require_once __DIR__ . '/Model/GetScheduledPackageResponse.php';
+        $response = MWSEasyShipSectionService_Model_GetScheduledPackageResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+
+        return $response;
+    }
 
     /**
-     * Convert CreateScheduledPackageRequest to name value pairs
+     * List Pickup Slots
+     * This operation returns a list of available PickupSlots.
+     *
+     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_ListPickupSlots request or MWSEasyShipSectionService_Model_ListPickupSlots object itself
+     *
+     * @see MWSEasyShipSectionService_Model_ListPickupSlotsRequest
+     *
+     * @throws MWSEasyShipSectionService_Exception
+     *
+     * @return MWSEasyShipSectionService_Model_ListPickupSlotsResponse
      */
-    private function _convertCreateScheduledPackage($request) {
+    public function listPickupSlots($request)
+    {
+        if (!($request instanceof MWSEasyShipSectionService_Model_ListPickupSlotsRequest)) {
+            require_once __DIR__ . '/Model/ListPickupSlotsRequest.php';
+            $request = new MWSEasyShipSectionService_Model_ListPickupSlotsRequest($request);
+        }
+        $parameters           = $request->toQueryParameterArray();
+        $parameters['Action'] = 'ListPickupSlots';
+        $httpResponse         = $this->_invoke($parameters);
 
-        $parameters = array();
+        require_once __DIR__ . '/Model/ListPickupSlotsResponse.php';
+        $response = MWSEasyShipSectionService_Model_ListPickupSlotsResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+
+        return $response;
+    }
+
+    /**
+     * Update Scheduled Packages
+     * This operation updates the schedule pickup slot of a scheduled order and returns updated scheduled package
+     *         details.
+     *
+     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_UpdateScheduledPackages request or MWSEasyShipSectionService_Model_UpdateScheduledPackages object itself
+     *
+     * @see MWSEasyShipSectionService_Model_UpdateScheduledPackagesRequest
+     *
+     * @throws MWSEasyShipSectionService_Exception
+     *
+     * @return MWSEasyShipSectionService_Model_UpdateScheduledPackagesResponse
+     */
+    public function updateScheduledPackages($request)
+    {
+        if (!($request instanceof MWSEasyShipSectionService_Model_UpdateScheduledPackagesRequest)) {
+            require_once __DIR__ . '/Model/UpdateScheduledPackagesRequest.php';
+            $request = new MWSEasyShipSectionService_Model_UpdateScheduledPackagesRequest($request);
+        }
+        $parameters           = $request->toQueryParameterArray();
+        $parameters['Action'] = 'UpdateScheduledPackages';
+        $httpResponse         = $this->_invoke($parameters);
+
+        require_once __DIR__ . '/Model/UpdateScheduledPackagesResponse.php';
+        $response = MWSEasyShipSectionService_Model_UpdateScheduledPackagesResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+
+        return $response;
+    }
+
+    /**
+     * Get Service Status.
+     *
+     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_GetServiceStatus request or MWSEasyShipSectionService_Model_GetServiceStatus object itself
+     *
+     * @see MWSEasyShipSectionService_Model_GetServiceStatusRequest
+     *
+     * @throws MWSEasyShipSectionService_Exception
+     *
+     * @return MWSEasyShipSectionService_Model_GetServiceStatusResponse
+     */
+    public function getServiceStatus($request)
+    {
+        if (!($request instanceof MWSEasyShipSectionService_Model_GetServiceStatusRequest)) {
+            require_once __DIR__ . '/Model/GetServiceStatusRequest.php';
+            $request = new MWSEasyShipSectionService_Model_GetServiceStatusRequest($request);
+        }
+        $parameters           = $request->toQueryParameterArray();
+        $parameters['Action'] = 'GetServiceStatus';
+        $httpResponse         = $this->_invoke($parameters);
+
+        require_once __DIR__ . '/Model/GetServiceStatusResponse.php';
+        $response = MWSEasyShipSectionService_Model_GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+
+        return $response;
+    }
+
+    /**
+     * Set curl options relating to SSL. Protected to allow overriding.
+     *
+     * @param $ch curl handle
+     */
+    protected function setSSLCurlOptions($ch): void
+    {
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    }
+
+    /**
+     * Convert CreateScheduledPackageRequest to name value pairs.
+     *
+     * @param mixed $request
+     */
+    private function _convertCreateScheduledPackage($request)
+    {
+        $parameters           = [];
         $parameters['Action'] = 'CreateScheduledPackage';
         if ($request->isSetSellerId()) {
             $parameters['SellerId'] =  $request->getSellerId();
@@ -100,48 +265,22 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
         }
         if ($request->isSetPackageRequestDetails()) {
             $PackageRequestDetailsCreateScheduledPackageRequest = $request->getPackageRequestDetails();
-            foreach  ($PackageRequestDetailsCreateScheduledPackageRequest->getPackageDimensions() as $PackageDimensionsPackageRequestDetailsIndex => $PackageDimensionsPackageRequestDetails) {
-                $parameters['PackageRequestDetails' . '.' . 'PackageDimensions' . '.'  . ($PackageDimensionsPackageRequestDetailsIndex + 1)] =  $PackageDimensionsPackageRequestDetails;
+            foreach ($PackageRequestDetailsCreateScheduledPackageRequest->getPackageDimensions() as $PackageDimensionsPackageRequestDetailsIndex => $PackageDimensionsPackageRequestDetails) {
+                $parameters['PackageRequestDetails' . '.' . 'PackageDimensions' . '.' . ($PackageDimensionsPackageRequestDetailsIndex + 1)] =  $PackageDimensionsPackageRequestDetails;
             }
         }
 
         return $parameters;
     }
 
-
     /**
-     * Get Scheduled Package
-     * This operation returns the scheduled package details of an already scheduled order.
+     * Convert GetScheduledPackageRequest to name value pairs.
      *
-     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_GetScheduledPackage request or MWSEasyShipSectionService_Model_GetScheduledPackage object itself
-     * @see MWSEasyShipSectionService_Model_GetScheduledPackageRequest
-     * @return MWSEasyShipSectionService_Model_GetScheduledPackageResponse
-     *
-     * @throws MWSEasyShipSectionService_Exception
+     * @param mixed $request
      */
-    public function getScheduledPackage($request)
+    private function _convertGetScheduledPackage($request)
     {
-        if (!($request instanceof MWSEasyShipSectionService_Model_GetScheduledPackageRequest)) {
-            require_once (dirname(__FILE__) . '/Model/GetScheduledPackageRequest.php');
-            $request = new MWSEasyShipSectionService_Model_GetScheduledPackageRequest($request);
-        }
-        $parameters = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetScheduledPackage';
-        $httpResponse = $this->_invoke($parameters);
-
-        require_once (dirname(__FILE__) . '/Model/GetScheduledPackageResponse.php');
-        $response = MWSEasyShipSectionService_Model_GetScheduledPackageResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-        return $response;
-    }
-
-
-    /**
-     * Convert GetScheduledPackageRequest to name value pairs
-     */
-    private function _convertGetScheduledPackage($request) {
-
-        $parameters = array();
+        $parameters           = [];
         $parameters['Action'] = 'GetScheduledPackage';
         if ($request->isSetSellerId()) {
             $parameters['SellerId'] =  $request->getSellerId();
@@ -151,8 +290,8 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
         }
         if ($request->isSetScheduledPackageId()) {
             $ScheduledPackageIdGetScheduledPackageRequest = $request->getScheduledPackageId();
-            foreach  ($ScheduledPackageIdGetScheduledPackageRequest->getAmazonOrderId() as $AmazonOrderIdScheduledPackageIdIndex => $AmazonOrderIdScheduledPackageId) {
-                $parameters['ScheduledPackageId' . '.' . 'AmazonOrderId' . '.'  . ($AmazonOrderIdScheduledPackageIdIndex + 1)] =  $AmazonOrderIdScheduledPackageId;
+            foreach ($ScheduledPackageIdGetScheduledPackageRequest->getAmazonOrderId() as $AmazonOrderIdScheduledPackageIdIndex => $AmazonOrderIdScheduledPackageId) {
+                $parameters['ScheduledPackageId' . '.' . 'AmazonOrderId' . '.' . ($AmazonOrderIdScheduledPackageIdIndex + 1)] =  $AmazonOrderIdScheduledPackageId;
             }
         }
         if ($request->isSetMarketplaceId()) {
@@ -162,40 +301,14 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
         return $parameters;
     }
 
-
     /**
-     * List Pickup Slots
-     * This operation returns a list of available PickupSlots.
+     * Convert ListPickupSlotsRequest to name value pairs.
      *
-     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_ListPickupSlots request or MWSEasyShipSectionService_Model_ListPickupSlots object itself
-     * @see MWSEasyShipSectionService_Model_ListPickupSlotsRequest
-     * @return MWSEasyShipSectionService_Model_ListPickupSlotsResponse
-     *
-     * @throws MWSEasyShipSectionService_Exception
+     * @param mixed $request
      */
-    public function listPickupSlots($request)
+    private function _convertListPickupSlots($request)
     {
-        if (!($request instanceof MWSEasyShipSectionService_Model_ListPickupSlotsRequest)) {
-            require_once (dirname(__FILE__) . '/Model/ListPickupSlotsRequest.php');
-            $request = new MWSEasyShipSectionService_Model_ListPickupSlotsRequest($request);
-        }
-        $parameters = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListPickupSlots';
-        $httpResponse = $this->_invoke($parameters);
-
-        require_once (dirname(__FILE__) . '/Model/ListPickupSlotsResponse.php');
-        $response = MWSEasyShipSectionService_Model_ListPickupSlotsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-        return $response;
-    }
-
-
-    /**
-     * Convert ListPickupSlotsRequest to name value pairs
-     */
-    private function _convertListPickupSlots($request) {
-
-        $parameters = array();
+        $parameters           = [];
         $parameters['Action'] = 'ListPickupSlots';
         if ($request->isSetSellerId()) {
             $parameters['SellerId'] =  $request->getSellerId();
@@ -211,55 +324,28 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
         }
         if ($request->isSetPackageDimensions()) {
             $PackageDimensionsListPickupSlotsRequest = $request->getPackageDimensions();
-            foreach  ($PackageDimensionsListPickupSlotsRequest->getLength() as $LengthPackageDimensionsIndex => $LengthPackageDimensions) {
-                $parameters['PackageDimensions' . '.' . 'Length' . '.'  . ($LengthPackageDimensionsIndex + 1)] =  $LengthPackageDimensions;
+            foreach ($PackageDimensionsListPickupSlotsRequest->getLength() as $LengthPackageDimensionsIndex => $LengthPackageDimensions) {
+                $parameters['PackageDimensions' . '.' . 'Length' . '.' . ($LengthPackageDimensionsIndex + 1)] =  $LengthPackageDimensions;
             }
         }
         if ($request->isSetPackageWeight()) {
             $PackageWeightListPickupSlotsRequest = $request->getPackageWeight();
-            foreach  ($PackageWeightListPickupSlotsRequest->getValue() as $ValuePackageWeightIndex => $ValuePackageWeight) {
-                $parameters['PackageWeight' . '.' . 'Value' . '.'  . ($ValuePackageWeightIndex + 1)] =  $ValuePackageWeight;
+            foreach ($PackageWeightListPickupSlotsRequest->getValue() as $ValuePackageWeightIndex => $ValuePackageWeight) {
+                $parameters['PackageWeight' . '.' . 'Value' . '.' . ($ValuePackageWeightIndex + 1)] =  $ValuePackageWeight;
             }
         }
 
         return $parameters;
     }
 
-
     /**
-     * Update Scheduled Packages
-     * This operation updates the schedule pickup slot of a scheduled order and returns updated scheduled package
-     *         details.
+     * Convert UpdateScheduledPackagesRequest to name value pairs.
      *
-     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_UpdateScheduledPackages request or MWSEasyShipSectionService_Model_UpdateScheduledPackages object itself
-     * @see MWSEasyShipSectionService_Model_UpdateScheduledPackagesRequest
-     * @return MWSEasyShipSectionService_Model_UpdateScheduledPackagesResponse
-     *
-     * @throws MWSEasyShipSectionService_Exception
+     * @param mixed $request
      */
-    public function updateScheduledPackages($request)
+    private function _convertUpdateScheduledPackages($request)
     {
-        if (!($request instanceof MWSEasyShipSectionService_Model_UpdateScheduledPackagesRequest)) {
-            require_once (dirname(__FILE__) . '/Model/UpdateScheduledPackagesRequest.php');
-            $request = new MWSEasyShipSectionService_Model_UpdateScheduledPackagesRequest($request);
-        }
-        $parameters = $request->toQueryParameterArray();
-        $parameters['Action'] = 'UpdateScheduledPackages';
-        $httpResponse = $this->_invoke($parameters);
-
-        require_once (dirname(__FILE__) . '/Model/UpdateScheduledPackagesResponse.php');
-        $response = MWSEasyShipSectionService_Model_UpdateScheduledPackagesResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-        return $response;
-    }
-
-
-    /**
-     * Convert UpdateScheduledPackagesRequest to name value pairs
-     */
-    private function _convertUpdateScheduledPackages($request) {
-
-        $parameters = array();
+        $parameters           = [];
         $parameters['Action'] = 'UpdateScheduledPackages';
         if ($request->isSetSellerId()) {
             $parameters['SellerId'] =  $request->getSellerId();
@@ -277,40 +363,14 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
         return $parameters;
     }
 
-
     /**
-     * Get Service Status
-     * 
+     * Convert GetServiceStatusRequest to name value pairs.
      *
-     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_GetServiceStatus request or MWSEasyShipSectionService_Model_GetServiceStatus object itself
-     * @see MWSEasyShipSectionService_Model_GetServiceStatusRequest
-     * @return MWSEasyShipSectionService_Model_GetServiceStatusResponse
-     *
-     * @throws MWSEasyShipSectionService_Exception
+     * @param mixed $request
      */
-    public function getServiceStatus($request)
+    private function _convertGetServiceStatus($request)
     {
-        if (!($request instanceof MWSEasyShipSectionService_Model_GetServiceStatusRequest)) {
-            require_once (dirname(__FILE__) . '/Model/GetServiceStatusRequest.php');
-            $request = new MWSEasyShipSectionService_Model_GetServiceStatusRequest($request);
-        }
-        $parameters = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse = $this->_invoke($parameters);
-
-        require_once (dirname(__FILE__) . '/Model/GetServiceStatusResponse.php');
-        $response = MWSEasyShipSectionService_Model_GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-        return $response;
-    }
-
-
-    /**
-     * Convert GetServiceStatusRequest to name value pairs
-     */
-    private function _convertGetServiceStatus($request) {
-
-        $parameters = array();
+        $parameters           = [];
         $parameters['Action'] = 'GetServiceStatus';
         if ($request->isSetSellerId()) {
             $parameters['SellerId'] =  $request->getSellerId();
@@ -322,68 +382,36 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
         return $parameters;
     }
 
-
-
-    /**
-     * Construct new Client
-     *
-     * @param string $awsAccessKeyId AWS Access Key ID
-     * @param string $awsSecretAccessKey AWS Secret Access Key
-     * @param array $config configuration options.
-     * Valid configuration options are:
-     * <ul>
-     * <li>ServiceURL</li>
-     * <li>UserAgent</li>
-     * <li>SignatureVersion</li>
-     * <li>TimesRetryOnError</li>
-     * <li>ProxyHost</li>
-     * <li>ProxyPort</li>
-     * <li>ProxyUsername<li>
-     * <li>ProxyPassword<li>
-     * <li>MaxErrorRetry</li>
-     * </ul>
-     */
-    public function __construct($awsAccessKeyId, $awsSecretAccessKey, $applicationName, $applicationVersion, $config = null)
-    {
-        iconv_set_encoding('output_encoding', 'UTF-8');
-        iconv_set_encoding('input_encoding', 'UTF-8');
-        iconv_set_encoding('internal_encoding', 'UTF-8');
-
-        $this->_awsAccessKeyId = $awsAccessKeyId;
-        $this->_awsSecretAccessKey = $awsSecretAccessKey;
-        if (!is_null($config)) $this->_config = array_merge($this->_config, $config);
-        $this->setUserAgentHeader($applicationName, $applicationVersion);
-    }
-
     private function setUserAgentHeader(
         $applicationName,
         $applicationVersion,
-        $attributes = null) {
-
-        if (is_null($attributes)) {
-            $attributes = array ();
+        $attributes = null
+    ): void {
+        if (null === $attributes) {
+            $attributes = [];
         }
 
-        $this->_config['UserAgent'] = 
+        $this->_config['UserAgent'] =
             $this->constructUserAgentHeader($applicationName, $applicationVersion, $attributes);
     }
 
-    private function constructUserAgentHeader($applicationName, $applicationVersion, $attributes = null) {
-        if (is_null($applicationName) || $applicationName === "") {
+    private function constructUserAgentHeader($applicationName, $applicationVersion, $attributes = null)
+    {
+        if (null === $applicationName || '' === $applicationName) {
             throw new InvalidArgumentException('$applicationName cannot be null');
         }
 
-        if (is_null($applicationVersion) || $applicationVersion === "") {
+        if (null === $applicationVersion || '' === $applicationVersion) {
             throw new InvalidArgumentException('$applicationVersion cannot be null');
         }
 
-        $userAgent = 
+        $userAgent =
             $this->quoteApplicationName($applicationName)
             . '/'
             . $this->quoteApplicationVersion($applicationVersion);
 
         $userAgent .= ' (';
-        $userAgent .= 'Language=PHP/' . phpversion();
+        $userAgent .= 'Language=PHP/' . PHP_VERSION;
         $userAgent .= '; ';
         $userAgent .= 'Platform=' . php_uname('s') . '/' . php_uname('m') . '/' . php_uname('r');
         $userAgent .= '; ';
@@ -391,7 +419,7 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
 
         foreach ($attributes as $key => $value) {
             if (empty($value)) {
-                throw new InvalidArgumentException("Value for $key cannot be null or empty.");
+                throw new InvalidArgumentException("Value for ${key} cannot be null or empty.");
             }
 
             $userAgent .= '; '
@@ -405,27 +433,32 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
         return $userAgent;
     }
 
-   /**
-    * Collapse multiple whitespace characters into a single ' ' character.
-    * @param $s
-    * @return string
-    */
-   private function collapseWhitespace($s) {
-       return preg_replace('/ {2,}|\s/', ' ', $s);
-   }
+    /**
+     * Collapse multiple whitespace characters into a single ' ' character.
+     *
+     * @param $s
+     *
+     * @return string
+     */
+    private function collapseWhitespace($s)
+    {
+        return preg_replace('/ {2,}|\s/', ' ', $s);
+    }
 
     /**
      * Collapse multiple whitespace characters into a single ' ' and backslash escape '\',
      * and '/' characters from a string.
+     *
      * @param $s
+     *
      * @return string
      */
-    private function quoteApplicationName($s) {
+    private function quoteApplicationName($s)
+    {
         $quotedString = $this->collapseWhitespace($s);
         $quotedString = preg_replace('/\\\\/', '\\\\\\\\', $quotedString);
-        $quotedString = preg_replace('/\//', '\\/', $quotedString);
 
-        return $quotedString;
+        return preg_replace('/\//', '\\/', $quotedString);
     }
 
     /**
@@ -433,14 +466,15 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
      * and '(' characters from a string.
      *
      * @param $s
+     *
      * @return string
      */
-    private function quoteApplicationVersion($s) {
+    private function quoteApplicationVersion($s)
+    {
         $quotedString = $this->collapseWhitespace($s);
         $quotedString = preg_replace('/\\\\/', '\\\\\\\\', $quotedString);
-        $quotedString = preg_replace('/\\(/', '\\(', $quotedString);
 
-        return $quotedString;
+        return preg_replace('/\\(/', '\\(', $quotedString);
     }
 
     /**
@@ -448,14 +482,15 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
      * and '=' characters from a string.
      *
      * @param $s
+     *
      * @return unknown_type
      */
-    private function quoteAttributeName($s) {
+    private function quoteAttributeName($s)
+    {
         $quotedString = $this->collapseWhitespace($s);
         $quotedString = preg_replace('/\\\\/', '\\\\\\\\', $quotedString);
-        $quotedString = preg_replace('/\\=/', '\\=', $quotedString);
 
-        return $quotedString;
+        return preg_replace('/\\=/', '\\=', $quotedString);
     }
 
     /**
@@ -463,114 +498,117 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
      * and ')' characters from a string.
      *
      * @param $s
+     *
      * @return unknown_type
      */
-    private function quoteAttributeValue($s) {
+    private function quoteAttributeValue($s)
+    {
         $quotedString = $this->collapseWhitespace($s);
         $quotedString = preg_replace('/\\\\/', '\\\\\\\\', $quotedString);
         $quotedString = preg_replace('/\\;/', '\\;', $quotedString);
-        $quotedString = preg_replace('/\\)/', '\\)', $quotedString);
 
-        return $quotedString;
+        return preg_replace('/\\)/', '\\)', $quotedString);
     }
-
 
     // Private API ------------------------------------------------------------//
 
     /**
-     * Invoke request and return response
+     * Invoke request and return response.
      */
     private function _invoke(array $parameters)
     {
         try {
             if (empty($this->_config['ServiceURL'])) {
-                require_once (dirname(__FILE__) . '/Exception.php');
-                throw new MWSEasyShipSectionService_Exception(
-                    array ('ErrorCode' => 'InvalidServiceURL',
-                           'Message' => "Missing serviceUrl configuration value. You may obtain a list of valid MWS URLs by consulting the MWS Developer's Guide, or reviewing the sample code published along side this library."));
+                require_once __DIR__ . '/Exception.php';
+
+                throw new MWSEasyShipSectionService_Exception(['ErrorCode' => 'InvalidServiceURL', 'Message' => "Missing serviceUrl configuration value. You may obtain a list of valid MWS URLs by consulting the MWS Developer's Guide, or reviewing the sample code published along side this library."]);
             }
             $parameters = $this->_addRequiredParameters($parameters);
-            $retries = 0;
+            $retries    = 0;
             for (;;) {
                 $response = $this->_httpPost($parameters);
-                $status = $response['Status'];
-                if ($status == 200) {
-                    return array('ResponseBody' => $response['ResponseBody'],
-                      'ResponseHeaderMetadata' => $response['ResponseHeaderMetadata']);
+                $status   = $response['Status'];
+                if (200 == $status) {
+                    return ['ResponseBody'       => $response['ResponseBody'],
+                        'ResponseHeaderMetadata' => $response['ResponseHeaderMetadata'], ];
                 }
-                if ($status == 500 && $this->_pauseOnRetry(++$retries)) {
+                if (500 == $status && $this->_pauseOnRetry(++$retries)) {
                     continue;
                 }
-                throw $this->_reportAnyErrors($response['ResponseBody'],
-                    $status, $response['ResponseHeaderMetadata']);
+
+                throw $this->_reportAnyErrors($response['ResponseBody'], $status, $response['ResponseHeaderMetadata']);
             }
         } catch (MWSEasyShipSectionService_Exception $se) {
             throw $se;
         } catch (Exception $t) {
-            require_once (dirname(__FILE__) . '/Exception.php');
-            throw new MWSEasyShipSectionService_Exception(array('Exception' => $t, 'Message' => $t->getMessage()));
+            require_once __DIR__ . '/Exception.php';
+
+            throw new MWSEasyShipSectionService_Exception(['Exception' => $t, 'Message' => $t->getMessage()]);
         }
     }
 
     /**
-     * Look for additional error strings in the response and return formatted exception
+     * Look for additional error strings in the response and return formatted exception.
+     *
+     * @param mixed $responseBody
+     * @param mixed $status
+     * @param mixed $responseHeaderMetadata
      */
     private function _reportAnyErrors($responseBody, $status, $responseHeaderMetadata, Exception $e =  null)
     {
-        $exProps = array();
-        $exProps["StatusCode"] = $status;
-        $exProps["ResponseHeaderMetadata"] = $responseHeaderMetadata;
+        $exProps                           = [];
+        $exProps['StatusCode']             = $status;
+        $exProps['ResponseHeaderMetadata'] = $responseHeaderMetadata;
 
         libxml_use_internal_errors(true);  // Silence XML parsing errors
         $xmlBody = simplexml_load_string($responseBody);
 
-        if ($xmlBody !== false) {  // Check XML loaded without errors
-            $exProps["XML"] = $responseBody;
-            $exProps["ErrorCode"] = $xmlBody->Error->Code;
-            $exProps["Message"] = $xmlBody->Error->Message;
-            $exProps["ErrorType"] = !empty($xmlBody->Error->Type) ? $xmlBody->Error->Type : "Unknown";
-            $exProps["RequestId"] = !empty($xmlBody->RequestID) ? $xmlBody->RequestID : $xmlBody->RequestId; // 'd' in RequestId is sometimes capitalized
+        if (false !== $xmlBody) {  // Check XML loaded without errors
+            $exProps['XML']       = $responseBody;
+            $exProps['ErrorCode'] = $xmlBody->Error->Code;
+            $exProps['Message']   = $xmlBody->Error->Message;
+            $exProps['ErrorType'] = !empty($xmlBody->Error->Type) ? $xmlBody->Error->Type : 'Unknown';
+            $exProps['RequestId'] = !empty($xmlBody->RequestID) ? $xmlBody->RequestID : $xmlBody->RequestId; // 'd' in RequestId is sometimes capitalized
         } else { // We got bad XML in response, just throw a generic exception
-            $exProps["Message"] = "Internal Error";
+            $exProps['Message'] = 'Internal Error';
         }
 
-        require_once (dirname(__FILE__) . '/Exception.php');
+        require_once __DIR__ . '/Exception.php';
+
         return new MWSEasyShipSectionService_Exception($exProps);
     }
 
-
-
     /**
-     * Perform HTTP post with exponential retries on error 500 and 503
-     *
+     * Perform HTTP post with exponential retries on error 500 and 503.
      */
     private function _httpPost(array $parameters)
     {
         $config = $this->_config;
-        $query = $this->_getParametersAsString($parameters);
-        $url = parse_url ($config['ServiceURL']);
-        $uri = array_key_exists('path', $url) ? $url['path'] : null;
-        if (!isset ($uri)) {
-                $uri = "/";
+        $query  = $this->_getParametersAsString($parameters);
+        $url    = parse_url($config['ServiceURL']);
+        $uri    = array_key_exists('path', $url) ? $url['path'] : null;
+        if (!isset($uri)) {
+            $uri = '/';
         }
 
         switch ($url['scheme']) {
             case 'https':
                 $scheme = 'https://';
-                $port = isset($url['port']) ? $url['port'] : 443;
+                $port   = $url['port'] ?? 443;
+
                 break;
             default:
                 $scheme = 'http://';
-                $port = isset($url['port']) ? $url['port'] : 80;
+                $port   = $url['port'] ?? 80;
         }
 
-        $allHeaders = $config['Headers'];
-        $allHeaders['Content-Type'] = "application/x-www-form-urlencoded; charset=utf-8"; // We need to make sure to set utf-8 encoding here
-        $allHeaders['Expect'] = null; // Don't expect 100 Continue
-        $allHeadersStr = array();
-        foreach($allHeaders as $name => $val) {
-            $str = $name . ": ";
-            if(isset($val)) {
+        $allHeaders                 = $config['Headers'];
+        $allHeaders['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8'; // We need to make sure to set utf-8 encoding here
+        $allHeaders['Expect']       = null; // Don't expect 100 Continue
+        $allHeadersStr              = [];
+        foreach ($allHeaders as $name => $val) {
+            $str = $name . ': ';
+            if (isset($val)) {
                 $str = $str . $val;
             }
             $allHeadersStr[] = $str;
@@ -584,37 +622,37 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $query);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $allHeadersStr);
-        curl_setopt($ch, CURLOPT_HEADER, true); 
+        curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        if ($config['ProxyHost'] != null && $config['ProxyPort'] != -1)
-        {
+        if (null != $config['ProxyHost'] && -1 != $config['ProxyPort']) {
             curl_setopt($ch, CURLOPT_PROXY, $config['ProxyHost'] . ':' . $config['ProxyPort']);
         }
-        if ($config['ProxyUsername'] != null && $config['ProxyPassword'] != null)
-        {
+        if (null != $config['ProxyUsername'] && null != $config['ProxyPassword']) {
             curl_setopt($ch, CURLOPT_PROXYUSERPWD, $config['ProxyUsername'] . ':' . $config['ProxyPassword']);
         }
 
-        $response = "";
+        $response = '';
         $response = curl_exec($ch);
 
-        if($response === false) {
-            require_once (dirname(__FILE__) . '/Exception.php');
-            $exProps["Message"] = curl_error($ch);
-            $exProps["ErrorType"] = "HTTP";
+        if (false === $response) {
+            require_once __DIR__ . '/Exception.php';
+            $exProps['Message']   = curl_error($ch);
+            $exProps['ErrorType'] = 'HTTP';
             curl_close($ch);
+
             throw new MWSEasyShipSectionService_Exception($exProps);
         }
 
         curl_close($ch);
+
         return $this->_extractHeadersAndBody($response);
     }
-    
+
     /**
      * This method will attempt to extract the headers and body of our response.
      * We need to split the raw response string by 2 'CRLF's.  2 'CRLF's should indicate the separation of the response header
-     * from the response body.  However in our case we have some circumstances (certain client proxies) that result in 
-     * multiple responses concatenated.  We could encounter a response like
+     * from the response body.  However in our case we have some circumstances (certain client proxies) that result in
+     * multiple responses concatenated.  We could encounter a response like.
      *
      * HTTP/1.1 100 Continue
      *
@@ -628,135 +666,143 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
      * This method will throw away extra response status lines and attempt to find the first full response headers and body
      *
      * return [status, body, ResponseHeaderMetadata]
+     *
+     * @param mixed $response
      */
-    private function _extractHeadersAndBody($response){
+    private function _extractHeadersAndBody($response)
+    {
         //First split by 2 'CRLF'
         $responseComponents = preg_split("/(?:\r?\n){2}/", $response, 2);
-        $body = null;
-        for ($count = 0; 
-                $count < count($responseComponents) && $body == null; 
-                $count++) {
-            
-            $headers = $responseComponents[$count];
+        $body               = null;
+        for ($count = 0;
+                $count < count($responseComponents) && null == $body;
+                ++$count) {
+            $headers        = $responseComponents[$count];
             $responseStatus = $this->_extractHttpStatusCode($headers);
-            
-            if($responseStatus != null && 
-                    $this->_httpHeadersHaveContent($headers)){
-                
+
+            if (null != $responseStatus &&
+                    $this->_httpHeadersHaveContent($headers)) {
                 $responseHeaderMetadata = $this->_extractResponseHeaderMetadata($headers);
                 //The body will be the next item in the responseComponents array
                 $body = $responseComponents[++$count];
             }
         }
-        
+
         //If the body is null here then we were unable to parse the response and will throw an exception
-        if($body == null){
-            require_once (dirname(__FILE__) . '/Exception.php');
-            $exProps["Message"] = "Failed to parse valid HTTP response (" . $response . ")";
-            $exProps["ErrorType"] = "HTTP";
+        if (null == $body) {
+            require_once __DIR__ . '/Exception.php';
+            $exProps['Message']   = 'Failed to parse valid HTTP response (' . $response . ')';
+            $exProps['ErrorType'] = 'HTTP';
+
             throw new MWSEasyShipSectionService_Exception($exProps);
         }
 
-        return array(
-                'Status' => $responseStatus, 
-                'ResponseBody' => $body, 
-                'ResponseHeaderMetadata' => $responseHeaderMetadata);
+        return [
+            'Status'                 => $responseStatus,
+            'ResponseBody'           => $body,
+            'ResponseHeaderMetadata' => $responseHeaderMetadata, ];
     }
-    
+
     /**
      * parse the status line of a header string for the proper format and
-     * return the status code
+     * return the status code.
      *
      * Example: HTTP/1.1 200 OK
      * ...
      * returns String statusCode or null if the status line can't be parsed
+     *
+     * @param mixed $headers
      */
-    private function _extractHttpStatusCode($headers){
-    	$statusCode = null; 
+    private function _extractHttpStatusCode($headers)
+    {
+        $statusCode = null;
         if (1 === preg_match("/(\\S+) +(\\d+) +([^\n\r]+)(?:\r?\n|\r)/", $headers, $matches)) {
-        	//The matches array [entireMatchString, protocol, statusCode, the rest]
-            $statusCode = $matches[2]; 
+            //The matches array [entireMatchString, protocol, statusCode, the rest]
+            $statusCode = $matches[2];
         }
+
         return $statusCode;
     }
-    
+
     /**
      * Tries to determine some valid headers indicating this response
      * has content.  In this case
-     * return true if there is a valid "Content-Length" or "Transfer-Encoding" header
+     * return true if there is a valid "Content-Length" or "Transfer-Encoding" header.
+     *
+     * @param mixed $headers
      */
-    private function _httpHeadersHaveContent($headers){
-        return (1 === preg_match("/[cC]ontent-[lL]ength: +(?:\\d+)(?:\\r?\\n|\\r|$)/", $headers) ||
-                1 === preg_match("/Transfer-Encoding: +(?!identity[\r\n;= ])(?:[^\r\n]+)(?:\r?\n|\r|$)/i", $headers));
+    private function _httpHeadersHaveContent($headers)
+    {
+        return 1 === preg_match('/[cC]ontent-[lL]ength: +(?:\\d+)(?:\\r?\\n|\\r|$)/', $headers) ||
+                1 === preg_match("/Transfer-Encoding: +(?!identity[\r\n;= ])(?:[^\r\n]+)(?:\r?\n|\r|$)/i", $headers);
     }
-    
+
     /**
-    *  extract a ResponseHeaderMetadata object from the raw headers
-    */
-    private function _extractResponseHeaderMetadata($rawHeaders){
-        $inputHeaders = preg_split("/\r\n|\n|\r/", $rawHeaders);
-        $headers = array();
-        $headers['x-mws-request-id'] = null;
+     *  extract a ResponseHeaderMetadata object from the raw headers.
+     *
+     * @param mixed $rawHeaders
+     */
+    private function _extractResponseHeaderMetadata($rawHeaders)
+    {
+        $inputHeaders                      = preg_split("/\r\n|\n|\r/", $rawHeaders);
+        $headers                           = [];
+        $headers['x-mws-request-id']       = null;
         $headers['x-mws-response-context'] = null;
-        $headers['x-mws-timestamp'] = null;
-        $headers['x-mws-quota-max'] = null;
-        $headers['x-mws-quota-remaining'] = null;
-        $headers['x-mws-quota-resetsOn'] = null;
+        $headers['x-mws-timestamp']        = null;
+        $headers['x-mws-quota-max']        = null;
+        $headers['x-mws-quota-remaining']  = null;
+        $headers['x-mws-quota-resetsOn']   = null;
 
         foreach ($inputHeaders as $currentHeader) {
-            $keyValue = explode (': ', $currentHeader);
+            $keyValue = explode(': ', $currentHeader);
             if (isset($keyValue[1])) {
-                list ($key, $value) = $keyValue;
-                if (isset($headers[$key]) && $headers[$key]!==null) {
-                    $headers[$key] = $headers[$key] . "," . $value;
+                [$key, $value] = $keyValue;
+                if (isset($headers[$key]) && null !== $headers[$key]) {
+                    $headers[$key] = $headers[$key] . ',' . $value;
                 } else {
                     $headers[$key] = $value;
                 }
             }
         }
- 
-        require_once(dirname(__FILE__) . '/Model/ResponseHeaderMetadata.php');
+
+        require_once __DIR__ . '/Model/ResponseHeaderMetadata.php';
+
         return new MWSEasyShipSectionService_Model_ResponseHeaderMetadata(
-          $headers['x-mws-request-id'],
-          $headers['x-mws-response-context'],
-          $headers['x-mws-timestamp'],
-          $headers['x-mws-quota-max'],
-          $headers['x-mws-quota-remaining'],
-          $headers['x-mws-quota-resetsOn']);
+            $headers['x-mws-request-id'],
+            $headers['x-mws-response-context'],
+            $headers['x-mws-timestamp'],
+            $headers['x-mws-quota-max'],
+            $headers['x-mws-quota-remaining'],
+            $headers['x-mws-quota-resetsOn']
+        );
     }
 
     /**
-     * Set curl options relating to SSL. Protected to allow overriding.
-     * @param $ch curl handle
-     */
-    protected function setSSLCurlOptions($ch) {
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-    }
-
-    /**
-     * Exponential sleep on failed request
+     * Exponential sleep on failed request.
      *
      * @param retries current retry
+     * @param mixed $retries
      */
     private function _pauseOnRetry($retries)
     {
         if ($retries <= $this->_config['MaxErrorRetry']) {
-            $delay = (int) (pow(4, $retries) * 100000);
+            $delay = (int) (4 ** $retries * 100000);
             usleep($delay);
+
             return true;
-        } 
+        }
+
         return false;
     }
 
     /**
-     * Add authentication related and version parameters
+     * Add authentication related and version parameters.
      */
     private function _addRequiredParameters(array $parameters)
     {
-        $parameters['AWSAccessKeyId'] = $this->_awsAccessKeyId;
-        $parameters['Timestamp'] = $this->_getFormattedTimestamp();
-        $parameters['Version'] = self::SERVICE_VERSION;
+        $parameters['AWSAccessKeyId']   = $this->_awsAccessKeyId;
+        $parameters['Timestamp']        = $this->_getFormattedTimestamp();
+        $parameters['Version']          = self::SERVICE_VERSION;
         $parameters['SignatureVersion'] = $this->_config['SignatureVersion'];
         if ($parameters['SignatureVersion'] > 1) {
             $parameters['SignatureMethod'] = $this->_config['SignatureMethod'];
@@ -767,21 +813,21 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
     }
 
     /**
-     * Convert paremeters to Url encoded query string
+     * Convert paremeters to Url encoded query string.
      */
     private function _getParametersAsString(array $parameters)
     {
-        $queryParameters = array();
+        $queryParameters = [];
         foreach ($parameters as $key => $value) {
             $queryParameters[] = $key . '=' . $this->_urlencode($value);
         }
+
         return implode('&', $queryParameters);
     }
 
-
     /**
      * Computes RFC 2104-compliant HMAC signature for request parameters
-     * Implements AWS Signature, as per following spec:
+     * Implements AWS Signature, as per following spec:.
      *
      * If Signature Version is 0, it signs concatenated Action and Timestamp
      *
@@ -808,69 +854,80 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
      *       (ASCII character 61), even if the value is empty.
      *       Pairs of parameter and values are separated by the '&' character (ASCII code 38).
      *
+     * @param mixed $key
      */
-    private function _signParameters(array $parameters, $key) {
+    private function _signParameters(array $parameters, $key)
+    {
         $signatureVersion = $parameters['SignatureVersion'];
-        $algorithm = "HmacSHA1";
-        $stringToSign = null;
+        $algorithm        = 'HmacSHA1';
+        $stringToSign     = null;
         if (2 == $signatureVersion) {
-            $algorithm = $this->_config['SignatureMethod'];
+            $algorithm                     = $this->_config['SignatureMethod'];
             $parameters['SignatureMethod'] = $algorithm;
-            $stringToSign = $this->_calculateStringToSignV2($parameters);
+            $stringToSign                  = $this->_calculateStringToSignV2($parameters);
         } else {
-            throw new Exception("Invalid Signature Version specified");
+            throw new Exception('Invalid Signature Version specified');
         }
+
         return $this->_sign($stringToSign, $key, $algorithm);
     }
 
     /**
-     * Calculate String to Sign for SignatureVersion 2
+     * Calculate String to Sign for SignatureVersion 2.
+     *
      * @param array $parameters request parameters
-     * @return String to Sign
+     *
+     * @return string to Sign
      */
-    private function _calculateStringToSignV2(array $parameters) {
+    private function _calculateStringToSignV2(array $parameters)
+    {
         $data = 'POST';
         $data .= "\n";
-        $endpoint = parse_url ($this->_config['ServiceURL']);
+        $endpoint = parse_url($this->_config['ServiceURL']);
         $data .= $endpoint['host'];
         $data .= "\n";
         $uri = array_key_exists('path', $endpoint) ? $endpoint['path'] : null;
-        if (!isset ($uri)) {
-            $uri = "/";
+        if (!isset($uri)) {
+            $uri = '/';
         }
-        $uriencoded = implode("/", array_map(array($this, "_urlencode"), explode("/", $uri)));
+        $uriencoded = implode('/', array_map([$this, '_urlencode'], explode('/', $uri)));
         $data .= $uriencoded;
         $data .= "\n";
         uksort($parameters, 'strcmp');
         $data .= $this->_getParametersAsString($parameters);
+
         return $data;
     }
 
-    private function _urlencode($value) {
+    private function _urlencode($value)
+    {
         return str_replace('%7E', '~', rawurlencode($value));
     }
 
-
     /**
      * Computes RFC 2104-compliant HMAC signature.
+     *
+     * @param mixed $data
+     * @param mixed $key
+     * @param mixed $algorithm
      */
     private function _sign($data, $key, $algorithm)
     {
-        if ($algorithm === 'HmacSHA1') {
+        if ('HmacSHA1' === $algorithm) {
             $hash = 'sha1';
-        } else if ($algorithm === 'HmacSHA256') {
+        } elseif ('HmacSHA256' === $algorithm) {
             $hash = 'sha256';
         } else {
-            throw new Exception ("Non-supported signing method specified");
+            throw new Exception('Non-supported signing method specified');
         }
+
         return base64_encode(
             hash_hmac($hash, $data, $key, true)
         );
     }
 
-
     /**
-     * Formats date as ISO 8601 timestamp
+     * Formats date as ISO 8601 timestamp.
      */
     private function _getFormattedTimestamp()
     {
@@ -878,11 +935,12 @@ class MWSEasyShipSectionService_Client implements MWSEasyShipSectionService_Inte
     }
 
     /**
-     * Formats date as ISO 8601 timestamp
+     * Formats date as ISO 8601 timestamp.
+     *
+     * @param mixed $dateTime
      */
     private function getFormattedTimestamp($dateTime)
     {
         return $dateTime->format(DATE_ISO8601);
     }
-
 }
