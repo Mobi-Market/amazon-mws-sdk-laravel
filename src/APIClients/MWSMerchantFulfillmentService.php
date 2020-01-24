@@ -54,96 +54,36 @@ class MWSMerchantFulfillmentService extends BaseClient implements IMWSMerchantFu
     /** {@inheritdoc} */
     public function cancelShipment($request): CancelShipmentResponse
     {
-        if (!($request instanceof CancelShipmentRequest)) {
-            $request = new CancelShipmentRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'CancelShipment';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = CancelShipmentResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'CancelShipment', CancelShipmentRequest::class, CancelShipmentResponse::class);
     }
 
     /** {@inheritdoc} */
     public function createShipment($request): CreateShipmentResponse
     {
-        if (!($request instanceof CreateShipmentRequest)) {
-            $request = new CreateShipmentRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'CreateShipment';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = CreateShipmentResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'CreateShipment', CreateShipmentRequest::class, CreateShipmentResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getAdditionalSellerInputs($request): GetAdditionalSellerInputsResponse
     {
-        if (!($request instanceof GetAdditionalSellerInputsRequest)) {
-            $request = new GetAdditionalSellerInputsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetAdditionalSellerInputs';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetAdditionalSellerInputsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetAdditionalSellerInputs', GetAdditionalSellerInputsRequest::class, GetAdditionalSellerInputsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getEligibleShippingServices($request): GetEligibleShippingServicesResponse
     {
-        if (!($request instanceof GetEligibleShippingServicesRequest)) {
-            $request = new GetEligibleShippingServicesRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetEligibleShippingServices';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetEligibleShippingServicesResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetEligibleShippingServices', GetEligibleShippingServicesRequest::class, GetEligibleShippingServicesResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getShipment($request): GetShipmentResponse
     {
-        if (!($request instanceof GetShipmentRequest)) {
-            $request = new GetShipmentRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetShipment';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetShipmentResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetShipment', GetShipmentRequest::class, GetShipmentResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 }

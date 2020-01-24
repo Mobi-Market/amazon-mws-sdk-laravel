@@ -52,80 +52,30 @@ class MWSEasyShipSectionService extends BaseClient implements IMWSEasyShipSectio
     /** {@inheritdoc} */
     public function createScheduledPackage($request): CreateScheduledPackageResponse
     {
-        if (!($request instanceof CreateScheduledPackageRequest)) {
-            $request = new CreateScheduledPackageRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'CreateScheduledPackage';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = CreateScheduledPackageResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'CreateScheduledPackage', CreateScheduledPackageRequest::class, CreateScheduledPackageResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getScheduledPackage($request): GetScheduledPackageResponse
     {
-        if (!($request instanceof GetScheduledPackageRequest)) {
-            $request = new GetScheduledPackageRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetScheduledPackage';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetScheduledPackageResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetScheduledPackage', GetScheduledPackageRequest::class, GetScheduledPackageResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listPickupSlots($request): ListPickupSlotsResponse
     {
-        if (!($request instanceof ListPickupSlotsRequest)) {
-            $request = new ListPickupSlotsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListPickupSlots';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListPickupSlotsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListPickupSlots', ListPickupSlotsRequest::class, ListPickupSlotsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function updateScheduledPackages($request): UpdateScheduledPackagesResponse
     {
-        if (!($request instanceof UpdateScheduledPackagesRequest)) {
-            $request = new UpdateScheduledPackagesRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'UpdateScheduledPackages';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = UpdateScheduledPackagesResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'UpdateScheduledPackages', UpdateScheduledPackagesRequest::class, UpdateScheduledPackagesResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 }

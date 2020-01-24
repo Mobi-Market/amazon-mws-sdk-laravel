@@ -94,352 +94,132 @@ class FBAInboundServiceMWS extends BaseClient implements IFBAInboundServiceMWS
     /** {@inheritdoc} */
     public function confirmTransportRequest($request): ConfirmTransportRequestResponse
     {
-        if (!($request instanceof ConfirmTransportInputRequest)) {
-            $request = new ConfirmTransportInputRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ConfirmTransportRequest';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ConfirmTransportRequestResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ConfirmTransportRequest', ConfirmTransportInputRequest::class, ConfirmTransportRequestResponse::class);
     }
 
     /** {@inheritdoc} */
     public function createInboundShipment($request): CreateInboundShipmentResponse
     {
-        if (!($request instanceof CreateInboundShipmentRequest)) {
-            $request = new CreateInboundShipmentRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'CreateInboundShipment';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = CreateInboundShipmentResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'CreateInboundShipment', CreateInboundShipmentRequest::class, CreateInboundShipmentResponse::class);
     }
 
     /** {@inheritdoc} */
     public function createInboundShipmentPlan($request): CreateInboundShipmentPlanResponse
     {
-        if (!($request instanceof CreateInboundShipmentPlanRequest)) {
-            $request = new CreateInboundShipmentPlanRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'CreateInboundShipmentPlan';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = CreateInboundShipmentPlanResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'CreateInboundShipmentPlan', CreateInboundShipmentPlanRequest::class, CreateInboundShipmentPlanResponse::class);
     }
 
     /** {@inheritdoc} */
     public function estimateTransportRequest($request): EstimateTransportRequestResponse
     {
-        if (!($request instanceof EstimateTransportInputRequest)) {
-            $request = new EstimateTransportInputRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'EstimateTransportRequest';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = EstimateTransportRequestResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'EstimateTransportRequest', EstimateTransportInputRequest::class, EstimateTransportRequestResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getBillOfLading($request): GetBillOfLadingResponse
     {
-        if (!($request instanceof GetBillOfLadingRequest)) {
-            $request = new GetBillOfLadingRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetBillOfLading';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetBillOfLadingResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetBillOfLading', GetBillOfLadingRequest::class, GetBillOfLadingResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getInboundGuidanceForASIN($request): GetInboundGuidanceForASINResponse
     {
-        if (!($request instanceof GetInboundGuidanceForASINRequest)) {
-            $request = new GetInboundGuidanceForASINRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetInboundGuidanceForASIN';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetInboundGuidanceForASINResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetInboundGuidanceForASIN', GetInboundGuidanceForASINRequest::class, GetInboundGuidanceForASINResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getInboundGuidanceForSKU($request): GetInboundGuidanceForSKUResponse
     {
-        if (!($request instanceof GetInboundGuidanceForSKURequest)) {
-            $request = new GetInboundGuidanceForSKURequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetInboundGuidanceForSKU';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetInboundGuidanceForSKUResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetInboundGuidanceForSKU', GetInboundGuidanceForSKURequest::class, GetInboundGuidanceForSKUResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getPackageLabels($request): GetPackageLabelsResponse
     {
-        if (!($request instanceof GetPackageLabelsRequest)) {
-            $request = new GetPackageLabelsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetPackageLabels';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetPackageLabelsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetPackageLabels', GetPackageLabelsRequest::class, GetPackageLabelsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getPalletLabels($request): GetPalletLabelsResponse
     {
-        if (!($request instanceof GetPalletLabelsRequest)) {
-            $request = new GetPalletLabelsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetPalletLabels';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetPalletLabelsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetPalletLabels', GetPalletLabelsRequest::class, GetPalletLabelsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getPreorderInfo($request): GetPreorderInfoResponse
     {
-        if (!($request instanceof GetPreorderInfoRequest)) {
-            $request = new GetPreorderInfoRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetPreorderInfo';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetPreorderInfoResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetPreorderInfo', GetPreorderInfoRequest::class, GetPreorderInfoResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getPrepInstructionsForASIN($request): GetPrepInstructionsForASINResponse
     {
-        if (!($request instanceof GetPrepInstructionsForASINRequest)) {
-            $request = new GetPrepInstructionsForASINRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetPrepInstructionsForASIN';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetPrepInstructionsForASINResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetPrepInstructionsForASIN', GetPrepInstructionsForASINRequest::class, GetPrepInstructionsForASINResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getPrepInstructionsForSKU($request): GetPrepInstructionsForSKUResponse
     {
-        if (!($request instanceof GetPrepInstructionsForSKURequest)) {
-            $request = new GetPrepInstructionsForSKURequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetPrepInstructionsForSKU';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetPrepInstructionsForSKUResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetPrepInstructionsForSKU', GetPrepInstructionsForSKURequest::class, GetPrepInstructionsForSKUResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getTransportContent($request): GetTransportContentResponse
     {
-        if (!($request instanceof GetTransportContentRequest)) {
-            $request = new GetTransportContentRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetTransportContent';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetTransportContentResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetTransportContent', GetTransportContentRequest::class, GetTransportContentResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getUniquePackageLabels($request): GetUniquePackageLabelsResponse
     {
-        if (!($request instanceof GetUniquePackageLabelsRequest)) {
-            $request = new GetUniquePackageLabelsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetUniquePackageLabels';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetUniquePackageLabelsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetUniquePackageLabels', GetUniquePackageLabelsRequest::class, GetUniquePackageLabelsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listInboundShipmentItems($request): ListInboundShipmentItemsResponse
     {
-        if (!($request instanceof ListInboundShipmentItemsRequest)) {
-            $request = new ListInboundShipmentItemsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListInboundShipmentItems';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListInboundShipmentItemsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListInboundShipmentItems', ListInboundShipmentItemsRequest::class, ListInboundShipmentItemsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listInboundShipmentItemsByNextToken($request): ListInboundShipmentItemsByNextTokenResponse
     {
-        if (!($request instanceof ListInboundShipmentItemsByNextTokenRequest)) {
-            $request = new ListInboundShipmentItemsByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListInboundShipmentItemsByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListInboundShipmentItemsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListInboundShipmentItemsByNextToken', ListInboundShipmentItemsByNextTokenRequest::class, ListInboundShipmentItemsByNextTokenResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listInboundShipments($request): ListInboundShipmentsResponse
     {
-        if (!($request instanceof ListInboundShipmentsRequest)) {
-            $request = new ListInboundShipmentsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListInboundShipments';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListInboundShipmentsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListInboundShipments', ListInboundShipmentsRequest::class, ListInboundShipmentsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listInboundShipmentsByNextToken($request): ListInboundShipmentsByNextTokenResponse
     {
-        if (!($request instanceof ListInboundShipmentsByNextTokenRequest)) {
-            $request = new ListInboundShipmentsByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListInboundShipmentsByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListInboundShipmentsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListInboundShipmentsByNextToken', ListInboundShipmentsByNextTokenRequest::class, ListInboundShipmentsByNextTokenResponse::class);
     }
 
     /** {@inheritdoc} */
     public function putTransportContent($request): PutTransportContentResponse
     {
-        if (!($request instanceof PutTransportContentRequest)) {
-            $request = new PutTransportContentRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'PutTransportContent';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = PutTransportContentResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'PutTransportContent', PutTransportContentRequest::class, PutTransportContentResponse::class);
     }
 
     /** {@inheritdoc} */
     public function updateInboundShipment($request): UpdateInboundShipmentResponse
     {
-        if (!($request instanceof UpdateInboundShipmentRequest)) {
-            $request = new UpdateInboundShipmentRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'UpdateInboundShipment';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = UpdateInboundShipmentResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'UpdateInboundShipment', UpdateInboundShipmentRequest::class, UpdateInboundShipmentResponse::class);
     }
 
     /** {@inheritdoc} */
     public function voidTransportRequest($request): VoidTransportRequestResponse
     {
-        if (!($request instanceof VoidTransportInputRequest)) {
-            $request = new VoidTransportInputRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'VoidTransportRequest';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = VoidTransportRequestResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'VoidTransportRequest', VoidTransportInputRequest::class, VoidTransportRequestResponse::class);
     }
 }

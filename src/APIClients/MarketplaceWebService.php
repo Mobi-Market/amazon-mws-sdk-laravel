@@ -18,7 +18,6 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\APIClients;
 
-use MobiMarket\Amazon\AmazonApiException;
 use MobiMarket\Amazon\APIClients\Interfaces\IMarketplaceWebService;
 use MobiMarket\Amazon\Models\CancelFeedSubmissionsRequest;
 use MobiMarket\Amazon\Models\CancelFeedSubmissionsResponse;
@@ -68,10 +67,8 @@ use MobiMarket\Amazon\Models\UpdateReportAcknowledgementsResponse;
  */
 class MarketplaceWebService extends Crappy2009Client implements IMarketplaceWebService
 {
-    public const SERVICE_VERSION = '2009-01-01';
+    public const SERVICE_VERSION    = '2009-01-01';
     public const MWS_CLIENT_VERSION = '2016-09-21';
-
-    private $defaultHeaders = [];
 
     /** @var array */
     protected $config = [
@@ -83,6 +80,8 @@ class MarketplaceWebService extends Crappy2009Client implements IMarketplaceWebS
         'ProxyPort'        => -1,
         'MaxErrorRetry'    => 3,
     ];
+
+    private $defaultHeaders = [];
 
     // Public API ------------------------------------------------------------//
 

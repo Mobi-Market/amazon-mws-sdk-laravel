@@ -64,176 +64,66 @@ class FBAOutboundServiceMWS extends BaseClient implements IFBAOutboundServiceMWS
     /** {@inheritdoc} */
     public function cancelFulfillmentOrder($request): CancelFulfillmentOrderResponse
     {
-        if (!($request instanceof CancelFulfillmentOrderRequest)) {
-            $request = new CancelFulfillmentOrderRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'CancelFulfillmentOrder';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = CancelFulfillmentOrderResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'CancelFulfillmentOrder', CancelFulfillmentOrderRequest::class, CancelFulfillmentOrderResponse::class);
     }
 
     /** {@inheritdoc} */
     public function createFulfillmentOrder($request): CreateFulfillmentOrderResponse
     {
-        if (!($request instanceof CreateFulfillmentOrderRequest)) {
-            $request = new CreateFulfillmentOrderRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'CreateFulfillmentOrder';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = CreateFulfillmentOrderResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'CreateFulfillmentOrder', CreateFulfillmentOrderRequest::class, CreateFulfillmentOrderResponse::class);
     }
 
     /** {@inheritdoc} */
     public function createFulfillmentReturn($request): CreateFulfillmentReturnResponse
     {
-        if (!($request instanceof CreateFulfillmentReturnRequest)) {
-            $request = new CreateFulfillmentReturnRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'CreateFulfillmentReturn';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = CreateFulfillmentReturnResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'CreateFulfillmentReturn', CreateFulfillmentReturnRequest::class, CreateFulfillmentReturnResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getFulfillmentOrder($request): GetFulfillmentOrderResponse
     {
-        if (!($request instanceof GetFulfillmentOrderRequest)) {
-            $request = new GetFulfillmentOrderRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetFulfillmentOrder';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetFulfillmentOrderResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetFulfillmentOrder', GetFulfillmentOrderRequest::class, GetFulfillmentOrderResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getFulfillmentPreview($request): GetFulfillmentPreviewResponse
     {
-        if (!($request instanceof GetFulfillmentPreviewRequest)) {
-            $request = new GetFulfillmentPreviewRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetFulfillmentPreview';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetFulfillmentPreviewResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetFulfillmentPreview', GetFulfillmentPreviewRequest::class, GetFulfillmentPreviewResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getPackageTrackingDetails($request): GetPackageTrackingDetailsResponse
     {
-        if (!($request instanceof GetPackageTrackingDetailsRequest)) {
-            $request = new GetPackageTrackingDetailsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetPackageTrackingDetails';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetPackageTrackingDetailsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetPackageTrackingDetails', GetPackageTrackingDetailsRequest::class, GetPackageTrackingDetailsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listAllFulfillmentOrders($request): ListAllFulfillmentOrdersResponse
     {
-        if (!($request instanceof ListAllFulfillmentOrdersRequest)) {
-            $request = new ListAllFulfillmentOrdersRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListAllFulfillmentOrders';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListAllFulfillmentOrdersResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListAllFulfillmentOrders', ListAllFulfillmentOrdersRequest::class, ListAllFulfillmentOrdersResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listAllFulfillmentOrdersByNextToken($request): ListAllFulfillmentOrdersByNextTokenResponse
     {
-        if (!($request instanceof ListAllFulfillmentOrdersByNextTokenRequest)) {
-            $request = new ListAllFulfillmentOrdersByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListAllFulfillmentOrdersByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListAllFulfillmentOrdersByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListAllFulfillmentOrdersByNextToken', ListAllFulfillmentOrdersByNextTokenRequest::class, ListAllFulfillmentOrdersByNextTokenResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listReturnReasonCodes($request): ListReturnReasonCodesResponse
     {
-        if (!($request instanceof ListReturnReasonCodesRequest)) {
-            $request = new ListReturnReasonCodesRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListReturnReasonCodes';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListReturnReasonCodesResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListReturnReasonCodes', ListReturnReasonCodesRequest::class, ListReturnReasonCodesResponse::class);
     }
 
     /** {@inheritdoc} */
     public function updateFulfillmentOrder($request): UpdateFulfillmentOrderResponse
     {
-        if (!($request instanceof UpdateFulfillmentOrderRequest)) {
-            $request = new UpdateFulfillmentOrderRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'UpdateFulfillmentOrder';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = UpdateFulfillmentOrderResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'UpdateFulfillmentOrder', UpdateFulfillmentOrderRequest::class, UpdateFulfillmentOrderResponse::class);
     }
 }

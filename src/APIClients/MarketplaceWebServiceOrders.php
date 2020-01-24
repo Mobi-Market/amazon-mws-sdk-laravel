@@ -56,96 +56,36 @@ class MarketplaceWebServiceOrders extends BaseClient implements IMarketplaceWebS
     /** {@inheritdoc} */
     public function getOrder($request): GetOrderResponse
     {
-        if (!($request instanceof GetOrderRequest)) {
-            $request = new GetOrderRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetOrder';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetOrderResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetOrder', GetOrderRequest::class, GetOrderResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listOrderItems($request): ListOrderItemsResponse
     {
-        if (!($request instanceof ListOrderItemsRequest)) {
-            $request = new ListOrderItemsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListOrderItems';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListOrderItemsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListOrderItems', ListOrderItemsRequest::class, ListOrderItemsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listOrderItemsByNextToken($request): ListOrderItemsByNextTokenResponse
     {
-        if (!($request instanceof ListOrderItemsByNextTokenRequest)) {
-            $request = new ListOrderItemsByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListOrderItemsByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListOrderItemsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListOrderItemsByNextToken', ListOrderItemsByNextTokenRequest::class, ListOrderItemsByNextTokenResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listOrders($request): ListOrdersResponse
     {
-        if (!($request instanceof ListOrdersRequest)) {
-            $request = new ListOrdersRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListOrders';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListOrdersResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListOrders', ListOrdersRequest::class, ListOrdersResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listOrdersByNextToken($request): ListOrdersByNextTokenResponse
     {
-        if (!($request instanceof ListOrdersByNextTokenRequest)) {
-            $request = new ListOrdersByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListOrdersByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListOrdersByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListOrdersByNextToken', ListOrdersByNextTokenRequest::class, ListOrdersByNextTokenResponse::class);
     }
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-/*
+/**
  * Copyright 2009-2019 Amazon Services. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License");.
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
@@ -13,8 +13,9 @@ declare(strict_types=1);
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
  * PHP Version 5
+ *
  * @category Amazon
- * @package  MWS Finances Service
+ *
  * @version  2015-05-01
  * Library Version: 2019-02-25
  * Generated: Wed Mar 13 08:17:11 PDT 2019

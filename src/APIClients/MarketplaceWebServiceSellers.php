@@ -48,48 +48,18 @@ class MarketplaceWebServiceSellers extends BaseClient implements IMarketplaceWeb
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listMarketplaceParticipations($request): ListMarketplaceParticipationsResponse
     {
-        if (!($request instanceof ListMarketplaceParticipationsRequest)) {
-            $request = new ListMarketplaceParticipationsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListMarketplaceParticipations';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListMarketplaceParticipationsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListMarketplaceParticipations', ListMarketplaceParticipationsRequest::class, ListMarketplaceParticipationsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listMarketplaceParticipationsByNextToken($request): ListMarketplaceParticipationsByNextTokenResponse
     {
-        if (!($request instanceof ListMarketplaceParticipationsByNextTokenRequest)) {
-            $request = new ListMarketplaceParticipationsByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListMarketplaceParticipationsByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListMarketplaceParticipationsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListMarketplaceParticipationsByNextToken', ListMarketplaceParticipationsByNextTokenRequest::class, ListMarketplaceParticipationsByNextTokenResponse::class);
     }
 }

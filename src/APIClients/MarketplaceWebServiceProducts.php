@@ -72,240 +72,90 @@ class MarketplaceWebServiceProducts extends BaseClient implements IMarketplaceWe
     /** {@inheritdoc} */
     public function getCompetitivePricingForASIN($request): GetCompetitivePricingForASINResponse
     {
-        if (!($request instanceof GetCompetitivePricingForASINRequest)) {
-            $request = new GetCompetitivePricingForASINRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetCompetitivePricingForASIN';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetCompetitivePricingForASINResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetCompetitivePricingForASIN', GetCompetitivePricingForASINRequest::class, GetCompetitivePricingForASINResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getCompetitivePricingForSKU($request): GetCompetitivePricingForSKUResponse
     {
-        if (!($request instanceof GetCompetitivePricingForSKURequest)) {
-            $request = new GetCompetitivePricingForSKURequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetCompetitivePricingForSKU';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetCompetitivePricingForSKUResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetCompetitivePricingForSKU', GetCompetitivePricingForSKURequest::class, GetCompetitivePricingForSKUResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getLowestOfferListingsForASIN($request): GetLowestOfferListingsForASINResponse
     {
-        if (!($request instanceof GetLowestOfferListingsForASINRequest)) {
-            $request = new GetLowestOfferListingsForASINRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetLowestOfferListingsForASIN';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetLowestOfferListingsForASINResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetLowestOfferListingsForASIN', GetLowestOfferListingsForASINRequest::class, GetLowestOfferListingsForASINResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getLowestOfferListingsForSKU($request): GetLowestOfferListingsForSKUResponse
     {
-        if (!($request instanceof GetLowestOfferListingsForSKURequest)) {
-            $request = new GetLowestOfferListingsForSKURequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetLowestOfferListingsForSKU';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetLowestOfferListingsForSKUResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetLowestOfferListingsForSKU', GetLowestOfferListingsForSKURequest::class, GetLowestOfferListingsForSKUResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getLowestPricedOffersForASIN($request): GetLowestPricedOffersForASINResponse
     {
-        if (!($request instanceof GetLowestPricedOffersForASINRequest)) {
-            $request = new GetLowestPricedOffersForASINRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetLowestPricedOffersForASIN';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetLowestPricedOffersForASINResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetLowestPricedOffersForASIN', GetLowestPricedOffersForASINRequest::class, GetLowestPricedOffersForASINResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getLowestPricedOffersForSKU($request): GetLowestPricedOffersForSKUResponse
     {
-        if (!($request instanceof GetLowestPricedOffersForSKURequest)) {
-            $request = new GetLowestPricedOffersForSKURequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetLowestPricedOffersForSKU';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetLowestPricedOffersForSKUResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetLowestPricedOffersForSKU', GetLowestPricedOffersForSKURequest::class, GetLowestPricedOffersForSKUResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getMatchingProduct($request): GetMatchingProductResponse
     {
-        if (!($request instanceof GetMatchingProductRequest)) {
-            $request = new GetMatchingProductRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetMatchingProduct';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetMatchingProductResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetMatchingProduct', GetMatchingProductRequest::class, GetMatchingProductResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getMatchingProductForId($request): GetMatchingProductForIdResponse
     {
-        if (!($request instanceof GetMatchingProductForIdRequest)) {
-            $request = new GetMatchingProductForIdRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetMatchingProductForId';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetMatchingProductForIdResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetMatchingProductForId', GetMatchingProductForIdRequest::class, GetMatchingProductForIdResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getMyFeesEstimate($request): GetMyFeesEstimateResponse
     {
-        if (!($request instanceof GetMyFeesEstimateRequest)) {
-            $request = new GetMyFeesEstimateRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetMyFeesEstimate';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetMyFeesEstimateResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetMyFeesEstimate', GetMyFeesEstimateRequest::class, GetMyFeesEstimateResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getMyPriceForASIN($request): GetMyPriceForASINResponse
     {
-        if (!($request instanceof GetMyPriceForASINRequest)) {
-            $request = new GetMyPriceForASINRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetMyPriceForASIN';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetMyPriceForASINResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetMyPriceForASIN', GetMyPriceForASINRequest::class, GetMyPriceForASINResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getMyPriceForSKU($request): GetMyPriceForSKUResponse
     {
-        if (!($request instanceof GetMyPriceForSKURequest)) {
-            $request = new GetMyPriceForSKURequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetMyPriceForSKU';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetMyPriceForSKUResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetMyPriceForSKU', GetMyPriceForSKURequest::class, GetMyPriceForSKUResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getProductCategoriesForASIN($request): GetProductCategoriesForASINResponse
     {
-        if (!($request instanceof GetProductCategoriesForASINRequest)) {
-            $request = new GetProductCategoriesForASINRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetProductCategoriesForASIN';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetProductCategoriesForASINResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetProductCategoriesForASIN', GetProductCategoriesForASINRequest::class, GetProductCategoriesForASINResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getProductCategoriesForSKU($request): GetProductCategoriesForSKUResponse
     {
-        if (!($request instanceof GetProductCategoriesForSKURequest)) {
-            $request = new GetProductCategoriesForSKURequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetProductCategoriesForSKU';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetProductCategoriesForSKUResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetProductCategoriesForSKU', GetProductCategoriesForSKURequest::class, GetProductCategoriesForSKUResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listMatchingProducts($request): ListMatchingProductsResponse
     {
-        if (!($request instanceof ListMatchingProductsRequest)) {
-            $request = new ListMatchingProductsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListMatchingProducts';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListMatchingProductsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListMatchingProducts', ListMatchingProductsRequest::class, ListMatchingProductsResponse::class);
     }
 }

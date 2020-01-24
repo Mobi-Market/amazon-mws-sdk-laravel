@@ -48,48 +48,18 @@ class FBAInventoryServiceMWS extends BaseClient implements IFBAInventoryServiceM
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listInventorySupply($request): ListInventorySupplyResponse
     {
-        if (!($request instanceof ListInventorySupplyRequest)) {
-            $request = new ListInventorySupplyRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListInventorySupply';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListInventorySupplyResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListInventorySupply', ListInventorySupplyRequest::class, ListInventorySupplyResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listInventorySupplyByNextToken($request): ListInventorySupplyByNextTokenResponse
     {
-        if (!($request instanceof ListInventorySupplyByNextTokenRequest)) {
-            $request = new ListInventorySupplyByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListInventorySupplyByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListInventorySupplyByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListInventorySupplyByNextToken', ListInventorySupplyByNextTokenRequest::class, ListInventorySupplyByNextTokenResponse::class);
     }
 }

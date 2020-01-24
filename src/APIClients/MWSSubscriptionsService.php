@@ -61,160 +61,60 @@ class MWSSubscriptionsService extends BaseClient implements IMWSSubscriptionsSer
     /** {@inheritdoc} */
     public function createSubscription($request): CreateSubscriptionResponse
     {
-        if (!($request instanceof CreateSubscriptionInput)) {
-            $request = new CreateSubscriptionInput($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'CreateSubscription';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = CreateSubscriptionResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'CreateSubscription', CreateSubscriptionInput::class, CreateSubscriptionResponse::class);
     }
 
     /** {@inheritdoc} */
     public function deleteSubscription($request): DeleteSubscriptionResponse
     {
-        if (!($request instanceof DeleteSubscriptionInput)) {
-            $request = new DeleteSubscriptionInput($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'DeleteSubscription';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = DeleteSubscriptionResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'DeleteSubscription', DeleteSubscriptionInput::class, DeleteSubscriptionResponse::class);
     }
 
     /** {@inheritdoc} */
     public function deregisterDestination($request): DeregisterDestinationResponse
     {
-        if (!($request instanceof DeregisterDestinationInput)) {
-            $request = new DeregisterDestinationInput($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'DeregisterDestination';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = DeregisterDestinationResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'DeregisterDestination', DeregisterDestinationInput::class, DeregisterDestinationResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getSubscription($request): GetSubscriptionResponse
     {
-        if (!($request instanceof GetSubscriptionInput)) {
-            $request = new GetSubscriptionInput($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetSubscription';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetSubscriptionResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetSubscription', GetSubscriptionInput::class, GetSubscriptionResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listRegisteredDestinations($request): ListRegisteredDestinationsResponse
     {
-        if (!($request instanceof ListRegisteredDestinationsInput)) {
-            $request = new ListRegisteredDestinationsInput($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListRegisteredDestinations';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListRegisteredDestinationsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListRegisteredDestinations', ListRegisteredDestinationsInput::class, ListRegisteredDestinationsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listSubscriptions($request): ListSubscriptionsResponse
     {
-        if (!($request instanceof ListSubscriptionsInput)) {
-            $request = new ListSubscriptionsInput($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListSubscriptions';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListSubscriptionsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListSubscriptions', ListSubscriptionsInput::class, ListSubscriptionsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function registerDestination($request): RegisterDestinationResponse
     {
-        if (!($request instanceof RegisterDestinationInput)) {
-            $request = new RegisterDestinationInput($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'RegisterDestination';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = RegisterDestinationResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'RegisterDestination', RegisterDestinationInput::class, RegisterDestinationResponse::class);
     }
 
     /** {@inheritdoc} */
     public function sendTestNotificationToDestination($request): SendTestNotificationToDestinationResponse
     {
-        if (!($request instanceof SendTestNotificationToDestinationInput)) {
-            $request = new SendTestNotificationToDestinationInput($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'SendTestNotificationToDestination';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = SendTestNotificationToDestinationResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'SendTestNotificationToDestination', SendTestNotificationToDestinationInput::class, SendTestNotificationToDestinationResponse::class);
     }
 
     /** {@inheritdoc} */
     public function updateSubscription($request): UpdateSubscriptionResponse
     {
-        if (!($request instanceof UpdateSubscriptionInput)) {
-            $request = new UpdateSubscriptionInput($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'UpdateSubscription';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = UpdateSubscriptionResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'UpdateSubscription', UpdateSubscriptionInput::class, UpdateSubscriptionResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 }

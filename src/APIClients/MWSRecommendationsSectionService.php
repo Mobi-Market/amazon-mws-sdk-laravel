@@ -50,64 +50,24 @@ class MWSRecommendationsSectionService extends BaseClient implements IMWSRecomme
     /** {@inheritdoc} */
     public function getLastUpdatedTimeForRecommendations($request): GetLastUpdatedTimeForRecommendationsResponse
     {
-        if (!($request instanceof GetLastUpdatedTimeForRecommendationsRequest)) {
-            $request = new GetLastUpdatedTimeForRecommendationsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetLastUpdatedTimeForRecommendations';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetLastUpdatedTimeForRecommendationsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetLastUpdatedTimeForRecommendations', GetLastUpdatedTimeForRecommendationsRequest::class, GetLastUpdatedTimeForRecommendationsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listRecommendations($request): ListRecommendationsResponse
     {
-        if (!($request instanceof ListRecommendationsRequest)) {
-            $request = new ListRecommendationsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListRecommendations';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListRecommendationsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListRecommendations', ListRecommendationsRequest::class, ListRecommendationsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listRecommendationsByNextToken($request): ListRecommendationsByNextTokenResponse
     {
-        if (!($request instanceof ListRecommendationsByNextTokenRequest)) {
-            $request = new ListRecommendationsByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListRecommendationsByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListRecommendationsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListRecommendationsByNextToken', ListRecommendationsByNextTokenRequest::class, ListRecommendationsByNextTokenResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 }

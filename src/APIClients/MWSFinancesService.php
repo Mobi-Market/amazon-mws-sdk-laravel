@@ -52,80 +52,30 @@ class MWSFinancesService extends BaseClient implements IMWSFinancesService
     /** {@inheritdoc} */
     public function listFinancialEventGroups($request): ListFinancialEventGroupsResponse
     {
-        if (!($request instanceof ListFinancialEventGroupsRequest)) {
-            $request = new ListFinancialEventGroupsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListFinancialEventGroups';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListFinancialEventGroupsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListFinancialEventGroups', ListFinancialEventGroupsRequest::class, ListFinancialEventGroupsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listFinancialEventGroupsByNextToken($request): ListFinancialEventGroupsByNextTokenResponse
     {
-        if (!($request instanceof ListFinancialEventGroupsByNextTokenRequest)) {
-            $request = new ListFinancialEventGroupsByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListFinancialEventGroupsByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListFinancialEventGroupsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListFinancialEventGroupsByNextToken', ListFinancialEventGroupsByNextTokenRequest::class, ListFinancialEventGroupsByNextTokenResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listFinancialEvents($request): ListFinancialEventsResponse
     {
-        if (!($request instanceof ListFinancialEventsRequest)) {
-            $request = new ListFinancialEventsRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListFinancialEvents';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListFinancialEventsResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListFinancialEvents', ListFinancialEventsRequest::class, ListFinancialEventsResponse::class);
     }
 
     /** {@inheritdoc} */
     public function listFinancialEventsByNextToken($request): ListFinancialEventsByNextTokenResponse
     {
-        if (!($request instanceof ListFinancialEventsByNextTokenRequest)) {
-            $request = new ListFinancialEventsByNextTokenRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ListFinancialEventsByNextToken';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ListFinancialEventsByNextTokenResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ListFinancialEventsByNextToken', ListFinancialEventsByNextTokenRequest::class, ListFinancialEventsByNextTokenResponse::class);
     }
 
     /** {@inheritdoc} */
     public function getServiceStatus($request): GetServiceStatusResponse
     {
-        if (!($request instanceof GetServiceStatusRequest)) {
-            $request = new GetServiceStatusRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'GetServiceStatus';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = GetServiceStatusResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'GetServiceStatus', GetServiceStatusRequest::class, GetServiceStatusResponse::class);
     }
 }
