@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace MobiMarket\Amazon\APIClients;
 
 use MobiMarket\Amazon\AmazonApiException;
-use ResponseHeaderMetadata;
+use MobiMarket\Amazon\Models\ResponseHeaderMetadata;
 
 abstract class BaseClient
 {
@@ -67,6 +67,32 @@ abstract class BaseClient
             $this->_config = array_merge($this->_config, $config);
         }
         $this->setUserAgentHeader($applicationName, $applicationVersion, $attributes);
+    }
+
+    /**
+     * Invoke the common API code.
+     *
+     * @param mixed $request
+     *
+     * @throws AmazonApiException
+     *
+     * @return mixed
+     */
+    protected function _invokeApi($request, string $action, string $requestClass, string $responseClass)
+    {
+        if (!($request instanceof $requestClass)) {
+            $request = new $requestClass($request);
+        }
+
+        // eek
+        $parameters           = $request->toQueryParameterArray();
+        $parameters['Action'] = $action;
+        $httpResponse         = $this->_invoke($parameters);
+
+        $response = $responseClass::fromXML($httpResponse['ResponseBody']);
+        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
+
+        return $response;
     }
 
     /**

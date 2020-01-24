@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\Models;
 
+use MobiMarket\Amazon\AmazonApiException;
 use MobiMarket\Amazon\Model;
 
 require_once 'MarketplaceWebService/Model/ContentType.php';

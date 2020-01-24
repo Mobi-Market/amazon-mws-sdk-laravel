@@ -3,11 +3,10 @@
     "type": "library",
     "description": "Amazon MWS SDK Laravel Package",
     "require": {
-        "php": "^7.2",
-        "guzzlehttp/guzzle": "^6.3"
+        "php": "^7.2"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.15@dev",
+        "friendsofphp/php-cs-fixer": "^2.15",
         "illuminate/support": "~5.5.0"
     },
     "license": "proprietary",
@@ -22,6 +21,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "MobiMarket\\Amazon\\": "src/"

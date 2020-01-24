@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-/*
+/**
  * Copyright 2009-2019 Amazon Services. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License");.
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
@@ -11,15 +11,15 @@ declare(strict_types=1);
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
- * PHP Version 5
+ *
  * @category Amazon
- * @package  MWS Merchant Fulfillment Service
- * @version  2015-06-01
- * Library Version: 2016-03-30
- * Generated: Tue Jul 09 13:26:52 PDT 2019
  */
 
-class ResponseHeaderMetadata
+namespace MobiMarket\Amazon\Models;
+
+use MobiMarket\Amazon\Model;
+
+class ResponseHeaderMetadata extends Model
 {
     public const REQUEST_ID       = 'x-mws-request-id';
     public const RESPONSE_CONTEXT = 'x-mws-response-context';

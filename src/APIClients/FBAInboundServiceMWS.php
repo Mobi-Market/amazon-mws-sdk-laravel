@@ -88,17 +88,7 @@ class FBAInboundServiceMWS extends BaseClient implements IFBAInboundServiceMWS
     /** {@inheritdoc} */
     public function confirmPreorder($request): ConfirmPreorderResponse
     {
-        if (!($request instanceof ConfirmPreorderRequest)) {
-            $request = new ConfirmPreorderRequest($request);
-        }
-        $parameters           = $request->toQueryParameterArray();
-        $parameters['Action'] = 'ConfirmPreorder';
-        $httpResponse         = $this->_invoke($parameters);
-
-        $response = ConfirmPreorderResponse::fromXML($httpResponse['ResponseBody']);
-        $response->setResponseHeaderMetadata($httpResponse['ResponseHeaderMetadata']);
-
-        return $response;
+        return $this->_invokeApi($request, 'ConfirmPreorder', ConfirmPreorderRequest::class, ConfirmPreorderResponse::class);
     }
 
     /** {@inheritdoc} */

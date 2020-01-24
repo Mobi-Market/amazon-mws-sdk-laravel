@@ -30,6 +30,10 @@ declare(strict_types=1);
  * </ul>
  */
 
+namespace MobiMarket\Amazon\Models;
+
+use MobiMarket\Amazon\Model;
+
 // The only content type that MWS currently supports is octet-stream
 
 class ContentType extends Model
@@ -75,7 +79,7 @@ class ContentType extends Model
 
     public function isSetParameters()
     {
-        return count($this->fields['Parameters']['FieldValue']) > 0;
+        return \count($this->fields['Parameters']['FieldValue']) > 0;
     }
 
     public function toString()
