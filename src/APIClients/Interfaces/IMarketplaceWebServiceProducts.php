@@ -1,9 +1,10 @@
 <?php
 
 declare(strict_types=1);
-/*
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
+
+/**
+ * Copyright 2009-2019 Amazon Services. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");.
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
@@ -11,135 +12,132 @@ declare(strict_types=1);
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
- * PHP Version 5
+ *
  * @category Amazon
- * @package  Marketplace Web Service Products
- * @version  2011-10-01
- * Library Version: 2017-03-22
- * Generated: Thu Oct 11 10:46:02 PDT 2018
  */
 
-interface MarketplaceWebServiceProducts_Interface
+namespace MobiMarket\Amazon\APIClients\Interfaces;
+
+use MobiMarket\Amazon\Models\GetCompetitivePricingForASINRequest;
+use MobiMarket\Amazon\Models\GetCompetitivePricingForASINResponse;
+use MobiMarket\Amazon\Models\GetCompetitivePricingForSKURequest;
+use MobiMarket\Amazon\Models\GetCompetitivePricingForSKUResponse;
+use MobiMarket\Amazon\Models\GetLowestOfferListingsForASINRequest;
+use MobiMarket\Amazon\Models\GetLowestOfferListingsForASINResponse;
+use MobiMarket\Amazon\Models\GetLowestOfferListingsForSKURequest;
+use MobiMarket\Amazon\Models\GetLowestOfferListingsForSKUResponse;
+use MobiMarket\Amazon\Models\GetLowestPricedOffersForASINRequest;
+use MobiMarket\Amazon\Models\GetLowestPricedOffersForASINResponse;
+use MobiMarket\Amazon\Models\GetLowestPricedOffersForSKURequest;
+use MobiMarket\Amazon\Models\GetLowestPricedOffersForSKUResponse;
+use MobiMarket\Amazon\Models\GetMatchingProductForIdRequest;
+use MobiMarket\Amazon\Models\GetMatchingProductForIdResponse;
+use MobiMarket\Amazon\Models\GetMatchingProductRequest;
+use MobiMarket\Amazon\Models\GetMatchingProductResponse;
+use MobiMarket\Amazon\Models\GetMyFeesEstimateRequest;
+use MobiMarket\Amazon\Models\GetMyFeesEstimateResponse;
+use MobiMarket\Amazon\Models\GetMyPriceForASINRequest;
+use MobiMarket\Amazon\Models\GetMyPriceForASINResponse;
+use MobiMarket\Amazon\Models\GetMyPriceForSKURequest;
+use MobiMarket\Amazon\Models\GetMyPriceForSKUResponse;
+use MobiMarket\Amazon\Models\GetProductCategoriesForASINRequest;
+use MobiMarket\Amazon\Models\GetProductCategoriesForASINResponse;
+use MobiMarket\Amazon\Models\GetProductCategoriesForSKURequest;
+use MobiMarket\Amazon\Models\GetProductCategoriesForSKUResponse;
+use MobiMarket\Amazon\Models\GetServiceStatusRequest;
+use MobiMarket\Amazon\Models\GetServiceStatusResponse;
+use MobiMarket\Amazon\Models\ListMatchingProductsRequest;
+use MobiMarket\Amazon\Models\ListMatchingProductsResponse;
+
+interface IMarketplaceWebServiceProducts
 {
     /**
      * Get Competitive Pricing For ASIN
      * Gets competitive pricing and related information for a product identified by
      * the MarketplaceId and ASIN.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetCompetitivePricingForASIN request or MarketplaceWebServiceProducts_Model_GetCompetitivePricingForASIN object itself
+     * @param GetCompetitivePricingForASINRequest|array $request array of parameters for GetCompetitivePricingForASIN request or GetCompetitivePricingForASIN object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetCompetitivePricingForASINRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetCompetitivePricingForASINResponse
+     * @throws AmazonApiException
      */
-    public function getCompetitivePricingForASIN($request);
+    public function getCompetitivePricingForASIN($request): GetCompetitivePricingForASINResponse;
 
     /**
      * Get Competitive Pricing For SKU
      * Gets competitive pricing and related information for a product identified by
      * the SellerId and SKU.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetCompetitivePricingForSKU request or MarketplaceWebServiceProducts_Model_GetCompetitivePricingForSKU object itself
+     * @param GetCompetitivePricingForSKURequest|array $request array of parameters for GetCompetitivePricingForSKU request or GetCompetitivePricingForSKU object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetCompetitivePricingForSKURequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetCompetitivePricingForSKUResponse
+     * @throws AmazonApiException
      */
-    public function getCompetitivePricingForSKU($request);
+    public function getCompetitivePricingForSKU($request): GetCompetitivePricingForSKUResponse;
 
     /**
      * Get Lowest Offer Listings For ASIN
      * Gets some of the lowest prices based on the product identified by the given
      * MarketplaceId and ASIN.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetLowestOfferListingsForASIN request or MarketplaceWebServiceProducts_Model_GetLowestOfferListingsForASIN object itself
+     * @param GetLowestOfferListingsForASINRequest|array $request array of parameters for GetLowestOfferListingsForASIN request or GetLowestOfferListingsForASIN object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetLowestOfferListingsForASINRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetLowestOfferListingsForASINResponse
+     * @throws AmazonApiException
      */
-    public function getLowestOfferListingsForASIN($request);
+    public function getLowestOfferListingsForASIN($request): GetLowestOfferListingsForASINResponse;
 
     /**
      * Get Lowest Offer Listings For SKU
      * Gets some of the lowest prices based on the product identified by the given
      * SellerId and SKU.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetLowestOfferListingsForSKU request or MarketplaceWebServiceProducts_Model_GetLowestOfferListingsForSKU object itself
+     * @param GetLowestOfferListingsForSKURequest|array $request array of parameters for GetLowestOfferListingsForSKU request or GetLowestOfferListingsForSKU object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetLowestOfferListingsForSKURequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetLowestOfferListingsForSKUResponse
+     * @throws AmazonApiException
      */
-    public function getLowestOfferListingsForSKU($request);
+    public function getLowestOfferListingsForSKU($request): GetLowestOfferListingsForSKUResponse;
 
     /**
      * Get Lowest Priced Offers For ASIN
      * Retrieves the lowest priced offers based on the product identified by the given
      *     ASIN.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForASIN request or MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForASIN object itself
+     * @param GetLowestPricedOffersForASINRequest|array $request array of parameters for GetLowestPricedOffersForASIN request or GetLowestPricedOffersForASIN object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForASINRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForASINResponse
+     * @throws AmazonApiException
      */
-    public function getLowestPricedOffersForASIN($request);
+    public function getLowestPricedOffersForASIN($request): GetLowestPricedOffersForASINResponse;
 
     /**
      * Get Lowest Priced Offers For SKU
      * Retrieves the lowest priced offers based on the product identified by the given
      *     SellerId and SKU.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForSKU request or MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForSKU object itself
+     * @param GetLowestPricedOffersForSKURequest|array $request array of parameters for GetLowestPricedOffersForSKU request or GetLowestPricedOffersForSKU object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForSKURequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetLowestPricedOffersForSKUResponse
+     * @throws AmazonApiException
      */
-    public function getLowestPricedOffersForSKU($request);
+    public function getLowestPricedOffersForSKU($request): GetLowestPricedOffersForSKUResponse;
 
     /**
      * Get Matching Product
      * GetMatchingProduct will return the details (attributes) for the
      * given ASIN.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetMatchingProduct request or MarketplaceWebServiceProducts_Model_GetMatchingProduct object itself
+     * @param GetMatchingProductRequest|array $request array of parameters for GetMatchingProduct request or GetMatchingProduct object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetMatchingProductRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetMatchingProductResponse
+     * @throws AmazonApiException
      */
-    public function getMatchingProduct($request);
+    public function getMatchingProduct($request): GetMatchingProductResponse;
 
     /**
      * Get Matching Product For Id
      * GetMatchingProduct will return the details (attributes) for the
      * given Identifier list. Identifer type can be one of [SKU|ASIN|UPC|EAN|ISBN|GTIN|JAN].
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetMatchingProductForId request or MarketplaceWebServiceProducts_Model_GetMatchingProductForId object itself
+     * @param GetMatchingProductForIdRequest|array $request array of parameters for GetMatchingProductForId request or GetMatchingProductForId object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetMatchingProductForIdRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetMatchingProductForIdResponse
+     * @throws AmazonApiException
      */
-    public function getMatchingProductForId($request);
+    public function getMatchingProductForId($request): GetMatchingProductForIdResponse;
 
     /**
      * Get My Fees Estimate
@@ -147,73 +145,53 @@ interface MarketplaceWebServiceProducts_Interface
      *         products identified by the given
      *         ASIN/SKU list.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetMyFeesEstimate request or MarketplaceWebServiceProducts_Model_GetMyFeesEstimate object itself
+     * @param GetMyFeesEstimateRequest|array $request array of parameters for GetMyFeesEstimate request or GetMyFeesEstimate object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetMyFeesEstimateRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetMyFeesEstimateResponse
+     * @throws AmazonApiException
      */
-    public function getMyFeesEstimate($request);
+    public function getMyFeesEstimate($request): GetMyFeesEstimateResponse;
 
     /**
      * Get My Price For ASIN
      * <!-- Wrong doc in current code -->.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetMyPriceForASIN request or MarketplaceWebServiceProducts_Model_GetMyPriceForASIN object itself
+     * @param GetMyPriceForASINRequest|array $request array of parameters for GetMyPriceForASIN request or GetMyPriceForASIN object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetMyPriceForASINRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetMyPriceForASINResponse
+     * @throws AmazonApiException
      */
-    public function getMyPriceForASIN($request);
+    public function getMyPriceForASIN($request): GetMyPriceForASINResponse;
 
     /**
      * Get My Price For SKU
      * <!-- Wrong doc in current code -->.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetMyPriceForSKU request or MarketplaceWebServiceProducts_Model_GetMyPriceForSKU object itself
+     * @param GetMyPriceForSKURequest|array $request array of parameters for GetMyPriceForSKU request or GetMyPriceForSKU object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetMyPriceForSKURequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetMyPriceForSKUResponse
+     * @throws AmazonApiException
      */
-    public function getMyPriceForSKU($request);
+    public function getMyPriceForSKU($request): GetMyPriceForSKUResponse;
 
     /**
      * Get Product Categories For ASIN
      * Gets categories information for a product identified by
      * the MarketplaceId and ASIN.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetProductCategoriesForASIN request or MarketplaceWebServiceProducts_Model_GetProductCategoriesForASIN object itself
+     * @param GetProductCategoriesForASINRequest|array $request array of parameters for GetProductCategoriesForASIN request or GetProductCategoriesForASIN object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetProductCategoriesForASINRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetProductCategoriesForASINResponse
+     * @throws AmazonApiException
      */
-    public function getProductCategoriesForASIN($request);
+    public function getProductCategoriesForASIN($request): GetProductCategoriesForASINResponse;
 
     /**
      * Get Product Categories For SKU
      * Gets categories information for a product identified by
      * the SellerId and SKU.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetProductCategoriesForSKU request or MarketplaceWebServiceProducts_Model_GetProductCategoriesForSKU object itself
+     * @param GetProductCategoriesForSKURequest|array $request array of parameters for GetProductCategoriesForSKU request or GetProductCategoriesForSKU object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetProductCategoriesForSKURequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetProductCategoriesForSKUResponse
+     * @throws AmazonApiException
      */
-    public function getProductCategoriesForSKU($request);
+    public function getProductCategoriesForSKU($request): GetProductCategoriesForSKUResponse;
 
     /**
      * Get Service Status
@@ -221,28 +199,20 @@ interface MarketplaceWebServiceProducts_Interface
      * takes no input.
      * All API sections within the API are required to implement this operation.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_GetServiceStatus request or MarketplaceWebServiceProducts_Model_GetServiceStatus object itself
+     * @param GetServiceStatusRequest|array $request array of parameters for GetServiceStatus request or GetServiceStatus object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_GetServiceStatusRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_GetServiceStatusResponse
+     * @throws AmazonApiException
      */
-    public function getServiceStatus($request);
+    public function getServiceStatus($request): GetServiceStatusResponse;
 
     /**
      * List Matching Products
      * ListMatchingProducts can be used to
      * find products that match the given criteria.
      *
-     * @param mixed $request array of parameters for MarketplaceWebServiceProducts_Model_ListMatchingProducts request or MarketplaceWebServiceProducts_Model_ListMatchingProducts object itself
+     * @param ListMatchingProductsRequest|array $request array of parameters for ListMatchingProducts request or ListMatchingProducts object itself
      *
-     * @see MarketplaceWebServiceProducts_Model_ListMatchingProductsRequest
-     *
-     * @throws MarketplaceWebServiceProducts_Exception
-     *
-     * @return MarketplaceWebServiceProducts_Model_ListMatchingProductsResponse
+     * @throws AmazonApiException
      */
-    public function listMatchingProducts($request);
+    public function listMatchingProducts($request): ListMatchingProductsResponse;
 }

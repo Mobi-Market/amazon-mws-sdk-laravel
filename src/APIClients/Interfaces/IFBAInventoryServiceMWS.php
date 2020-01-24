@@ -1,9 +1,10 @@
 <?php
 
 declare(strict_types=1);
-/*
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
+
+/**
+ * Copyright 2009-2019 Amazon Services. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");.
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
@@ -11,15 +12,20 @@ declare(strict_types=1);
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
- * PHP Version 5
+ *
  * @category Amazon
- * @package  FBA Inventory Service MWS
- * @version  2010-10-01
- * Library Version: 2014-09-30
- * Generated: Tue Sep 11 14:38:40 PDT 2018
  */
 
-interface FBAInventoryServiceMWS_Interface
+namespace MobiMarket\Amazon\APIClients\Interfaces;
+
+use MobiMarket\Amazon\Models\GetServiceStatusRequest;
+use MobiMarket\Amazon\Models\GetServiceStatusResponse;
+use MobiMarket\Amazon\Models\ListInventorySupplyByNextTokenRequest;
+use MobiMarket\Amazon\Models\ListInventorySupplyByNextTokenResponse;
+use MobiMarket\Amazon\Models\ListInventorySupplyRequest;
+use MobiMarket\Amazon\Models\ListInventorySupplyResponse;
+
+interface IFBAInventoryServiceMWS
 {
     /**
      * Get Service Status
@@ -28,15 +34,11 @@ interface FBAInventoryServiceMWS_Interface
      *     GREEN: The service section is operating normally.
      *     RED: The service section disruption.
      *
-     * @param mixed $request array of parameters for FBAInventoryServiceMWS_Model_GetServiceStatus request or FBAInventoryServiceMWS_Model_GetServiceStatus object itself
+     * @param GetServiceStatusRequest|array $request array of parameters for GetServiceStatus request or GetServiceStatus object itself
      *
-     * @see FBAInventoryServiceMWS_Model_GetServiceStatusRequest
-     *
-     * @throws FBAInventoryServiceMWS_Exception
-     *
-     * @return FBAInventoryServiceMWS_Model_GetServiceStatusResponse
+     * @throws AmazonApiException
      */
-    public function getServiceStatus($request);
+    public function getServiceStatus($request): GetServiceStatusResponse;
 
     /**
      * List Inventory Supply
@@ -71,15 +73,11 @@ interface FBAInventoryServiceMWS_Interface
      *     passing in the NextToken value from the previous result), until the returned NextToken
      *     is null, indicating no further results are available.
      *
-     * @param mixed $request array of parameters for FBAInventoryServiceMWS_Model_ListInventorySupply request or FBAInventoryServiceMWS_Model_ListInventorySupply object itself
+     * @param ListInventorySupplyRequest|array $request array of parameters for ListInventorySupply request or ListInventorySupply object itself
      *
-     * @see FBAInventoryServiceMWS_Model_ListInventorySupplyRequest
-     *
-     * @throws FBAInventoryServiceMWS_Exception
-     *
-     * @return FBAInventoryServiceMWS_Model_ListInventorySupplyResponse
+     * @throws AmazonApiException
      */
-    public function listInventorySupply($request);
+    public function listInventorySupply($request): ListInventorySupplyResponse;
 
     /**
      * List Inventory Supply By Next Token
@@ -89,13 +87,9 @@ interface FBAInventoryServiceMWS_Interface
      *     This operation is used in conjunction with ListUpdatedInventorySupply.
      *     Please refer to documentation for that operation for further details.
      *
-     * @param mixed $request array of parameters for FBAInventoryServiceMWS_Model_ListInventorySupplyByNextToken request or FBAInventoryServiceMWS_Model_ListInventorySupplyByNextToken object itself
+     * @param ListInventorySupplyByNextTokenRequest|array $request array of parameters for ListInventorySupplyByNextToken request or ListInventorySupplyByNextToken object itself
      *
-     * @see FBAInventoryServiceMWS_Model_ListInventorySupplyByNextTokenRequest
-     *
-     * @throws FBAInventoryServiceMWS_Exception
-     *
-     * @return FBAInventoryServiceMWS_Model_ListInventorySupplyByNextTokenResponse
+     * @throws AmazonApiException
      */
-    public function listInventorySupplyByNextToken($request);
+    public function listInventorySupplyByNextToken($request): ListInventorySupplyByNextTokenResponse;
 }

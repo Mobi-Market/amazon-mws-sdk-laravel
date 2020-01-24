@@ -1,9 +1,10 @@
 <?php
 
 declare(strict_types=1);
-/*
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
+
+/**
+ * Copyright 2009-2019 Amazon Services. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");.
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
@@ -11,15 +12,57 @@ declare(strict_types=1);
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
- * PHP Version 5
+ *
  * @category Amazon
- * @package  FBA Inbound Service MWS
- * @version  2010-10-01
- * Library Version: 2016-10-05
- * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
-interface FBAInboundServiceMWS_Interface
+namespace MobiMarket\Amazon\APIClients\Interfaces;
+
+use MobiMarket\Amazon\Models\ConfirmPreorderRequest;
+use MobiMarket\Amazon\Models\ConfirmPreorderResponse;
+use MobiMarket\Amazon\Models\ConfirmTransportRequestResponse;
+use MobiMarket\Amazon\Models\CreateInboundShipmentPlanRequest;
+use MobiMarket\Amazon\Models\CreateInboundShipmentPlanResponse;
+use MobiMarket\Amazon\Models\CreateInboundShipmentRequest;
+use MobiMarket\Amazon\Models\CreateInboundShipmentResponse;
+use MobiMarket\Amazon\Models\EstimateTransportRequestResponse;
+use MobiMarket\Amazon\Models\GetBillOfLadingRequest;
+use MobiMarket\Amazon\Models\GetBillOfLadingResponse;
+use MobiMarket\Amazon\Models\GetInboundGuidanceForASINRequest;
+use MobiMarket\Amazon\Models\GetInboundGuidanceForASINResponse;
+use MobiMarket\Amazon\Models\GetInboundGuidanceForSKURequest;
+use MobiMarket\Amazon\Models\GetInboundGuidanceForSKUResponse;
+use MobiMarket\Amazon\Models\GetPackageLabelsRequest;
+use MobiMarket\Amazon\Models\GetPackageLabelsResponse;
+use MobiMarket\Amazon\Models\GetPalletLabelsRequest;
+use MobiMarket\Amazon\Models\GetPalletLabelsResponse;
+use MobiMarket\Amazon\Models\GetPreorderInfoRequest;
+use MobiMarket\Amazon\Models\GetPreorderInfoResponse;
+use MobiMarket\Amazon\Models\GetPrepInstructionsForASINRequest;
+use MobiMarket\Amazon\Models\GetPrepInstructionsForASINResponse;
+use MobiMarket\Amazon\Models\GetPrepInstructionsForSKURequest;
+use MobiMarket\Amazon\Models\GetPrepInstructionsForSKUResponse;
+use MobiMarket\Amazon\Models\GetServiceStatusRequest;
+use MobiMarket\Amazon\Models\GetServiceStatusResponse;
+use MobiMarket\Amazon\Models\GetTransportContentRequest;
+use MobiMarket\Amazon\Models\GetTransportContentResponse;
+use MobiMarket\Amazon\Models\GetUniquePackageLabelsRequest;
+use MobiMarket\Amazon\Models\GetUniquePackageLabelsResponse;
+use MobiMarket\Amazon\Models\ListInboundShipmentItemsByNextTokenRequest;
+use MobiMarket\Amazon\Models\ListInboundShipmentItemsByNextTokenResponse;
+use MobiMarket\Amazon\Models\ListInboundShipmentItemsRequest;
+use MobiMarket\Amazon\Models\ListInboundShipmentItemsResponse;
+use MobiMarket\Amazon\Models\ListInboundShipmentsByNextTokenRequest;
+use MobiMarket\Amazon\Models\ListInboundShipmentsByNextTokenResponse;
+use MobiMarket\Amazon\Models\ListInboundShipmentsRequest;
+use MobiMarket\Amazon\Models\ListInboundShipmentsResponse;
+use MobiMarket\Amazon\Models\PutTransportContentRequest;
+use MobiMarket\Amazon\Models\PutTransportContentResponse;
+use MobiMarket\Amazon\Models\UpdateInboundShipmentRequest;
+use MobiMarket\Amazon\Models\UpdateInboundShipmentResponse;
+use MobiMarket\Amazon\Models\VoidTransportRequestResponse;
+
+interface IFBAInboundServiceMWS
 {
     /**
      * Confirm Preorder
@@ -32,15 +75,11 @@ interface FBAInboundServiceMWS_Interface
      * be pre-orderable on the website and would be fulfilled without promise breaks,
      * if the NBD is met.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_ConfirmPreorder request or FBAInboundServiceMWS_Model_ConfirmPreorder object itself
+     * @param ConfirmPreorderRequest|array $request array of parameters for ConfirmPreorder request or ConfirmPreorder object itself
      *
-     * @see FBAInboundServiceMWS_Model_ConfirmPreorderRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_ConfirmPreorderResponse
+     * @throws AmazonApiException
      */
-    public function confirmPreorder($request);
+    public function confirmPreorder($request): ConfirmPreorderResponse;
 
     /**
      * Confirm Transport Request
@@ -48,15 +87,11 @@ interface FBAInboundServiceMWS_Interface
      *     Once this operation has been called successfully, the seller agrees to allow Amazon to charge
      *     their account the amount returned in the estimate.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_ConfirmTransportRequest request or FBAInboundServiceMWS_Model_ConfirmTransportRequest object itself
+     * @param ConfirmTransportRequest|array $request array of parameters for ConfirmTransportRequest request or ConfirmTransportRequest object itself
      *
-     * @see FBAInboundServiceMWS_Model_ConfirmTransportInputRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_ConfirmTransportRequestResponse
+     * @throws AmazonApiException
      */
-    public function confirmTransportRequest($request);
+    public function confirmTransportRequest($request): ConfirmTransportRequestResponse;
 
     /**
      * Create Inbound Shipment
@@ -66,15 +101,11 @@ interface FBAInboundServiceMWS_Interface
      * otherwise an explicit error will be returned.
      * More items may be added using the Update call.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_CreateInboundShipment request or FBAInboundServiceMWS_Model_CreateInboundShipment object itself
+     * @param CreateInboundShipmentRequest|array $request array of parameters for CreateInboundShipment request or CreateInboundShipment object itself
      *
-     * @see FBAInboundServiceMWS_Model_CreateInboundShipmentRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_CreateInboundShipmentResponse
+     * @throws AmazonApiException
      */
-    public function createInboundShipment($request);
+    public function createInboundShipment($request): CreateInboundShipmentResponse;
 
     /**
      * Create Inbound Shipment Plan
@@ -84,15 +115,11 @@ interface FBAInboundServiceMWS_Interface
      * non-sortable) it may be necessary to create multiple shipments (one for each
      * of the shipment groups returned).
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_CreateInboundShipmentPlan request or FBAInboundServiceMWS_Model_CreateInboundShipmentPlan object itself
+     * @param CreateInboundShipmentPlanRequest|array $request array of parameters for CreateInboundShipmentPlan request or CreateInboundShipmentPlan object itself
      *
-     * @see FBAInboundServiceMWS_Model_CreateInboundShipmentPlanRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_CreateInboundShipmentPlanResponse
+     * @throws AmazonApiException
      */
-    public function createInboundShipmentPlan($request);
+    public function createInboundShipmentPlan($request): CreateInboundShipmentPlanResponse;
 
     /**
      * Estimate Transport Request
@@ -100,15 +127,11 @@ interface FBAInboundServiceMWS_Interface
      *     for which the request is being made, whether or not the carrier shipment is partnered/non-partnered
      *     and the carrier type.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_EstimateTransportRequest request or FBAInboundServiceMWS_Model_EstimateTransportRequest object itself
+     * @param EstimateTransportRequest|array $request array of parameters for EstimateTransportRequest request or EstimateTransportRequest object itself
      *
-     * @see FBAInboundServiceMWS_Model_EstimateTransportInputRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_EstimateTransportRequestResponse
+     * @throws AmazonApiException
      */
-    public function estimateTransportRequest($request);
+    public function estimateTransportRequest($request): EstimateTransportRequestResponse;
 
     /**
      * Get Bill Of Lading
@@ -116,45 +139,33 @@ interface FBAInboundServiceMWS_Interface
      *     This PDF data will be ZIP'd and then it will be encoded as a Base64 string, and a
      *     MD5 hash is included with the response to validate the BOL data which will be encoded as Base64.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetBillOfLading request or FBAInboundServiceMWS_Model_GetBillOfLading object itself
+     * @param GetBillOfLadingRequest|array $request array of parameters for GetBillOfLading request or GetBillOfLading object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetBillOfLadingRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetBillOfLadingResponse
+     * @throws AmazonApiException
      */
-    public function getBillOfLading($request);
+    public function getBillOfLading($request): GetBillOfLadingResponse;
 
     /**
      * Get Inbound Guidance For ASIN
      * Given a list of ASINs and shipToCountryCode, this API returns Inbound
      *      guidance to ASINs in request with optional reason code if applicable.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetInboundGuidanceForASIN request or FBAInboundServiceMWS_Model_GetInboundGuidanceForASIN object itself
+     * @param GetInboundGuidanceForASINRequest|array $request array of parameters for GetInboundGuidanceForASIN request or GetInboundGuidanceForASIN object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetInboundGuidanceForASINRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetInboundGuidanceForASINResponse
+     * @throws AmazonApiException
      */
-    public function getInboundGuidanceForASIN($request);
+    public function getInboundGuidanceForASIN($request): GetInboundGuidanceForASINResponse;
 
     /**
      * Get Inbound Guidance For SKU
      * Given a list of SKUs and shipToCountryCode, this API returns Inbound
      *      guidance to SKUs in request with optional reason code if applicable.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetInboundGuidanceForSKU request or FBAInboundServiceMWS_Model_GetInboundGuidanceForSKU object itself
+     * @param GetInboundGuidanceForSKURequest|array $request array of parameters for GetInboundGuidanceForSKU request or GetInboundGuidanceForSKU object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetInboundGuidanceForSKURequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetInboundGuidanceForSKUResponse
+     * @throws AmazonApiException
      */
-    public function getInboundGuidanceForSKU($request);
+    public function getInboundGuidanceForSKU($request): GetInboundGuidanceForSKUResponse;
 
     /**
      * Get Package Labels
@@ -174,15 +185,11 @@ interface FBAInboundServiceMWS_Interface
      *       * Partnered EU: PackageLabel_A4_2
      *       * JP/CN: PackageLabel_Plain_Paper
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPackageLabels request or FBAInboundServiceMWS_Model_GetPackageLabels object itself
+     * @param GetPackageLabelsRequest|array $request array of parameters for GetPackageLabels request or GetPackageLabels object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetPackageLabelsRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetPackageLabelsResponse
+     * @throws AmazonApiException
      */
-    public function getPackageLabels($request);
+    public function getPackageLabels($request): GetPackageLabelsResponse;
 
     /**
      * Get Pallet Labels
@@ -193,15 +200,11 @@ interface FBAInboundServiceMWS_Interface
      *     instructions sections of the labels are determined by the marketplace in which the request is being
      *     made and the marketplace of the destination FC, respectively.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPalletLabels request or FBAInboundServiceMWS_Model_GetPalletLabels object itself
+     * @param GetPalletLabelsRequest|array $request array of parameters for GetPalletLabels request or GetPalletLabels object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetPalletLabelsRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetPalletLabelsResponse
+     * @throws AmazonApiException
      */
-    public function getPalletLabels($request);
+    public function getPalletLabels($request): GetPalletLabelsResponse;
 
     /**
      * Get Preorder Info
@@ -214,15 +217,11 @@ interface FBAInboundServiceMWS_Interface
      * pre-order buy box show up on the detail page if this shipment is marked as a
      * pre-orderable.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPreorderInfo request or FBAInboundServiceMWS_Model_GetPreorderInfo object itself
+     * @param GetPreorderInfoRequest|array $request array of parameters for GetPreorderInfo request or GetPreorderInfo object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetPreorderInfoRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetPreorderInfoResponse
+     * @throws AmazonApiException
      */
-    public function getPreorderInfo($request);
+    public function getPreorderInfo($request): GetPreorderInfoResponse;
 
     /**
      * Get Prep Instructions For ASIN
@@ -232,15 +231,11 @@ interface FBAInboundServiceMWS_Interface
      * identifies the labeling required for the items, and gives the seller a list
      * of additional required prep that must be performed.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPrepInstructionsForASIN request or FBAInboundServiceMWS_Model_GetPrepInstructionsForASIN object itself
+     * @param GetPrepInstructionsForASINRequest|array $request array of parameters for GetPrepInstructionsForASIN request or GetPrepInstructionsForASIN object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetPrepInstructionsForASINRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetPrepInstructionsForASINResponse
+     * @throws AmazonApiException
      */
-    public function getPrepInstructionsForASIN($request);
+    public function getPrepInstructionsForASIN($request): GetPrepInstructionsForASINResponse;
 
     /**
      * Get Prep Instructions For SKU
@@ -250,15 +245,11 @@ interface FBAInboundServiceMWS_Interface
      * identifies the labeling required for the items, and gives the seller a list
      * of additional required prep that must be performed.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetPrepInstructionsForSKU request or FBAInboundServiceMWS_Model_GetPrepInstructionsForSKU object itself
+     * @param GetPrepInstructionsForSKURequest|array $request array of parameters for GetPrepInstructionsForSKU request or GetPrepInstructionsForSKU object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetPrepInstructionsForSKURequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetPrepInstructionsForSKUResponse
+     * @throws AmazonApiException
      */
-    public function getPrepInstructionsForSKU($request);
+    public function getPrepInstructionsForSKU($request): GetPrepInstructionsForSKUResponse;
 
     /**
      * Get Service Status
@@ -267,15 +258,11 @@ interface FBAInboundServiceMWS_Interface
      *   GREEN: The service section is operating normally.
      *   RED: The service section disruption.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetServiceStatus request or FBAInboundServiceMWS_Model_GetServiceStatus object itself
+     * @param GetServiceStatusRequest|array $request array of parameters for GetServiceStatus request or GetServiceStatus object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetServiceStatusRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetServiceStatusResponse
+     * @throws AmazonApiException
      */
-    public function getServiceStatus($request);
+    public function getServiceStatus($request): GetServiceStatusResponse;
 
     /**
      * Get Transport Content
@@ -283,15 +270,11 @@ interface FBAInboundServiceMWS_Interface
      *     details about the transportation of an inbound shipment, including status of the
      *     partnered carrier workflow and status of individual packages when they arrive at our FCs.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetTransportContent request or FBAInboundServiceMWS_Model_GetTransportContent object itself
+     * @param GetTransportContentRequest|array $request array of parameters for GetTransportContent request or GetTransportContent object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetTransportContentRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetTransportContentResponse
+     * @throws AmazonApiException
      */
-    public function getTransportContent($request);
+    public function getTransportContent($request): GetTransportContentResponse;
 
     /**
      * Get Unique Package Labels
@@ -313,15 +296,11 @@ interface FBAInboundServiceMWS_Interface
      *       * Partnered EU: PackageLabel_A4_2
      *       * JP/CN: PackageLabel_Plain_Paper
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_GetUniquePackageLabels request or FBAInboundServiceMWS_Model_GetUniquePackageLabels object itself
+     * @param GetUniquePackageLabelsRequest|array $request array of parameters for GetUniquePackageLabels request or GetUniquePackageLabels object itself
      *
-     * @see FBAInboundServiceMWS_Model_GetUniquePackageLabelsRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_GetUniquePackageLabelsResponse
+     * @throws AmazonApiException
      */
-    public function getUniquePackageLabels($request);
+    public function getUniquePackageLabels($request): GetUniquePackageLabelsResponse;
 
     /**
      * List Inbound Shipment Items
@@ -337,15 +316,11 @@ interface FBAInboundServiceMWS_Interface
      * must be passed in. if ShipmentId is set, the LastUpdatedBefore and
      * LastUpdatedAfter will be ignored.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_ListInboundShipmentItems request or FBAInboundServiceMWS_Model_ListInboundShipmentItems object itself
+     * @param ListInboundShipmentItemsRequest|array $request array of parameters for ListInboundShipmentItems request or ListInboundShipmentItems object itself
      *
-     * @see FBAInboundServiceMWS_Model_ListInboundShipmentItemsRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_ListInboundShipmentItemsResponse
+     * @throws AmazonApiException
      */
-    public function listInboundShipmentItems($request);
+    public function listInboundShipmentItems($request): ListInboundShipmentItemsResponse;
 
     /**
      * List Inbound Shipment Items By Next Token
@@ -354,15 +329,11 @@ interface FBAInboundServiceMWS_Interface
      * items. If a NextToken is not returned, it indicates the end-of-data.
      * You must first call ListInboundShipmentItems to get a 'NextToken'.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_ListInboundShipmentItemsByNextToken request or FBAInboundServiceMWS_Model_ListInboundShipmentItemsByNextToken object itself
+     * @param ListInboundShipmentItemsByNextTokenRequest|array $request array of parameters for ListInboundShipmentItemsByNextToken request or ListInboundShipmentItemsByNextToken object itself
      *
-     * @see FBAInboundServiceMWS_Model_ListInboundShipmentItemsByNextTokenRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_ListInboundShipmentItemsByNextTokenResponse
+     * @throws AmazonApiException
      */
-    public function listInboundShipmentItemsByNextToken($request);
+    public function listInboundShipmentItemsByNextToken($request): ListInboundShipmentItemsByNextTokenResponse;
 
     /**
      * List Inbound Shipments
@@ -376,15 +347,11 @@ interface FBAInboundServiceMWS_Interface
      * the LastUpdatedBefore and LastUpdatedAfter are optional, they are used
      * to filter results based on last update time of the shipment.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_ListInboundShipments request or FBAInboundServiceMWS_Model_ListInboundShipments object itself
+     * @param ListInboundShipmentsRequest|array $request array of parameters for ListInboundShipments request or ListInboundShipments object itself
      *
-     * @see FBAInboundServiceMWS_Model_ListInboundShipmentsRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_ListInboundShipmentsResponse
+     * @throws AmazonApiException
      */
-    public function listInboundShipments($request);
+    public function listInboundShipments($request): ListInboundShipmentsResponse;
 
     /**
      * List Inbound Shipments By Next Token
@@ -392,30 +359,22 @@ interface FBAInboundServiceMWS_Interface
      * NextToken which can be used to iterate through the remaining inbound
      * shipments. If a NextToken is not returned, it indicates the end-of-data.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_ListInboundShipmentsByNextToken request or FBAInboundServiceMWS_Model_ListInboundShipmentsByNextToken object itself
+     * @param ListInboundShipmentsByNextTokenRequest|array $request array of parameters for ListInboundShipmentsByNextToken request or ListInboundShipmentsByNextToken object itself
      *
-     * @see FBAInboundServiceMWS_Model_ListInboundShipmentsByNextTokenRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_ListInboundShipmentsByNextTokenResponse
+     * @throws AmazonApiException
      */
-    public function listInboundShipmentsByNextToken($request);
+    public function listInboundShipmentsByNextToken($request): ListInboundShipmentsByNextTokenResponse;
 
     /**
      * Put Transport Content
      * A write operation which sellers use to provide transportation details regarding
      *     how an inbound shipment will arrive at Amazon's Fulfillment Centers.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_PutTransportContent request or FBAInboundServiceMWS_Model_PutTransportContent object itself
+     * @param PutTransportContentRequest|array $request array of parameters for PutTransportContent request or PutTransportContent object itself
      *
-     * @see FBAInboundServiceMWS_Model_PutTransportContentRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_PutTransportContentResponse
+     * @throws AmazonApiException
      */
-    public function putTransportContent($request);
+    public function putTransportContent($request): PutTransportContentResponse;
 
     /**
      * Update Inbound Shipment
@@ -432,15 +391,11 @@ interface FBAInboundServiceMWS_Interface
      * This operation will simply return a shipment Id upon success,
      * otherwise an explicit error will be returned.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_UpdateInboundShipment request or FBAInboundServiceMWS_Model_UpdateInboundShipment object itself
+     * @param UpdateInboundShipmentRequest|array $request array of parameters for UpdateInboundShipment request or UpdateInboundShipment object itself
      *
-     * @see FBAInboundServiceMWS_Model_UpdateInboundShipmentRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_UpdateInboundShipmentResponse
+     * @throws AmazonApiException
      */
-    public function updateInboundShipment($request);
+    public function updateInboundShipment($request): UpdateInboundShipmentResponse;
 
     /**
      * Void Transport Request
@@ -451,13 +406,9 @@ interface FBAInboundServiceMWS_Interface
      *     request and 1 hour after confirming a transport request for a partnered LTL/TL
      *     request, though this is subject to change at any time without notice.
      *
-     * @param mixed $request array of parameters for FBAInboundServiceMWS_Model_VoidTransportRequest request or FBAInboundServiceMWS_Model_VoidTransportRequest object itself
+     * @param VoidTransportRequest|array $request array of parameters for VoidTransportRequest request or VoidTransportRequest object itself
      *
-     * @see FBAInboundServiceMWS_Model_VoidTransportInputRequest
-     *
-     * @throws FBAInboundServiceMWS_Exception
-     *
-     * @return FBAInboundServiceMWS_Model_VoidTransportRequestResponse
+     * @throws AmazonApiException
      */
-    public function voidTransportRequest($request);
+    public function voidTransportRequest($request): VoidTransportRequestResponse;
 }

@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /*
  * Copyright 2009-2019 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,29 +20,31 @@ declare(strict_types=1);
  * Generated: Wed Mar 13 08:17:11 PDT 2019
  */
 
+namespace MobiMarket\Amazon;
+
 /**
  * MWS Finances Service Exception provides details of errors
  * returned by MWS Finances Service service.
  */
-class MWSFinancesService_Exception extends Exception
+class AmazonApiException extends \Exception
 {
     /** @var string */
-    private $_message = null;
+    private $_message;
     /** @var int */
     private $_statusCode = -1;
     /** @var string */
-    private $_errorCode = null;
+    private $_errorCode;
     /** @var string */
-    private $_errorType = null;
+    private $_errorType;
     /** @var string */
-    private $_requestId = null;
+    private $_requestId;
     /** @var string */
-    private $_xml = null;
+    private $_xml;
 
-    private $_responseHeaderMetadata = null;
+    private $_responseHeaderMetadata;
 
     /**
-     * Constructs MWSFinancesService_Exception.
+     * Constructs AmazonApiException.
      *
      * @param array $errorInfo details of exception.
      *                         Keys are:
@@ -59,7 +62,7 @@ class MWSFinancesService_Exception extends Exception
     {
         $this->_message = $errorInfo['Message'];
         parent::__construct($this->_message);
-        if (array_key_exists('Exception', $errorInfo)) {
+        if (\array_key_exists('Exception', $errorInfo)) {
             $exception = $errorInfo['Exception'];
             if ($exception instanceof self) {
                 $this->_statusCode             = $exception->getStatusCode();
@@ -149,7 +152,7 @@ class MWSFinancesService_Exception extends Exception
 
     private function arr_val($arr, $key)
     {
-        if (array_key_exists($key, $arr)) {
+        if (\array_key_exists($key, $arr)) {
             return $arr[$key];
         }
 

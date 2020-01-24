@@ -1,0 +1,202 @@
+<?php
+
+declare(strict_types=1);
+/*
+ * Copyright 2009-2018 Amazon Services. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ *
+ * You may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
+ * This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ *******************************************************************************
+ * PHP Version 5
+ * @category Amazon
+ * @package  FBA Outbound Service MWS
+ * @version  2010-10-01
+ * Library Version: 2016-01-01
+ * Generated: Wed Sep 12 07:08:09 PDT 2018
+ */
+
+namespace MobiMarket\Amazon\Models;
+
+use MobiMarket\Amazon\Model;
+
+/**
+ * TrackingEvent.
+ *
+ * Properties:
+ * <ul>
+ *
+ * <li>EventDate: string</li>
+ * <li>EventAddress: TrackingAddress</li>
+ * <li>EventCode: string</li>
+ *
+ * </ul>
+ */
+class TrackingEvent extends Model
+{
+    public function __construct($data = null)
+    {
+        $this->_fields = [
+            'EventDate'    => ['FieldValue' => null, 'FieldType' => 'string'],
+            'EventAddress' => ['FieldValue' => null, 'FieldType' => 'TrackingAddress'],
+            'EventCode'    => ['FieldValue' => null, 'FieldType' => 'string'],
+        ];
+        parent::__construct($data);
+    }
+
+    /**
+     * Get the value of the EventDate property.
+     *
+     * @return XMLGregorianCalendar eventDate
+     */
+    public function getEventDate()
+    {
+        return $this->_fields['EventDate']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the EventDate property.
+     *
+     * @param string eventDate
+     * @param mixed $value
+     *
+     * @return $this instance
+     */
+    public function setEventDate($value)
+    {
+        $this->_fields['EventDate']['FieldValue'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Check to see if EventDate is set.
+     *
+     * @return true if EventDate is set
+     */
+    public function isSetEventDate()
+    {
+        return null !== $this->_fields['EventDate']['FieldValue'];
+    }
+
+    /**
+     * Set the value of EventDate, return this.
+     *
+     * @param eventDate
+     *             The new value to set
+     * @param mixed $value
+     *
+     * @return $this instance
+     */
+    public function withEventDate($value)
+    {
+        $this->setEventDate($value);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of the EventAddress property.
+     *
+     * @return TrackingAddress eventAddress
+     */
+    public function getEventAddress()
+    {
+        return $this->_fields['EventAddress']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the EventAddress property.
+     *
+     * @param TrackingAddress eventAddress
+     * @param mixed $value
+     *
+     * @return $this instance
+     */
+    public function setEventAddress($value)
+    {
+        $this->_fields['EventAddress']['FieldValue'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Check to see if EventAddress is set.
+     *
+     * @return true if EventAddress is set
+     */
+    public function isSetEventAddress()
+    {
+        return null !== $this->_fields['EventAddress']['FieldValue'];
+    }
+
+    /**
+     * Set the value of EventAddress, return this.
+     *
+     * @param eventAddress
+     *             The new value to set
+     * @param mixed $value
+     *
+     * @return $this instance
+     */
+    public function withEventAddress($value)
+    {
+        $this->setEventAddress($value);
+
+        return $this;
+    }
+
+    /**
+     * Get the value of the EventCode property.
+     *
+     * @return string eventCode
+     */
+    public function getEventCode()
+    {
+        return $this->_fields['EventCode']['FieldValue'];
+    }
+
+    /**
+     * Set the value of the EventCode property.
+     *
+     * @param string eventCode
+     * @param mixed $value
+     *
+     * @return $this instance
+     */
+    public function setEventCode($value)
+    {
+        $this->_fields['EventCode']['FieldValue'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Check to see if EventCode is set.
+     *
+     * @return true if EventCode is set
+     */
+    public function isSetEventCode()
+    {
+        return null !== $this->_fields['EventCode']['FieldValue'];
+    }
+
+    /**
+     * Set the value of EventCode, return this.
+     *
+     * @param eventCode
+     *             The new value to set
+     * @param mixed $value
+     *
+     * @return $this instance
+     */
+    public function withEventCode($value)
+    {
+        $this->setEventCode($value);
+
+        return $this;
+    }
+}

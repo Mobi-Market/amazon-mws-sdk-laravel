@@ -1,9 +1,10 @@
 <?php
 
 declare(strict_types=1);
-/*
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
+
+/**
+ * Copyright 2009-2019 Amazon Services. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");.
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
@@ -11,83 +12,72 @@ declare(strict_types=1);
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
- * PHP Version 5
+ *
  * @category Amazon
- * @package  MWS Easy Ship Section Service
- * @version  2018-09-01
- * Library Version: 2018-09-01
- * Generated: Thu Sep 27 07:44:07 PDT 2018
  */
 
-interface MWSEasyShipSectionService_Interface
+namespace MobiMarket\Amazon\APIClients\Interfaces;
+
+use MobiMarket\Amazon\Models\CreateScheduledPackageRequest;
+use MobiMarket\Amazon\Models\CreateScheduledPackageResponse;
+use MobiMarket\Amazon\Models\GetScheduledPackageRequest;
+use MobiMarket\Amazon\Models\GetScheduledPackageResponse;
+use MobiMarket\Amazon\Models\GetServiceStatusRequest;
+use MobiMarket\Amazon\Models\GetServiceStatusResponse;
+use MobiMarket\Amazon\Models\ListPickupSlotsRequest;
+use MobiMarket\Amazon\Models\ListPickupSlotsResponse;
+use MobiMarket\Amazon\Models\UpdateScheduledPackagesRequest;
+use MobiMarket\Amazon\Models\UpdateScheduledPackagesResponse;
+
+interface IMWSEasyShipSectionService
 {
     /**
      * Create Scheduled Package
      * This operation schedules the order for pickup and returns scheduled package details.
      *
-     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_CreateScheduledPackage request or MWSEasyShipSectionService_Model_CreateScheduledPackage object itself
+     * @param CreateScheduledPackageRequest|array $request array of parameters for CreateScheduledPackage request or CreateScheduledPackage object itself
      *
-     * @see MWSEasyShipSectionService_Model_CreateScheduledPackageRequest
-     *
-     * @throws MWSEasyShipSectionService_Exception
-     *
-     * @return MWSEasyShipSectionService_Model_CreateScheduledPackageResponse
+     * @throws AmazonApiException
      */
-    public function createScheduledPackage($request);
+    public function createScheduledPackage($request): CreateScheduledPackageResponse;
 
     /**
      * Get Scheduled Package
      * This operation returns the scheduled package details of an already scheduled order.
      *
-     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_GetScheduledPackage request or MWSEasyShipSectionService_Model_GetScheduledPackage object itself
+     * @param GetScheduledPackageRequest|array $request array of parameters for GetScheduledPackage request or GetScheduledPackage object itself
      *
-     * @see MWSEasyShipSectionService_Model_GetScheduledPackageRequest
-     *
-     * @throws MWSEasyShipSectionService_Exception
-     *
-     * @return MWSEasyShipSectionService_Model_GetScheduledPackageResponse
+     * @throws AmazonApiException
      */
-    public function getScheduledPackage($request);
+    public function getScheduledPackage($request): GetScheduledPackageResponse;
 
     /**
      * List Pickup Slots
      * This operation returns a list of available PickupSlots.
      *
-     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_ListPickupSlots request or MWSEasyShipSectionService_Model_ListPickupSlots object itself
+     * @param ListPickupSlotsRequest|array $request array of parameters for ListPickupSlots request or ListPickupSlots object itself
      *
-     * @see MWSEasyShipSectionService_Model_ListPickupSlotsRequest
-     *
-     * @throws MWSEasyShipSectionService_Exception
-     *
-     * @return MWSEasyShipSectionService_Model_ListPickupSlotsResponse
+     * @throws AmazonApiException
      */
-    public function listPickupSlots($request);
+    public function listPickupSlots($request): ListPickupSlotsResponse;
 
     /**
      * Update Scheduled Packages
      * This operation updates the schedule pickup slot of a scheduled order and returns updated scheduled package
      *         details.
      *
-     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_UpdateScheduledPackages request or MWSEasyShipSectionService_Model_UpdateScheduledPackages object itself
+     * @param UpdateScheduledPackagesRequest|array $request array of parameters for UpdateScheduledPackages request or UpdateScheduledPackages object itself
      *
-     * @see MWSEasyShipSectionService_Model_UpdateScheduledPackagesRequest
-     *
-     * @throws MWSEasyShipSectionService_Exception
-     *
-     * @return MWSEasyShipSectionService_Model_UpdateScheduledPackagesResponse
+     * @throws AmazonApiException
      */
-    public function updateScheduledPackages($request);
+    public function updateScheduledPackages($request): UpdateScheduledPackagesResponse;
 
     /**
      * Get Service Status.
      *
-     * @param mixed $request array of parameters for MWSEasyShipSectionService_Model_GetServiceStatus request or MWSEasyShipSectionService_Model_GetServiceStatus object itself
+     * @param GetServiceStatusRequest|array $request array of parameters for GetServiceStatus request or GetServiceStatus object itself
      *
-     * @see MWSEasyShipSectionService_Model_GetServiceStatusRequest
-     *
-     * @throws MWSEasyShipSectionService_Exception
-     *
-     * @return MWSEasyShipSectionService_Model_GetServiceStatusResponse
+     * @throws AmazonApiException
      */
-    public function getServiceStatus($request);
+    public function getServiceStatus($request): GetServiceStatusResponse;
 }

@@ -1,29 +1,24 @@
 <?php
 
 declare(strict_types=1);
-/**
- *  PHP Version 5.
- *
- *  @category    Amazon
- *
- *  @copyright   Copyright 2009 Amazon Technologies, Inc.
- *
- *  @see        http://aws.amazon.com
- *
- *  @license     http://aws.amazon.com/apache2.0  Apache License, Version 2.0
- *
- *  @version     2009-01-01
- */
-/*
 
- *  Marketplace Web Service PHP5 Library
- *  Generated: Thu May 07 13:07:36 PDT 2009
- *
- */
 /**
- * The Amazon Marketplace Web Service contain APIs for inventory and order management.
+ * Copyright 2009-2019 Amazon Services. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");.
+ *
+ * You may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
+ * This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+ * CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ *******************************************************************************
+ *
+ * @category Amazon
  */
-interface MarketplaceWebService_Interface
+
+namespace MobiMarket\Amazon\APIClients\Interfaces;
+
+interface IMarketplaceWebService
 {
     /**
      * Get Report
@@ -33,14 +28,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReport.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportRequest request
-     *                       or MarketplaceWebService_Model_GetReportRequest object itself
+     * @param mixed $request array of parameters for GetReportRequest request
+     *                       or GetReportRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportRequest
+     * @see GetReportRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportResponse MarketplaceWebService_Model_GetReportResponse
+     * @return GetReportResponse GetReportResponse
      */
     public function getReport($request);
 
@@ -50,14 +45,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReportScheduleCount.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportScheduleCountRequest request
-     *                       or MarketplaceWebService_Model_GetReportScheduleCountRequest object itself
+     * @param mixed $request array of parameters for GetReportScheduleCountRequest request
+     *                       or GetReportScheduleCountRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportScheduleCountRequest
+     * @see GetReportScheduleCountRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportScheduleCountResponse MarketplaceWebService_Model_GetReportScheduleCountResponse
+     * @return GetReportScheduleCountResponse GetReportScheduleCountResponse
      */
     public function getReportScheduleCount($request);
 
@@ -67,14 +62,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReportRequestListByNextToken.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportRequestListByNextTokenRequest request
-     *                       or MarketplaceWebService_Model_GetReportRequestListByNextTokenRequest object itself
+     * @param mixed $request array of parameters for GetReportRequestListByNextTokenRequest request
+     *                       or GetReportRequestListByNextTokenRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportRequestListByNextTokenRequest
+     * @see GetReportRequestListByNextTokenRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportRequestListByNextTokenResponse MarketplaceWebService_Model_GetReportRequestListByNextTokenResponse
+     * @return GetReportRequestListByNextTokenResponse GetReportRequestListByNextTokenResponse
      */
     public function getReportRequestListByNextToken($request);
 
@@ -84,14 +79,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}UpdateReportAcknowledgements.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_UpdateReportAcknowledgementsRequest request
-     *                       or MarketplaceWebService_Model_UpdateReportAcknowledgementsRequest object itself
+     * @param mixed $request array of parameters for UpdateReportAcknowledgementsRequest request
+     *                       or UpdateReportAcknowledgementsRequest object itself
      *
-     * @see MarketplaceWebService_Model_UpdateReportAcknowledgementsRequest
+     * @see UpdateReportAcknowledgementsRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_UpdateReportAcknowledgementsResponse MarketplaceWebService_Model_UpdateReportAcknowledgementsResponse
+     * @return UpdateReportAcknowledgementsResponse UpdateReportAcknowledgementsResponse
      */
     public function updateReportAcknowledgements($request);
 
@@ -105,14 +100,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}SubmitFeed.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_SubmitFeedRequest request
-     *                       or MarketplaceWebService_Model_SubmitFeedRequest object itself
+     * @param mixed $request array of parameters for SubmitFeedRequest request
+     *                       or SubmitFeedRequest object itself
      *
-     * @see MarketplaceWebService_Model_SubmitFeedRequest
+     * @see SubmitFeedRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_SubmitFeedResponse MarketplaceWebService_Model_SubmitFeedResponse
+     * @return SubmitFeedResponse SubmitFeedResponse
      */
     public function submitFeed($request);
 
@@ -124,14 +119,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReportCount.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportCountRequest request
-     *                       or MarketplaceWebService_Model_GetReportCountRequest object itself
+     * @param mixed $request array of parameters for GetReportCountRequest request
+     *                       or GetReportCountRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportCountRequest
+     * @see GetReportCountRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportCountResponse MarketplaceWebService_Model_GetReportCountResponse
+     * @return GetReportCountResponse GetReportCountResponse
      */
     public function getReportCount($request);
 
@@ -141,14 +136,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetFeedSubmissionListByNextToken.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenRequest request
-     *                       or MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenRequest object itself
+     * @param mixed $request array of parameters for GetFeedSubmissionListByNextTokenRequest request
+     *                       or GetFeedSubmissionListByNextTokenRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenRequest
+     * @see GetFeedSubmissionListByNextTokenRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse
+     * @return GetFeedSubmissionListByNextTokenResponse GetFeedSubmissionListByNextTokenResponse
      */
     public function getFeedSubmissionListByNextToken($request);
 
@@ -159,14 +154,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}CancelFeedSubmissions.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_CancelFeedSubmissionsRequest request
-     *                       or MarketplaceWebService_Model_CancelFeedSubmissionsRequest object itself
+     * @param mixed $request array of parameters for CancelFeedSubmissionsRequest request
+     *                       or CancelFeedSubmissionsRequest object itself
      *
-     * @see MarketplaceWebService_Model_CancelFeedSubmissionsRequest
+     * @see CancelFeedSubmissionsRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_CancelFeedSubmissionsResponse MarketplaceWebService_Model_CancelFeedSubmissionsResponse
+     * @return CancelFeedSubmissionsResponse CancelFeedSubmissionsResponse
      */
     public function cancelFeedSubmissions($request);
 
@@ -176,14 +171,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}RequestReport.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_RequestReportRequest request
-     *                       or MarketplaceWebService_Model_RequestReportRequest object itself
+     * @param mixed $request array of parameters for RequestReportRequest request
+     *                       or RequestReportRequest object itself
      *
-     * @see MarketplaceWebService_Model_RequestReportRequest
+     * @see RequestReportRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_RequestReportResponse MarketplaceWebService_Model_RequestReportResponse
+     * @return RequestReportResponse RequestReportResponse
      */
     public function requestReport($request);
 
@@ -193,14 +188,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetFeedSubmissionCount.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetFeedSubmissionCountRequest request
-     *                       or MarketplaceWebService_Model_GetFeedSubmissionCountRequest object itself
+     * @param mixed $request array of parameters for GetFeedSubmissionCountRequest request
+     *                       or GetFeedSubmissionCountRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetFeedSubmissionCountRequest
+     * @see GetFeedSubmissionCountRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetFeedSubmissionCountResponse MarketplaceWebService_Model_GetFeedSubmissionCountResponse
+     * @return GetFeedSubmissionCountResponse GetFeedSubmissionCountResponse
      */
     public function getFeedSubmissionCount($request);
 
@@ -211,14 +206,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}CancelReportRequests.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_CancelReportRequestsRequest request
-     *                       or MarketplaceWebService_Model_CancelReportRequestsRequest object itself
+     * @param mixed $request array of parameters for CancelReportRequestsRequest request
+     *                       or CancelReportRequestsRequest object itself
      *
-     * @see MarketplaceWebService_Model_CancelReportRequestsRequest
+     * @see CancelReportRequestsRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_CancelReportRequestsResponse MarketplaceWebService_Model_CancelReportRequestsResponse
+     * @return CancelReportRequestsResponse CancelReportRequestsResponse
      */
     public function cancelReportRequests($request);
 
@@ -229,14 +224,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReportList.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportListRequest request
-     *                       or MarketplaceWebService_Model_GetReportListRequest object itself
+     * @param mixed $request array of parameters for GetReportListRequest request
+     *                       or GetReportListRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportListRequest
+     * @see GetReportListRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportListResponse MarketplaceWebService_Model_GetReportListResponse
+     * @return GetReportListResponse GetReportListResponse
      */
     public function getReportList($request);
 
@@ -246,14 +241,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetFeedSubmissionResult.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetFeedSubmissionResultRequest request
-     *                       or MarketplaceWebService_Model_GetFeedSubmissionResultRequest object itself
+     * @param mixed $request array of parameters for GetFeedSubmissionResultRequest request
+     *                       or GetFeedSubmissionResultRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetFeedSubmissionResultRequest
+     * @see GetFeedSubmissionResultRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetFeedSubmissionResultResponse MarketplaceWebService_Model_GetFeedSubmissionResultResponse
+     * @return GetFeedSubmissionResultResponse GetFeedSubmissionResultResponse
      */
     public function getFeedSubmissionResult($request);
 
@@ -263,14 +258,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetFeedSubmissionList.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetFeedSubmissionListRequest request
-     *                       or MarketplaceWebService_Model_GetFeedSubmissionListRequest object itself
+     * @param mixed $request array of parameters for GetFeedSubmissionListRequest request
+     *                       or GetFeedSubmissionListRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetFeedSubmissionListRequest
+     * @see GetFeedSubmissionListRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetFeedSubmissionListResponse MarketplaceWebService_Model_GetFeedSubmissionListResponse
+     * @return GetFeedSubmissionListResponse GetFeedSubmissionListResponse
      */
     public function getFeedSubmissionList($request);
 
@@ -280,14 +275,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReportRequestList.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportRequestListRequest request
-     *                       or MarketplaceWebService_Model_GetReportRequestListRequest object itself
+     * @param mixed $request array of parameters for GetReportRequestListRequest request
+     *                       or GetReportRequestListRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportRequestListRequest
+     * @see GetReportRequestListRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportRequestListResponse MarketplaceWebService_Model_GetReportRequestListResponse
+     * @return GetReportRequestListResponse GetReportRequestListResponse
      */
     public function getReportRequestList($request);
 
@@ -297,14 +292,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReportScheduleListByNextToken.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest request
-     *                       or MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest object itself
+     * @param mixed $request array of parameters for GetReportScheduleListByNextTokenRequest request
+     *                       or GetReportScheduleListByNextTokenRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportScheduleListByNextTokenRequest
+     * @see GetReportScheduleListByNextTokenRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse
+     * @return GetReportScheduleListByNextTokenResponse GetReportScheduleListByNextTokenResponse
      */
     public function getReportScheduleListByNextToken($request);
 
@@ -314,14 +309,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReportListByNextToken.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportListByNextTokenRequest request
-     *                       or MarketplaceWebService_Model_GetReportListByNextTokenRequest object itself
+     * @param mixed $request array of parameters for GetReportListByNextTokenRequest request
+     *                       or GetReportListByNextTokenRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportListByNextTokenRequest
+     * @see GetReportListByNextTokenRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportListByNextTokenResponse MarketplaceWebService_Model_GetReportListByNextTokenResponse
+     * @return GetReportListByNextTokenResponse GetReportListByNextTokenResponse
      */
     public function getReportListByNextToken($request);
 
@@ -332,14 +327,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}ManageReportSchedule.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_ManageReportScheduleRequest request
-     *                       or MarketplaceWebService_Model_ManageReportScheduleRequest object itself
+     * @param mixed $request array of parameters for ManageReportScheduleRequest request
+     *                       or ManageReportScheduleRequest object itself
      *
-     * @see MarketplaceWebService_Model_ManageReportScheduleRequest
+     * @see ManageReportScheduleRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_ManageReportScheduleResponse MarketplaceWebService_Model_ManageReportScheduleResponse
+     * @return ManageReportScheduleResponse ManageReportScheduleResponse
      */
     public function manageReportSchedule($request);
 
@@ -350,14 +345,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReportRequestCount.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportRequestCountRequest request
-     *                       or MarketplaceWebService_Model_GetReportRequestCountRequest object itself
+     * @param mixed $request array of parameters for GetReportRequestCountRequest request
+     *                       or GetReportRequestCountRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportRequestCountRequest
+     * @see GetReportRequestCountRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportRequestCountResponse MarketplaceWebService_Model_GetReportRequestCountResponse
+     * @return GetReportRequestCountResponse GetReportRequestCountResponse
      */
     public function getReportRequestCount($request);
 
@@ -367,14 +362,14 @@ interface MarketplaceWebService_Interface
      *
      * @see http://docs.amazonwebservices.com/${docPath}GetReportScheduleList.html
      *
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_GetReportScheduleListRequest request
-     *                       or MarketplaceWebService_Model_GetReportScheduleListRequest object itself
+     * @param mixed $request array of parameters for GetReportScheduleListRequest request
+     *                       or GetReportScheduleListRequest object itself
      *
-     * @see MarketplaceWebService_Model_GetReportScheduleListRequest
+     * @see GetReportScheduleListRequest
      *
-     * @throws MarketplaceWebService_Exception
+     * @throws AmazonApiException
      *
-     * @return MarketplaceWebService_Model_GetReportScheduleListResponse MarketplaceWebService_Model_GetReportScheduleListResponse
+     * @return GetReportScheduleListResponse GetReportScheduleListResponse
      */
     public function getReportScheduleList($request);
 }

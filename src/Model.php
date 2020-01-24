@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /*
  * Copyright 2009-2018 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,10 +20,12 @@ declare(strict_types=1);
  * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
+namespace MobiMarket\Amazon;
+
 /**
  * FBAInboundServiceMWS_Model - base class for all model classes.
  */
-abstract class FBAInboundServiceMWS_Model
+abstract class Model
 {
     /** @var array */
     protected $_fields = [];
@@ -30,7 +33,7 @@ abstract class FBAInboundServiceMWS_Model
     /**
      * Construct new model class.
      *
-     * @param mixed $data - DOMElement or Associative Array to construct from
+     * @param mixed $data - \DOMElement or Associative Array to construct from
      */
     public function __construct($data = null)
     {
@@ -40,7 +43,7 @@ abstract class FBAInboundServiceMWS_Model
             } elseif ($this->_isDOMElement($data)) {
                 $this->_fromDOMElement($data);
             } else {
-                throw new Exception('Unable to construct from provided data. Please be sure to pass associative array or DOMElement');
+                throw new \Exception('Unable to construct from provided data. Please be sure to pass associative array or \DOMElement');
             }
         }
     }
@@ -60,7 +63,7 @@ abstract class FBAInboundServiceMWS_Model
      */
     public function __get($propertyName)
     {
-        $getter = "get${propertyName}";
+        $getter = "get{$propertyName}";
 
         return $this->{$getter}();
     }
@@ -81,7 +84,7 @@ abstract class FBAInboundServiceMWS_Model
      */
     public function __set($propertyName, $propertyValue)
     {
-        $setter = "set${propertyName}";
+        $setter = "set{$propertyName}";
         $this->{$setter}($propertyValue);
 
         return $this;
@@ -90,7 +93,7 @@ abstract class FBAInboundServiceMWS_Model
     private function __toQueryParameterArray($prefix, $fieldType, $fieldValue, $fieldAttrs)
     {
         $arr = [];
-        if (is_array($fieldType)) {
+        if (\is_array($fieldType)) {
             if (isset($fieldAttrs['ListMemberName'])) {
                 $listMemberName = $fieldAttrs['ListMemberName'];
                 $itemPrefix     = $prefix . $listMemberName . '.';
@@ -98,7 +101,7 @@ abstract class FBAInboundServiceMWS_Model
                 $itemPrefix = $prefix;
             }
 
-            for ($i = 1; $i <= count($fieldValue); ++$i) {
+            for ($i = 1; $i <= \count($fieldValue); ++$i) {
                 $indexedPrefix = $itemPrefix . $i . '.';
                 $memberType    = $fieldType[0];
                 $arr           = array_merge(
@@ -165,12 +168,12 @@ abstract class FBAInboundServiceMWS_Model
         $xml = '';
         foreach ($this->_fields as $fieldName => $field) {
             $fieldValue = $field['FieldValue'];
-            if (null !== $fieldValue && 'FBAInboundServiceMWS_Model_ResponseHeaderMetadata' != $field['FieldType']) {
+            if (null !== $fieldValue && 'ResponseHeaderMetadata' != $field['FieldType']) {
                 $fieldType = $field['FieldType'];
-                if (is_array($fieldType)) {
+                if (\is_array($fieldType)) {
                     if ('object' == $fieldType[0]) {
                         foreach ($fieldValue as $item) {
-                            $newDoc       = new DOMDocument();
+                            $newDoc       = new \DOMDocument();
                             $importedNode = $newDoc->importNode($item, true);
                             $newDoc->appendChild($importedNode);
                             $xmlStr = $newDoc->saveXML();
@@ -180,53 +183,53 @@ abstract class FBAInboundServiceMWS_Model
                     } elseif ($this->_isComplexType($fieldType[0])) {
                         if (isset($field['ListMemberName'])) {
                             $memberName = $field['ListMemberName'];
-                            $xml .= "<${fieldName}>";
+                            $xml .= "<{$fieldName}>";
                             foreach ($fieldValue as $item) {
-                                $xml .= "<${memberName}>";
+                                $xml .= "<{$memberName}>";
                                 $xml .= $item->_toXMLFragment();
-                                $xml .= "</${memberName}>";
+                                $xml .= "</{$memberName}>";
                             }
-                            $xml .= "</${fieldName}>";
+                            $xml .= "</{$fieldName}>";
                         } else {
                             foreach ($fieldValue as $item) {
-                                $xml .= "<${fieldName}";
+                                $xml .= "<{$fieldName}";
                                 $xml .= $item->_getAttributes();
                                 $xml .= '>';
                                 $xml .= $item->_toXMLFragment();
-                                $xml .= "</${fieldName}>";
+                                $xml .= "</{$fieldName}>";
                             }
                         }
                     } else {
                         if (isset($field['ListMemberName'])) {
                             $memberName = $field['ListMemberName'];
-                            $xml .= "<${fieldName}>";
+                            $xml .= "<{$fieldName}>";
                             foreach ($fieldValue as $item) {
-                                $xml .= "<${memberName}>";
+                                $xml .= "<{$memberName}>";
                                 $xml .= $this->_escapeXML($item);
-                                $xml .= "</${memberName}>";
+                                $xml .= "</{$memberName}>";
                             }
-                            $xml .= "</${fieldName}>";
+                            $xml .= "</{$fieldName}>";
                         } else {
                             foreach ($fieldValue as $item) {
-                                $xml .= "<${fieldName}>";
+                                $xml .= "<{$fieldName}>";
                                 $xml .= $this->_escapeXML($item);
-                                $xml .= "</${fieldName}>";
+                                $xml .= "</{$fieldName}>";
                             }
                         }
                     }
                 } else {
                     if ($this->_isComplexType($fieldType)) {
-                        $xml .= "<${fieldName}";
+                        $xml .= "<{$fieldName}";
                         $xml .= $fieldValue->_getAttributes();
                         $xml .= '>';
                         $xml .= $fieldValue->_toXMLFragment();
-                        $xml .= "</${fieldName}>";
+                        $xml .= "</{$fieldName}>";
                     } elseif ('.' == $fieldType[0]) {
                         $xml .= $this->_escapeXML($fieldValue);
                     } elseif ('@' != $fieldType[0]) {
-                        $xml .= "<${fieldName}>";
+                        $xml .= "<{$fieldName}>";
                         $xml .= $this->_escapeXML($fieldValue);
-                        $xml .= "</${fieldName}>";
+                        $xml .= "</{$fieldName}>";
                     }
                 }
             }
@@ -260,16 +263,16 @@ abstract class FBAInboundServiceMWS_Model
      */
     protected function _isNumericArray($var)
     {
-        if (!is_array($var)) {
+        if (!\is_array($var)) {
             return false;
         }
-        $sz = count($var);
+        $sz = \count($var);
 
-        return 0 === $sz || array_keys($var) === range(0, count($var) - 1);
+        return 0 === $sz || array_keys($var) === range(0, \count($var) - 1);
     }
 
     /**
-     * Construct from DOMElement.
+     * Construct from \DOMElement.
      *
      * This function iterates over object fields and queries XML
      * for corresponding tag value. If query succeeds, value extracted
@@ -280,15 +283,15 @@ abstract class FBAInboundServiceMWS_Model
      * data structure is predictable, and no is_array checks are
      * required.
      *
-     * @param DOMElement $dom XML element to construct from
+     * @param \DOMElement $dom XML element to construct from
      */
-    private function _fromDOMElement(DOMElement $dom): void
+    private function _fromDOMElement(\DOMElement $dom): void
     {
-        $xpath = new DOMXPath($dom->ownerDocument);
+        $xpath = new \DOMXPath($dom->ownerDocument);
 
         foreach ($this->_fields as $fieldName => $field) {
             $fieldType = $field['FieldType'];
-            if (is_array($fieldType)) {
+            if (\is_array($fieldType)) {
                 if ('object' == $fieldType[0]) {
                     $elements = $dom->childNodes;
                     for ($i = 0; $i < $elements->length; ++$i) {
@@ -297,12 +300,12 @@ abstract class FBAInboundServiceMWS_Model
                 } elseif ($this->_isComplexType($fieldType[0])) {
                     if (isset($field['ListMemberName'])) {
                         $memberName = $field['ListMemberName'];
-                        $elements   = $xpath->query("./*[local-name()='${fieldName}']/*[local-name()='${memberName}']", $dom);
+                        $elements   = $xpath->query("./*[local-name()='{$fieldName}']/*[local-name()='{$memberName}']", $dom);
                     } else {
-                        $elements = $xpath->query("./*[local-name()='${fieldName}']", $dom);
+                        $elements = $xpath->query("./*[local-name()='{$fieldName}']", $dom);
                     }
                     if ($elements->length >= 1) {
-                        require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType[0]) . '.php';
+                        require_once __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . str_replace('_', \DIRECTORY_SEPARATOR, $fieldType[0]) . '.php';
                         foreach ($elements as $element) {
                             $this->_fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
                         }
@@ -310,9 +313,9 @@ abstract class FBAInboundServiceMWS_Model
                 } else {
                     if (isset($field['ListMemberName'])) {
                         $memberName = $field['ListMemberName'];
-                        $elements   = $xpath->query("./*[local-name()='${fieldName}']/*[local-name()='${memberName}']", $dom);
+                        $elements   = $xpath->query("./*[local-name()='{$fieldName}']/*[local-name()='{$memberName}']", $dom);
                     } else {
-                        $elements = $xpath->query("./*[local-name()='${fieldName}']", $dom);
+                        $elements = $xpath->query("./*[local-name()='{$fieldName}']", $dom);
                     }
                     if ($elements->length >= 1) {
                         foreach ($elements as $element) {
@@ -323,14 +326,14 @@ abstract class FBAInboundServiceMWS_Model
                 }
             } else {
                 if ($this->_isComplexType($fieldType)) {
-                    $elements = $xpath->query("./*[local-name()='${fieldName}']", $dom);
+                    $elements = $xpath->query("./*[local-name()='{$fieldName}']", $dom);
                     if (1 == $elements->length) {
-                        require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType) . '.php';
+                        require_once __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . str_replace('_', \DIRECTORY_SEPARATOR, $fieldType) . '.php';
                         $this->_fields[$fieldName]['FieldValue'] = new $fieldType($elements->item(0));
                     }
                 } else {
                     if ('@' == $fieldType[0]) {
-                        $attribute = $xpath->query("./@${fieldName}", $dom);
+                        $attribute = $xpath->query("./@{$fieldName}", $dom);
                         if (1 == $attribute->length) {
                             $this->_fields[$fieldName]['FieldValue'] = $attribute->item(0)->nodeValue;
                             if (isset($this->_fields['Value'])) {
@@ -342,14 +345,14 @@ abstract class FBAInboundServiceMWS_Model
                         if ('.' == $fieldType[0]) {
                             $element = $xpath->query('./text()', $dom);
                         } else {
-                            $element = $xpath->query("./*[local-name()='${fieldName}']/text()", $dom);
+                            $element = $xpath->query("./*[local-name()='{$fieldName}']/text()", $dom);
                         }
                         if (1 == $element->length) {
                             $this->_fields[$fieldName]['FieldValue'] = $element->item(0)->data;
                         }
                     }
 
-                    $attribute = $xpath->query("./@${fieldName}", $dom);
+                    $attribute = $xpath->query("./@{$fieldName}", $dom);
                     if (1 == $attribute->length) {
                         $this->_fields[$fieldName]['FieldValue'] = $attribute->item(0)->nodeValue;
                         if (isset($this->_fields['Value'])) {
@@ -371,15 +374,15 @@ abstract class FBAInboundServiceMWS_Model
     {
         foreach ($this->_fields as $fieldName => $field) {
             $fieldType = $field['FieldType'];
-            if (is_array($fieldType)) {
+            if (\is_array($fieldType)) {
                 if ($this->_isComplexType($fieldType[0])) {
-                    if (array_key_exists($fieldName, $array)) {
+                    if (\array_key_exists($fieldName, $array)) {
                         $elements = $array[$fieldName];
                         if (!$this->_isNumericArray($elements)) {
                             $elements =  [$elements];
                         }
-                        if (count($elements) >= 1) {
-                            require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType[0]) . '.php';
+                        if (\count($elements) >= 1) {
+                            require_once __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . str_replace('_', \DIRECTORY_SEPARATOR, $fieldType[0]) . '.php';
 
                             foreach ($elements as $element) {
                                 $this->_fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
@@ -387,12 +390,12 @@ abstract class FBAInboundServiceMWS_Model
                         }
                     }
                 } else {
-                    if (array_key_exists($fieldName, $array)) {
+                    if (\array_key_exists($fieldName, $array)) {
                         $elements = $array[$fieldName];
                         if (!$this->_isNumericArray($elements)) {
                             $elements =  [$elements];
                         }
-                        if (count($elements) >= 1) {
+                        if (\count($elements) >= 1) {
                             foreach ($elements as $element) {
                                 $this->_fields[$fieldName]['FieldValue'][] = $element;
                             }
@@ -401,12 +404,12 @@ abstract class FBAInboundServiceMWS_Model
                 }
             } else {
                 if ($this->_isComplexType($fieldType)) {
-                    if (array_key_exists($fieldName, $array)) {
-                        require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $fieldType) . '.php';
+                    if (\array_key_exists($fieldName, $array)) {
+                        require_once __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . str_replace('_', \DIRECTORY_SEPARATOR, $fieldType) . '.php';
                         $this->_fields[$fieldName]['FieldValue'] = new $fieldType($array[$fieldName]);
                     }
                 } else {
-                    if (array_key_exists($fieldName, $array)) {
+                    if (\array_key_exists($fieldName, $array)) {
                         $this->_fields[$fieldName]['FieldValue'] = $array[$fieldName];
                     }
                 }
@@ -448,18 +451,18 @@ abstract class FBAInboundServiceMWS_Model
      */
     private function _isAssociativeArray($var)
     {
-        return is_array($var) && array_keys($var) !== range(0, count($var) - 1);
+        return \is_array($var) && array_keys($var) !== range(0, \count($var) - 1);
     }
 
     /**
-     * Checks  whether passed variable is DOMElement.
+     * Checks  whether passed variable is \DOMElement.
      *
      * @param mixed $var
      *
-     * @return true if passed variable is DOMElement
+     * @return true if passed variable is \DOMElement
      */
     private function _isDOMElement($var)
     {
-        return $var instanceof DOMElement;
+        return $var instanceof \DOMElement;
     }
 }

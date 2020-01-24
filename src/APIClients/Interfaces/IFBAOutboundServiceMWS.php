@@ -1,9 +1,10 @@
 <?php
 
 declare(strict_types=1);
-/*
- * Copyright 2009-2018 Amazon Services. All Rights Reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
+
+/**
+ * Copyright 2009-2019 Amazon Services. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");.
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at: http://aws.amazon.com/apache2.0
@@ -11,15 +12,36 @@ declare(strict_types=1);
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
- * PHP Version 5
+ *
  * @category Amazon
- * @package  FBA Outbound Service MWS
- * @version  2010-10-01
- * Library Version: 2016-01-01
- * Generated: Wed Sep 12 07:08:09 PDT 2018
  */
 
-interface FBAOutboundServiceMWS_Interface
+namespace MobiMarket\Amazon\APIClients\Interfaces;
+
+use MobiMarket\Amazon\Models\CancelFulfillmentOrderRequest;
+use MobiMarket\Amazon\Models\CancelFulfillmentOrderResponse;
+use MobiMarket\Amazon\Models\CreateFulfillmentOrderRequest;
+use MobiMarket\Amazon\Models\CreateFulfillmentOrderResponse;
+use MobiMarket\Amazon\Models\CreateFulfillmentReturnRequest;
+use MobiMarket\Amazon\Models\CreateFulfillmentReturnResponse;
+use MobiMarket\Amazon\Models\GetFulfillmentOrderRequest;
+use MobiMarket\Amazon\Models\GetFulfillmentOrderResponse;
+use MobiMarket\Amazon\Models\GetFulfillmentPreviewRequest;
+use MobiMarket\Amazon\Models\GetFulfillmentPreviewResponse;
+use MobiMarket\Amazon\Models\GetPackageTrackingDetailsRequest;
+use MobiMarket\Amazon\Models\GetPackageTrackingDetailsResponse;
+use MobiMarket\Amazon\Models\GetServiceStatusRequest;
+use MobiMarket\Amazon\Models\GetServiceStatusResponse;
+use MobiMarket\Amazon\Models\ListAllFulfillmentOrdersByNextTokenRequest;
+use MobiMarket\Amazon\Models\ListAllFulfillmentOrdersByNextTokenResponse;
+use MobiMarket\Amazon\Models\ListAllFulfillmentOrdersRequest;
+use MobiMarket\Amazon\Models\ListAllFulfillmentOrdersResponse;
+use MobiMarket\Amazon\Models\ListReturnReasonCodesRequest;
+use MobiMarket\Amazon\Models\ListReturnReasonCodesResponse;
+use MobiMarket\Amazon\Models\UpdateFulfillmentOrderRequest;
+use MobiMarket\Amazon\Models\UpdateFulfillmentOrderResponse;
+
+interface IFBAOutboundServiceMWS
 {
     /**
      * Cancel Fulfillment Order
@@ -28,15 +50,11 @@ interface FBAOutboundServiceMWS_Interface
      *   items that haven't already shipped, but cannot guarantee success.
      *   Note: Items that have already shipped cannot be cancelled.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_CancelFulfillmentOrder request or FBAOutboundServiceMWS_Model_CancelFulfillmentOrder object itself
+     * @param CancelFulfillmentOrderRequest|array $request array of parameters for CancelFulfillmentOrder request or CancelFulfillmentOrder object itself
      *
-     * @see FBAOutboundServiceMWS_Model_CancelFulfillmentOrderRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_CancelFulfillmentOrderResponse
+     * @throws AmazonApiException
      */
-    public function cancelFulfillmentOrder($request);
+    public function cancelFulfillmentOrder($request): CancelFulfillmentOrderResponse;
 
     /**
      * Create Fulfillment Order
@@ -48,7 +66,6 @@ interface FBAOutboundServiceMWS_Interface
      *   This DisplayableOrderDateTime will appear as the "order date" in
      *   recipient-facing materials such as the packing slip.  The format
      *   must be timestamp.
-     *
      *
      *   The DisplayableOrderId will appear as the "order id" in those
      *   materials, and the DisplayableOrderComment will appear as well.
@@ -62,7 +79,6 @@ interface FBAOutboundServiceMWS_Interface
      *    * Priority, 1 business day
      *
      *   Shipping speeds may vary elsewhere.  Please consult your manual for published SLAs.
-     *
      *
      *   DestinationAddress is the address the items will be shipped to.
      *
@@ -83,21 +99,16 @@ interface FBAOutboundServiceMWS_Interface
      *   The available methods to fulfill a given order:
      *    * Consumer indicates a customer order, this is the default.
      *
-     *
      *   NotificationEmailList can be used to provide a list of e-mail
      *   addresses to receive ship-complete e-mail notifications. These
      *   e-mails are customer-facing e-mails sent by FBA on behalf of
      *   the seller.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_CreateFulfillmentOrder request or FBAOutboundServiceMWS_Model_CreateFulfillmentOrder object itself
+     * @param CreateFulfillmentOrderRequest|array $request array of parameters for CreateFulfillmentOrder request or CreateFulfillmentOrder object itself
      *
-     * @see FBAOutboundServiceMWS_Model_CreateFulfillmentOrderRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_CreateFulfillmentOrderResponse
+     * @throws AmazonApiException
      */
-    public function createFulfillmentOrder($request);
+    public function createFulfillmentOrder($request): CreateFulfillmentOrderResponse;
 
     /**
      * Create Fulfillment Return
@@ -112,15 +123,11 @@ interface FBAOutboundServiceMWS_Interface
      *   the items are invalid for a return, ReturnItemList will be empty.
      *   If all the items are invalid for a return, ReturnItemList will be empty.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_CreateFulfillmentReturn request or FBAOutboundServiceMWS_Model_CreateFulfillmentReturn object itself
+     * @param CreateFulfillmentReturnRequest|array $request array of parameters for CreateFulfillmentReturn request or CreateFulfillmentReturn object itself
      *
-     * @see FBAOutboundServiceMWS_Model_CreateFulfillmentReturnRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_CreateFulfillmentReturnResponse
+     * @throws AmazonApiException
      */
-    public function createFulfillmentReturn($request);
+    public function createFulfillmentReturn($request): CreateFulfillmentReturnResponse;
 
     /**
      * Get Fulfillment Order
@@ -129,15 +136,11 @@ interface FBAOutboundServiceMWS_Interface
      *   items in Amazon's fulfillment network, and the shipments that have been
      *   generated to fulfill the order.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_GetFulfillmentOrder request or FBAOutboundServiceMWS_Model_GetFulfillmentOrder object itself
+     * @param GetFulfillmentOrderRequest|array $request array of parameters for GetFulfillmentOrder request or GetFulfillmentOrder object itself
      *
-     * @see FBAOutboundServiceMWS_Model_GetFulfillmentOrderRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_GetFulfillmentOrderResponse
+     * @throws AmazonApiException
      */
-    public function getFulfillmentOrder($request);
+    public function getFulfillmentOrder($request): GetFulfillmentOrderResponse;
 
     /**
      * Get Fulfillment Preview
@@ -152,29 +155,21 @@ interface FBAOutboundServiceMWS_Interface
      *   The service will return the fulfillment estimates for a set of Seller
      *   SKUs and quantities.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_GetFulfillmentPreview request or FBAOutboundServiceMWS_Model_GetFulfillmentPreview object itself
+     * @param GetFulfillmentPreviewRequest|array $request array of parameters for GetFulfillmentPreview request or GetFulfillmentPreview object itself
      *
-     * @see FBAOutboundServiceMWS_Model_GetFulfillmentPreviewRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_GetFulfillmentPreviewResponse
+     * @throws AmazonApiException
      */
-    public function getFulfillmentPreview($request);
+    public function getFulfillmentPreview($request): GetFulfillmentPreviewResponse;
 
     /**
      * Get Package Tracking Details
      * Gets the tracking details for a shipment package.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_GetPackageTrackingDetails request or FBAOutboundServiceMWS_Model_GetPackageTrackingDetails object itself
+     * @param GetPackageTrackingDetailsRequest|array $request array of parameters for GetPackageTrackingDetails request or GetPackageTrackingDetails object itself
      *
-     * @see FBAOutboundServiceMWS_Model_GetPackageTrackingDetailsRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_GetPackageTrackingDetailsResponse
+     * @throws AmazonApiException
      */
-    public function getPackageTrackingDetails($request);
+    public function getPackageTrackingDetails($request): GetPackageTrackingDetailsResponse;
 
     /**
      * Get Service Status
@@ -183,15 +178,11 @@ interface FBAOutboundServiceMWS_Interface
      *   GREEN: The service section is operating normally.
      *   RED: The service section disruption.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_GetServiceStatus request or FBAOutboundServiceMWS_Model_GetServiceStatus object itself
+     * @param GetServiceStatusRequest|array $request array of parameters for GetServiceStatus request or GetServiceStatus object itself
      *
-     * @see FBAOutboundServiceMWS_Model_GetServiceStatusRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_GetServiceStatusResponse
+     * @throws AmazonApiException
      */
-    public function getServiceStatus($request);
+    public function getServiceStatus($request): GetServiceStatusResponse;
 
     /**
      * List All Fulfillment Orders
@@ -207,15 +198,11 @@ interface FBAOutboundServiceMWS_Interface
      *   currently being fulfilled, and all orders that were being fulfilled
      *   since that date and time.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_ListAllFulfillmentOrders request or FBAOutboundServiceMWS_Model_ListAllFulfillmentOrders object itself
+     * @param ListAllFulfillmentOrdersRequest|array $request array of parameters for ListAllFulfillmentOrders request or ListAllFulfillmentOrders object itself
      *
-     * @see FBAOutboundServiceMWS_Model_ListAllFulfillmentOrdersRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_ListAllFulfillmentOrdersResponse
+     * @throws AmazonApiException
      */
-    public function listAllFulfillmentOrders($request);
+    public function listAllFulfillmentOrders($request): ListAllFulfillmentOrdersResponse;
 
     /**
      * List All Fulfillment Orders By Next Token
@@ -225,15 +212,11 @@ interface FBAOutboundServiceMWS_Interface
      *
      *   If a NextToken is not returned, it indicates the end-of-data.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_ListAllFulfillmentOrdersByNextToken request or FBAOutboundServiceMWS_Model_ListAllFulfillmentOrdersByNextToken object itself
+     * @param ListAllFulfillmentOrdersByNextTokenRequest|array $request array of parameters for ListAllFulfillmentOrdersByNextToken request or ListAllFulfillmentOrdersByNextToken object itself
      *
-     * @see FBAOutboundServiceMWS_Model_ListAllFulfillmentOrdersByNextTokenRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_ListAllFulfillmentOrdersByNextTokenResponse
+     * @throws AmazonApiException
      */
-    public function listAllFulfillmentOrdersByNextToken($request);
+    public function listAllFulfillmentOrdersByNextToken($request): ListAllFulfillmentOrdersByNextTokenResponse;
 
     /**
      * List Return Reason Codes
@@ -241,15 +224,11 @@ interface FBAOutboundServiceMWS_Interface
      *   a given SKU and original ordering country. The eligible return reasons
      *   may vary from country to country.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_ListReturnReasonCodes request or FBAOutboundServiceMWS_Model_ListReturnReasonCodes object itself
+     * @param ListReturnReasonCodesRequest|array $request array of parameters for ListReturnReasonCodes request or ListReturnReasonCodes object itself
      *
-     * @see FBAOutboundServiceMWS_Model_ListReturnReasonCodesRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_ListReturnReasonCodesResponse
+     * @throws AmazonApiException
      */
-    public function listReturnReasonCodes($request);
+    public function listReturnReasonCodes($request): ListReturnReasonCodesResponse;
 
     /**
      * Update Fulfillment Order
@@ -272,7 +251,6 @@ interface FBAOutboundServiceMWS_Interface
      *    * Priority, 1 business day
      *
      *   Shipping speeds may vary elsewhere.  Please consult your manual for published SLAs.
-     *
      *
      *   DestinationAddress is the address the items will be shipped to.
      *
@@ -298,13 +276,9 @@ interface FBAOutboundServiceMWS_Interface
      *   e-mails are customer-facing e-mails sent by FBA on behalf of
      *   the seller.
      *
-     * @param mixed $request array of parameters for FBAOutboundServiceMWS_Model_UpdateFulfillmentOrder request or FBAOutboundServiceMWS_Model_UpdateFulfillmentOrder object itself
+     * @param UpdateFulfillmentOrderRequest|array $request array of parameters for UpdateFulfillmentOrder request or UpdateFulfillmentOrder object itself
      *
-     * @see FBAOutboundServiceMWS_Model_UpdateFulfillmentOrderRequest
-     *
-     * @throws FBAOutboundServiceMWS_Exception
-     *
-     * @return FBAOutboundServiceMWS_Model_UpdateFulfillmentOrderResponse
+     * @throws AmazonApiException
      */
-    public function updateFulfillmentOrder($request);
+    public function updateFulfillmentOrder($request): UpdateFulfillmentOrderResponse;
 }
