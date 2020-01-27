@@ -21,7 +21,7 @@ declare(strict_types=1);
  * Generated: Thu Nov 08 11:45:48 PST 2018
  */
 
-namespace MobiMarket\Amazon;
+namespace MobiMarket\Amazon\Models;
 
 /**
  * FBAInboundServiceMWS_Model - base class for all model classes.
@@ -306,7 +306,8 @@ abstract class Model
                         $elements = $xpath->query("./*[local-name()='{$fieldName}']", $dom);
                     }
                     if ($elements->length >= 1) {
-                        require_once __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . str_replace('_', \DIRECTORY_SEPARATOR, $fieldType[0]) . '.php';
+                        $fieldType[0] = "MobiMarket\\Amazon\\Models\\{$fieldType[0]}";
+
                         foreach ($elements as $element) {
                             $this->_fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
                         }
@@ -329,7 +330,8 @@ abstract class Model
                 if ($this->_isComplexType($fieldType)) {
                     $elements = $xpath->query("./*[local-name()='{$fieldName}']", $dom);
                     if (1 == $elements->length) {
-                        require_once __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . str_replace('_', \DIRECTORY_SEPARATOR, $fieldType) . '.php';
+                        $fieldType = "MobiMarket\\Amazon\\Models\\{$fieldType}";
+
                         $this->_fields[$fieldName]['FieldValue'] = new $fieldType($elements->item(0));
                     }
                 } else {
@@ -383,7 +385,7 @@ abstract class Model
                             $elements =  [$elements];
                         }
                         if (\count($elements) >= 1) {
-                            require_once __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . str_replace('_', \DIRECTORY_SEPARATOR, $fieldType[0]) . '.php';
+                            $fieldType[0] = "MobiMarket\\Amazon\\Models\\{$fieldType[0]}";
 
                             foreach ($elements as $element) {
                                 $this->_fields[$fieldName]['FieldValue'][] = new $fieldType[0]($element);
@@ -406,7 +408,8 @@ abstract class Model
             } else {
                 if ($this->_isComplexType($fieldType)) {
                     if (\array_key_exists($fieldName, $array)) {
-                        require_once __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . str_replace('_', \DIRECTORY_SEPARATOR, $fieldType) . '.php';
+                        $fieldType = "MobiMarket\\Amazon\\Models\\${fieldType}";
+
                         $this->_fields[$fieldName]['FieldValue'] = new $fieldType($array[$fieldName]);
                     }
                 } else {
@@ -438,9 +441,9 @@ abstract class Model
      *
      * @param string $fieldType field type name
      */
-    private function _isComplexType($fieldType)
+    private function _isComplexType(string $fieldType): bool
     {
-        return preg_match('/^FBAInboundServiceMWS_/', $fieldType);
+        return (bool) preg_match('/^[A-Z]/', $fieldType);
     }
 
     /**

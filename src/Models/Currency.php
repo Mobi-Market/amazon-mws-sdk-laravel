@@ -17,8 +17,6 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\Models;
 
-use MobiMarket\Amazon\Model;
-
 /**
  * Currency.
  *

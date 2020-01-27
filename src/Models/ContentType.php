@@ -32,8 +32,6 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\Models;
 
-use MobiMarket\Amazon\Model;
-
 // The only content type that MWS currently supports is octet-stream
 
 class ContentType extends Model
