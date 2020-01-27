@@ -43,4 +43,14 @@ return [
         'application_name'    => env('AMAZON_MWS_APP_NAME'),
         'application_version' => env('AMAZON_MWS_APP_VERSION'),
     ],
+
+    /*
+     * Marketplace ID used commonly in some APIs.
+     */
+    'marketplace_id' => env('AMAZON_MWS_MARKETPLACE_ID'),
+
+    /*
+     * Seller ID used commonly in some APIs.
+     */
+    'seller_id' => env('AMAZON_MWS_SELLER_ID'),
 ];

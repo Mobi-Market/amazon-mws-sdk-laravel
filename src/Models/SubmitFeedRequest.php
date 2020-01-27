@@ -19,8 +19,6 @@ namespace MobiMarket\Amazon\Models;
 
 use MobiMarket\Amazon\Exceptions\AmazonApiException;
 
-require_once 'MarketplaceWebService/Model/ContentType.php';
-
 /**
  * SubmitFeedRequest.
  *

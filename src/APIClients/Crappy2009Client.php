@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\APIClients;
 
-use MobiMarket\Amazon\Exceptions\AmazonApiException;
 use MobiMarket\Amazon\Enums\RequestType;
+use MobiMarket\Amazon\Exceptions\AmazonApiException;
 use MobiMarket\Amazon\Models\ErrorResponse;
 use MobiMarket\Amazon\Models\ResponseHeaderMetadata;
 
@@ -132,8 +132,6 @@ abstract class Crappy2009Client extends BaseClient
 
                     // Rethrow on deserializer error
                 } catch (\Exception $e) {
-                    require_once 'MarketplaceWebService/Exception.php';
-
                     throw new AmazonApiException(['Exception' => $e, 'Message' => $e->getMessage()]);
                 }
             } while ($shouldRetry);
@@ -171,8 +169,6 @@ abstract class Crappy2009Client extends BaseClient
         } else { // We got bad XML in response, just throw a generic exception
       $exProps['Message'] = 'Internal Error';
         }
-
-        require_once 'MarketplaceWebService/Exception.php';
 
         return new AmazonApiException($exProps);
     }
@@ -258,8 +254,6 @@ abstract class Crappy2009Client extends BaseClient
         rewind($streamHandle);
 
         if (!($receivedMd5Hash === $expectedMd5Hash)) {
-            require_once 'MarketplaceWebService/Exception.php';
-
             throw new AmazonApiException(['Message' => 'Received Content-MD5 = ' . $receivedMd5Hash . ' but expected ' . $expectedMd5Hash, 'ErrorCode' => 'ContentMD5DoesNotMatch']);
         }
     }
