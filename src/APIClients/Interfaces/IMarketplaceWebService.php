@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\APIClients\Interfaces;
 
-use MobiMarket\Amazon\AmazonApiException;
+use MobiMarket\Amazon\Exceptions\AmazonApiException;
 use MobiMarket\Amazon\Models\CancelFeedSubmissionsRequest;
 use MobiMarket\Amazon\Models\CancelFeedSubmissionsResponse;
 use MobiMarket\Amazon\Models\CancelReportRequestsRequest;

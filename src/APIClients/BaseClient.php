@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\APIClients;
 
-use MobiMarket\Amazon\AmazonApiException;
+use MobiMarket\Amazon\Exceptions\AmazonApiException;
 use MobiMarket\Amazon\Models\ResponseHeaderMetadata;
 
 abstract class BaseClient
@@ -441,8 +441,7 @@ abstract class BaseClient
 
                 break;
             default:
-                $scheme = 'http://';
-                $port   = $url['port'] ?? 80;
+                throw new \Exception('Attempting to post to an insecure url.');
         }
 
         $allHeaders                 = $config['Headers'];

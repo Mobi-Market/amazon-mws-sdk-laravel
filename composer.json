@@ -32,7 +32,21 @@
             "providers": [
                 "MobiMarket\\Amazon\\AmazonServiceProvider"
             ],
-            "aliases": {}
+            "aliases": {
+                "AmazonEasyShip": "MobiMarket\\Amazon\\Facades\\EasyShipFacade",
+                "AmazonFeeds": "MobiMarket\\Amazon\\Facades\\FeedsFacade",
+                "AmazonFinances": "MobiMarket\\Amazon\\Facades\\FinancesFacade",
+                "AmazonFulfillmentInbound": "MobiMarket\\Amazon\\Facades\\FulfillmentInboundFacade",
+                "AmazonFulfillmentInventory": "MobiMarket\\Amazon\\Facades\\FulfillmentInventoryFacade",
+                "AmazonFulfillmentOutbound": "MobiMarket\\Amazon\\Facades\\FulfillmentOutboundFacade",
+                "AmazonMerchantFulfillment": "MobiMarket\\Amazon\\Facades\\MerchantFulfillmentFacade",
+                "AmazonOrders": "MobiMarket\\Amazon\\Facades\\OrdersFacade",
+                "AmazonProducts": "MobiMarket\\Amazon\\Facades\\ProductsFacade",
+                "AmazonRecommedations": "MobiMarket\\Amazon\\Facades\\RecommedationsFacade",
+                "AmazonReports": "MobiMarket\\Amazon\\Facades\\ReportsFacade",
+                "AmazonSellers": "MobiMarket\\Amazon\\Facades\\SellersFacade",
+                "AmazonSubscriptions": "MobiMarket\\Amazon\\Facades\\SubscriptionsFacade"
+            }
         }
     }
 }

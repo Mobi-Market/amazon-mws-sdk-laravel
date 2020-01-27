@@ -12,16 +12,11 @@ declare(strict_types=1);
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *******************************************************************************
- * PHP Version 5
  *
  * @category Amazon
- *
- * @version  2015-05-01
- * Library Version: 2019-02-25
- * Generated: Wed Mar 13 08:17:11 PDT 2019
  */
 
-namespace MobiMarket\Amazon;
+namespace MobiMarket\Amazon\Exceptions;
 
 /**
  * MWS Finances Service Exception provides details of errors

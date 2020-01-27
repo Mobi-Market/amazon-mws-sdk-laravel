@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\APIClients;
 
-use MobiMarket\Amazon\AmazonApiException;
+use MobiMarket\Amazon\Exceptions\AmazonApiException;
 use MobiMarket\Amazon\Enums\RequestType;
 use MobiMarket\Amazon\Models\ErrorResponse;
 use MobiMarket\Amazon\Models\ResponseHeaderMetadata;
