@@ -46,6 +46,10 @@ abstract class BaseClient
      * @var string
      */
     protected $_sellerId;
+    /**
+     * @var array
+     */
+    protected $_config;
 
     /**
      * Construct new Client.
@@ -75,8 +79,8 @@ abstract class BaseClient
         $awsAccessKeyId,
         $awsSecretAccessKey,
         $config,
-        $applicationName = null,
-        $applicationVersion = null,
+        $applicationName,
+        $applicationVersion,
         $marketplaceId = null,
         $sellerId = null,
         $attributes = null

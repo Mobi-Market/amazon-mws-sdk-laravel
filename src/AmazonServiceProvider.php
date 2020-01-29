@@ -74,8 +74,8 @@ class AmazonServiceProvider extends ServiceProvider
                     $config->get('amazon.auth.access_key_id', 'KEY_ID'),
                     $config->get('amazon.auth.access_key_secret', 'KEY_SECRET'),
                     $client_config,
-                    $config->get('amazon.auth.application_name'),
-                    $config->get('amazon.auth.application_version'),
+                    $config->get('amazon.auth.application_name', 'Laravel'),
+                    $config->get('amazon.auth.application_version', $app->version()),
                     $config->get('amazon.auth.marketplace_id'),
                     $config->get('amazon.auth.seller_id'),
                     $client_attributes
