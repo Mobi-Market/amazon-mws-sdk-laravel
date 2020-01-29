@@ -6,9 +6,8 @@ namespace MobiMarket\Amazon\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use MobiMarket\Amazon\APIClients\FBAInboundServiceMWS;
-use MobiMarket\Amazon\APIClients\Interfaces\IFBAInboundServiceMWS;
 
-class FulfillmentInboundFacade extends Facade implements IFBAInboundServiceMWS
+class FulfillmentInboundFacade extends Facade
 {
     /**
      * Get the registered name of the component.
