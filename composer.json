@@ -3,11 +3,13 @@
     "type": "library",
     "description": "Amazon MWS SDK Laravel Package",
     "require": {
-        "php": "^7.2"
+        "php": "^7.2",
+        "spatie/array-to-xml": "^2.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.15",
-        "illuminate/support": "~5.5.0"
+        "illuminate/support": "~5.5.0",
+        "league/csv": "^8.1"
     },
     "license": "proprietary",
     "authors": [

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace MobiMarket\Amazon\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use MobiMarket\Amazon\APIClients\MarketplaceWebService;
+use MobiMarket\Amazon\APIClients\Wrappers\FeedsWrapper;
 
 class FeedsFacade extends Facade
 {
@@ -14,6 +14,6 @@ class FeedsFacade extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return MarketplaceWebService::class;
+        return FeedsWrapper::class;
     }
 }

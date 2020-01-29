@@ -76,6 +76,8 @@ class AmazonServiceProvider extends ServiceProvider
                     $client_config,
                     $config->get('amazon.auth.application_name'),
                     $config->get('amazon.auth.application_version'),
+                    $config->get('amazon.auth.marketplace_id'),
+                    $config->get('amazon.auth.seller_id'),
                     $client_attributes
                 );
             });

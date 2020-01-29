@@ -27,6 +27,27 @@ abstract class BaseClient
     public const MWS_CLIENT_VERSION = '0000-00-00';
 
     /**
+     * @var string
+     */
+    protected $_awsAccessKeyId;
+    /**
+     * @var string
+     */
+    protected $_awsSecretAccessKey;
+    /**
+     * @var string
+     */
+    protected $_serviceVersion;
+    /**
+     * @var string
+     */
+    protected $_marketplaceId;
+    /**
+     * @var string
+     */
+    protected $_sellerId;
+
+    /**
      * Construct new Client.
      *
      * @param string     $awsAccessKeyId     AWS Access Key ID
@@ -46,6 +67,8 @@ abstract class BaseClient
      *                                       </ul>
      * @param mixed      $applicationName
      * @param mixed      $applicationVersion
+     * @param mixed      $marketplaceId
+     * @param mixed      $sellerId
      * @param mixed|null $attributes
      */
     public function __construct(
@@ -54,6 +77,8 @@ abstract class BaseClient
         $config,
         $applicationName,
         $applicationVersion,
+        $marketplaceId,
+        $sellerId,
         $attributes = null
     ) {
         iconv_set_encoding('output_encoding', 'UTF-8');
@@ -63,6 +88,8 @@ abstract class BaseClient
         $this->_awsAccessKeyId     = $awsAccessKeyId;
         $this->_awsSecretAccessKey = $awsSecretAccessKey;
         $this->_serviceVersion     = $applicationVersion;
+        $this->_marketplaceId      = $marketplaceId;
+        $this->_sellerId           = $sellerId;
         if (null !== $config) {
             $this->_config = array_merge($this->_config, $config);
         }
