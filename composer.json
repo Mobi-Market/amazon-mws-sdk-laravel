@@ -1,5 +1,5 @@
 {
-    "name": "mobi-market/amazon-sdk-laravel",
+    "name": "mobi-market/amazon-mws-sdk-laravel",
     "type": "library",
     "description": "Amazon MWS SDK Laravel Package",
     "require": {
