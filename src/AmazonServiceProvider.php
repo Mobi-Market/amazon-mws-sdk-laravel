@@ -71,8 +71,8 @@ class AmazonServiceProvider extends ServiceProvider
                 $client_attributes = $config->get('amazon.api.attributes.' . $client, null);
 
                 return new $client(
-                    $config->get('amazon.auth.access_key_id'),
-                    $config->get('amazon.auth.access_key_secret'),
+                    $config->get('amazon.auth.access_key_id', 'KEY_ID'),
+                    $config->get('amazon.auth.access_key_secret', 'KEY_SECRET'),
                     $client_config,
                     $config->get('amazon.auth.application_name'),
                     $config->get('amazon.auth.application_version'),

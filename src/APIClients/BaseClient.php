@@ -75,21 +75,23 @@ abstract class BaseClient
         $awsAccessKeyId,
         $awsSecretAccessKey,
         $config,
-        $applicationName,
-        $applicationVersion,
-        $marketplaceId,
-        $sellerId,
+        $applicationName = null,
+        $applicationVersion = null,
+        $marketplaceId = null,
+        $sellerId = null,
         $attributes = null
     ) {
-        iconv_set_encoding('output_encoding', 'UTF-8');
-        iconv_set_encoding('input_encoding', 'UTF-8');
-        iconv_set_encoding('internal_encoding', 'UTF-8');
+        // 1: doesnt work on php 7; 2: not a packages responsibility.
+        // iconv_set_encoding('output_encoding', 'UTF-8');
+        // iconv_set_encoding('input_encoding', 'UTF-8');
+        // iconv_set_encoding('internal_encoding', 'UTF-8');
 
         $this->_awsAccessKeyId     = $awsAccessKeyId;
         $this->_awsSecretAccessKey = $awsSecretAccessKey;
         $this->_serviceVersion     = $applicationVersion;
         $this->_marketplaceId      = $marketplaceId;
         $this->_sellerId           = $sellerId;
+
         if (null !== $config) {
             $this->_config = array_merge($this->_config, $config);
         }
