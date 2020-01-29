@@ -4,7 +4,7 @@ This package provides all of the php 5 clients provided by amazon for use in Mob
 ## Installation
 Install the latest version with
 ```bash
-$ composer require mobi-market/amazon-sdk-laravel
+$ composer require mobi-market/amazon-mws-sdk-laravel
 ```
 Run ```composer update``` followed by ```composer dump```
 
