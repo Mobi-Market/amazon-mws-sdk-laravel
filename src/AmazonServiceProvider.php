@@ -97,6 +97,6 @@ class AmazonServiceProvider extends ServiceProvider
      */
     protected function getConfigPath()
     {
-        return $this->getPackageDir() . \DIRECTORY_SEPARATOR . 'config' . \DIRECTORY_SEPARATOR . 'amazon.php';
+        return __DIR__ . \DIRECTORY_SEPARATOR . 'config' . \DIRECTORY_SEPARATOR . 'amazon.php';
     }
 }
