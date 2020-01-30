@@ -72,14 +72,14 @@ abstract class BaseClient
      * @param mixed|null $attributes
      */
     public function __construct(
-        $awsAccessKeyId,
-        $awsSecretAccessKey,
-        $config,
-        $applicationName,
-        $applicationVersion,
-        $marketplaceId = null,
-        $sellerId = null,
-        $attributes = null
+        string $awsAccessKeyId,
+        string $awsSecretAccessKey,
+        ?array $config,
+        string $applicationName,
+        string $applicationVersion,
+        ?string $marketplaceId = null,
+        ?string $sellerId = null,
+        ?string $attributes = null
     ) {
         // 1: doesnt work on php 7; 2: not a packages responsibility.
         // iconv_set_encoding('output_encoding', 'UTF-8');
