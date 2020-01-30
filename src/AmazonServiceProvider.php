@@ -50,7 +50,7 @@ class AmazonServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/amazon.php' => config_path('amazon.php'),
+            $this->getConfigPath() => config_path('amazon.php'),
         ], 'amazon');
     }
 
@@ -59,7 +59,7 @@ class AmazonServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/amazon.php', 'amazon');
+        $this->mergeConfigFrom($this->getConfigPath(), 'amazon');
 
         foreach ($this->clients as $client) {
             $this->app->singleton($client, function (Application $app) use ($client) {
@@ -71,11 +71,11 @@ class AmazonServiceProvider extends ServiceProvider
                 $client_attributes = $config->get('amazon.api.attributes.' . $client, null);
 
                 return new $client(
-                    $config->get('amazon.auth.access_key_id', 'KEY_ID'),
-                    $config->get('amazon.auth.access_key_secret', 'KEY_SECRET'),
+                    $config->get('amazon.auth.access_key_id') ?? 'KEY_ID',
+                    $config->get('amazon.auth.access_key_secret') ?? 'KEY_SECRET',
                     $client_config,
-                    $config->get('amazon.auth.application_name', 'Laravel'),
-                    $config->get('amazon.auth.application_version', $app->version()),
+                    $config->get('amazon.auth.application_name') ?? 'Laravel',
+                    $config->get('amazon.auth.application_version') ?? $app->version(),
                     $config->get('amazon.auth.marketplace_id'),
                     $config->get('amazon.auth.seller_id'),
                     $client_attributes
@@ -90,5 +90,13 @@ class AmazonServiceProvider extends ServiceProvider
     public function provides(): array
     {
         return $this->clients;
+    }
+
+    /**
+     * Get path to configuration file.
+     */
+    protected function getConfigPath()
+    {
+        return $this->getPackageDir() . \DIRECTORY_SEPARATOR . 'config' . \DIRECTORY_SEPARATOR . 'amazon.php';
     }
 }

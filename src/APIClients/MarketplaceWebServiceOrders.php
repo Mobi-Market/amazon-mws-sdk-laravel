@@ -18,8 +18,6 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\APIClients;
 
-namespace MobiMarket\Amazon\APIClients;
-
 use MobiMarket\Amazon\APIClients\Interfaces\IMarketplaceWebServiceOrders;
 use MobiMarket\Amazon\Models\GetOrderRequest;
 use MobiMarket\Amazon\Models\GetOrderResponse;

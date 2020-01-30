@@ -37,10 +37,6 @@ abstract class BaseClient
     /**
      * @var string
      */
-    protected $_serviceVersion;
-    /**
-     * @var string
-     */
     protected $_marketplaceId;
     /**
      * @var string
@@ -92,7 +88,6 @@ abstract class BaseClient
 
         $this->_awsAccessKeyId     = $awsAccessKeyId;
         $this->_awsSecretAccessKey = $awsSecretAccessKey;
-        $this->_serviceVersion     = $applicationVersion;
         $this->_marketplaceId      = $marketplaceId;
         $this->_sellerId           = $sellerId;
 
