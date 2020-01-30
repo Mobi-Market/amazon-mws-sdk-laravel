@@ -86,8 +86,6 @@ abstract class BaseClient
         // iconv_set_encoding('input_encoding', 'UTF-8');
         // iconv_set_encoding('internal_encoding', 'UTF-8');
 
-        dump(\func_get_args());
-
         $this->_awsAccessKeyId     = $awsAccessKeyId;
         $this->_awsSecretAccessKey = $awsSecretAccessKey;
         $this->_marketplaceId      = $marketplaceId;

@@ -18,6 +18,7 @@ use MobiMarket\Amazon\APIClients\MWSFinancesService;
 use MobiMarket\Amazon\APIClients\MWSMerchantFulfillmentService;
 use MobiMarket\Amazon\APIClients\MWSRecommendationsSectionService;
 use MobiMarket\Amazon\APIClients\MWSSubscriptionsService;
+use MobiMarket\Amazon\APIClients\Wrappers\FeedsWrapper;
 
 class AmazonServiceProvider extends ServiceProvider
 {
@@ -42,6 +43,9 @@ class AmazonServiceProvider extends ServiceProvider
         MWSMerchantFulfillmentService::class,
         MWSRecommendationsSectionService::class,
         MWSSubscriptionsService::class,
+
+        // Wrappers
+        FeedsWrapper::class,
     ];
 
     /**
