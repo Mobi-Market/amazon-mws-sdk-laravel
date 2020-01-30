@@ -71,7 +71,7 @@ class MarketplaceWebService extends Crappy2009Client implements IMarketplaceWebS
     public const MWS_CLIENT_VERSION = '2016-09-21';
 
     /** @var array */
-    protected $config = [
+    protected $_config = [
         'ServiceURL'       => null,
         'UserAgent'        => 'PHP Client Library/2016-09-21 (Language=PHP5)',
         'SignatureVersion' => 2,

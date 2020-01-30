@@ -86,7 +86,7 @@ abstract class Crappy2009Client extends BaseClient
         // Submit the request and read response body
         try {
             // Ensure the endpoint URL is set.
-            if (empty($this->config['ServiceURL'])) {
+            if (empty($this->_config['ServiceURL'])) {
                 throw new AmazonApiException(['ErrorCode' => 'InvalidServiceUrl', 'Message' => "Missing serviceUrl configuration value. You may obtain a list of valid MWS URLs by consulting the MWS Developer's Guide, or reviewing the sample code published along side this library."]);
             }
 
@@ -115,7 +115,7 @@ abstract class Crappy2009Client extends BaseClient
                   $shouldRetry = ('RequestThrottled' === $errorResponse->getError()->getCode())
                     ? false : true;
 
-                  if ($shouldRetry && $retries <= $this->config['MaxErrorRetry']) {
+                  if ($shouldRetry && $retries <= $this->_config['MaxErrorRetry']) {
                       $this->pauseOnRetry(++$retries);
                   } else {
                       throw $this->reportAnyErrors($response['ResponseBody'], $response['Status'], $response['ResponseHeaderMetadata']);
@@ -334,7 +334,7 @@ abstract class Crappy2009Client extends BaseClient
     {
         return [
             CURLOPT_POST           => true,
-            CURLOPT_USERAGENT      => $this->config['UserAgent'],
+            CURLOPT_USERAGENT      => $this->_config['UserAgent'],
             CURLOPT_VERBOSE        => true,
             CURLOPT_HEADERFUNCTION => [$this, 'headerCallback'],
             CURLOPT_RETURNTRANSFER => true,
@@ -355,14 +355,14 @@ abstract class Crappy2009Client extends BaseClient
     {
         $curlOptions = $this->getDefaultCurlOptions();
 
-        if (null !== $this->config['ProxyHost']) {
-            $proxy = $this->config['ProxyHost'];
-            $proxy .= ':' . (-1 == $this->config['ProxyPort'] ? '80' : $this->config['ProxyPort']);
+        if (null !== $this->_config['ProxyHost']) {
+            $proxy = $this->_config['ProxyHost'];
+            $proxy .= ':' . (-1 == $this->_config['ProxyPort'] ? '80' : $this->_config['ProxyPort']);
 
             $curlOptions[CURLOPT_PROXY] = $proxy;
         }
 
-        $serviceUrl = $this->config['ServiceURL'];
+        $serviceUrl = $this->_config['ServiceURL'];
 
         // append the '/' character to the end of the service URL if it doesn't exist.
         if (!('/' === substr($serviceUrl, \strlen($serviceUrl) - 1))) {
@@ -393,7 +393,7 @@ abstract class Crappy2009Client extends BaseClient
 
             $curlOptions[CURLOPT_CUSTOMREQUEST] = self::REQUEST_TYPE;
         } elseif (!(RequestType::UNKNOWN === $requestType)) {
-            $curlOptions[CURLOPT_URL]        = $this->config['ServiceURL'];
+            $curlOptions[CURLOPT_URL]        = $this->_config['ServiceURL'];
             $curlOptions[CURLOPT_POSTFIELDS] = $this->_getParametersAsString($converted[self::CONVERTED_PARAMETERS_KEY]);
 
             if (RequestType::POST_DOWNLOAD == $requestType) {
@@ -458,9 +458,9 @@ abstract class Crappy2009Client extends BaseClient
         $parameters['AWSAccessKeyId']   = $this->awsAccessKeyId;
         $parameters['Timestamp']        = $this->getFormattedTimestamp(new \DateTime('now', new \DateTimeZone('UTC')));
         $parameters['Version']          = self::SERVICE_VERSION;
-        $parameters['SignatureVersion'] = $this->config['SignatureVersion'];
+        $parameters['SignatureVersion'] = $this->_config['SignatureVersion'];
         if ($parameters['SignatureVersion'] > 1) {
-            $parameters['SignatureMethod'] = $this->config['SignatureMethod'];
+            $parameters['SignatureMethod'] = $this->_config['SignatureMethod'];
         }
         $parameters['Signature'] = $this->_signParameters($parameters, $this->awsSecretAccessKey);
 
