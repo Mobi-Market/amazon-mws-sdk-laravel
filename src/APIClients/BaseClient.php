@@ -98,6 +98,30 @@ abstract class BaseClient
     }
 
     /**
+     * Get seller ID.
+     */
+    public function getSellerId(): string
+    {
+        return $this->_sellerId;
+    }
+
+    /**
+     * Get marketplace ID.
+     */
+    public function getMarketplaceId(): string
+    {
+        return $this->_marketplaceId;
+    }
+
+    /**
+     * Get marketplace ID.
+     */
+    public function getConfig(): array
+    {
+        return $this->_config;
+    }
+
+    /**
      * Invoke the common API code.
      *
      * @param mixed $request
