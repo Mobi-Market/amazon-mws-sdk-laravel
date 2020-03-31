@@ -42,15 +42,15 @@ return [
         'access_key_secret'   => env('AMAZON_MWS_ACCESS_KEY_SECRET'),
         'application_name'    => env('AMAZON_MWS_APP_NAME'),
         'application_version' => env('AMAZON_MWS_APP_VERSION'),
+
+        /*
+        * Marketplace ID used commonly in some APIs.
+        */
+        'marketplace_id' => env('AMAZON_MWS_MARKETPLACE_ID'),
+
+        /*
+        * Seller ID used commonly in some APIs.
+        */
+        'seller_id' => env('AMAZON_MWS_SELLER_ID'),
     ],
-
-    /*
-     * Marketplace ID used commonly in some APIs.
-     */
-    'marketplace_id' => env('AMAZON_MWS_MARKETPLACE_ID'),
-
-    /*
-     * Seller ID used commonly in some APIs.
-     */
-    'seller_id' => env('AMAZON_MWS_SELLER_ID'),
 ];

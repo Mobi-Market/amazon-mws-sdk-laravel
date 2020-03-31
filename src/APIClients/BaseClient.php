@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 /**
  * Copyright 2009-2019 Amazon Services. All Rights Reserved.
  * Licensed under the Apache License, Version 2.0 (the "License");.
@@ -18,6 +16,7 @@ declare(strict_types=1);
 
 namespace MobiMarket\Amazon\APIClients;
 
+use Illuminate\Support\Facades\Log;
 use MobiMarket\Amazon\Exceptions\AmazonApiException;
 use MobiMarket\Amazon\Models\ResponseHeaderMetadata;
 
@@ -316,7 +315,7 @@ abstract class BaseClient
         $userAgent .= '; ';
         $userAgent .= 'Platform=' . php_uname('s') . '/' . php_uname('m') . '/' . php_uname('r');
         $userAgent .= '; ';
-        $userAgent .= 'MWSClientVersion=' . self::MWS_CLIENT_VERSION;
+        $userAgent .= 'MWSClientVersion=' . static::MWS_CLIENT_VERSION;
 
         foreach ($attributes as $key => $value) {
             if (empty($value)) {
@@ -426,14 +425,19 @@ abstract class BaseClient
             $retries    = 0;
             for (;;) {
                 $response = $this->_httpPost($parameters);
+
                 $status   = $response['Status'];
                 if (200 == $status) {
+                    Log::debug('amazon response', (array) $response);
+
                     return ['ResponseBody'       => $response['ResponseBody'],
                         'ResponseHeaderMetadata' => $response['ResponseHeaderMetadata'], ];
                 }
                 if (500 == $status && $this->_pauseOnRetry(++$retries)) {
                     continue;
                 }
+
+                Log::error('amazon error', (array) $response);
 
                 throw $this->_reportAnyErrors($response['ResponseBody'], $status, $response['ResponseHeaderMetadata']);
             }
@@ -463,8 +467,8 @@ abstract class BaseClient
         if (false !== $xmlBody) {  // Check XML loaded without errors
             $exProps['XML']       = $responseBody;
             $exProps['ErrorCode'] = $xmlBody->Error->Code;
-            $exProps['Message']   = $xmlBody->Error->Message;
             $exProps['ErrorType'] = !empty($xmlBody->Error->Type) ? $xmlBody->Error->Type : 'Unknown';
+            $exProps['Message']   = $exProps['ErrorCode'] . ': ' . $xmlBody->Error->Message;
             $exProps['RequestId'] = !empty($xmlBody->RequestID) ? $xmlBody->RequestID : $xmlBody->RequestId; // 'd' in RequestId is sometimes capitalized
         } else { // We got bad XML in response, just throw a generic exception
             $exProps['Message'] = 'Internal Error';
@@ -692,7 +696,7 @@ abstract class BaseClient
     {
         $parameters['AWSAccessKeyId']   = $this->_awsAccessKeyId;
         $parameters['Timestamp']        = $this->_getFormattedTimestamp();
-        $parameters['Version']          = self::SERVICE_VERSION;
+        $parameters['Version']          = static::SERVICE_VERSION;
         $parameters['SignatureVersion'] = $this->_config['SignatureVersion'];
         if ($parameters['SignatureVersion'] > 1) {
             $parameters['SignatureMethod'] = $this->_config['SignatureMethod'];
@@ -791,7 +795,7 @@ abstract class BaseClient
 
     protected function _urlencode($value)
     {
-        return str_replace('%7E', '~', rawurlencode($value));
+        return str_replace('%7E', '~', rawurlencode((string) $value));
     }
 
     /**
