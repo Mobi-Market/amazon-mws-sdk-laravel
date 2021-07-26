@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace MobiMarket\Amazon\APIClients\Wrappers;
 
 use DateTime;
+use League\Csv\CharsetConverter;
 use League\Csv\Writer as CsvWriter;
 use MobiMarket\Amazon\APIClients\MarketplaceWebService;
 use MobiMarket\Amazon\Enums\FeedType;
@@ -108,7 +109,11 @@ class FeedsWrapper extends MarketplaceWebService
         $csv = CsvWriter::createFromFileObject(new SplTempFileObject());
 
         $csv->setDelimiter("\t");
-        $csv->setInputEncoding('iso-8859-1');
+        $csv->addFormatter(
+            (new CharsetConverter())
+                ->inputEncoding('iso-8859-1')
+                ->outputEncoding('utf-8')
+        );
 
         $csv->insertOne(['TemplateType=Offer', 'Version=2014.0703']);
 
