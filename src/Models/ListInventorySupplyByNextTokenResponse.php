@@ -212,7 +212,7 @@ class ListInventorySupplyByNextTokenResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListInventorySupplyByNextTokenResponse from provided XML. 
+        throw new \Exception('Unable to construct ListInventorySupplyByNextTokenResponse from provided XML.
                                   Make sure that ListInventorySupplyByNextTokenResponse is a root element');
     }
 

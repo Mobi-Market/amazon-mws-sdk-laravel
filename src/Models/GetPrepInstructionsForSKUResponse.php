@@ -212,7 +212,7 @@ class GetPrepInstructionsForSKUResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetPrepInstructionsForSKUResponse from provided XML. 
+        throw new \Exception('Unable to construct GetPrepInstructionsForSKUResponse from provided XML.
                                   Make sure that GetPrepInstructionsForSKUResponse is a root element');
     }
 

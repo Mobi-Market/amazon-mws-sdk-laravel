@@ -212,7 +212,7 @@ class CancelShipmentResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct CancelShipmentResponse from provided XML. 
+        throw new \Exception('Unable to construct CancelShipmentResponse from provided XML.
                                   Make sure that CancelShipmentResponse is a root element');
     }
 

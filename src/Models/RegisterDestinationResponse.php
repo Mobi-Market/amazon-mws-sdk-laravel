@@ -212,7 +212,7 @@ class RegisterDestinationResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct RegisterDestinationResponse from provided XML. 
+        throw new \Exception('Unable to construct RegisterDestinationResponse from provided XML.
                                   Make sure that RegisterDestinationResponse is a root element');
     }
 

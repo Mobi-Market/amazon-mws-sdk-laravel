@@ -212,7 +212,7 @@ class ListOrderItemsResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListOrderItemsResponse from provided XML. 
+        throw new \Exception('Unable to construct ListOrderItemsResponse from provided XML.
                                   Make sure that ListOrderItemsResponse is a root element');
     }
 

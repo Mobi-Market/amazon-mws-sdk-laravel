@@ -212,7 +212,7 @@ class PutTransportContentResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct PutTransportContentResponse from provided XML. 
+        throw new \Exception('Unable to construct PutTransportContentResponse from provided XML.
                                   Make sure that PutTransportContentResponse is a root element');
     }
 

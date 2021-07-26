@@ -72,7 +72,7 @@ class CancelReportRequestsResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct CancelReportRequestsResponse from provided XML. 
+        throw new \Exception('Unable to construct CancelReportRequestsResponse from provided XML.
                                   Make sure that CancelReportRequestsResponse is a root element');
     }
 

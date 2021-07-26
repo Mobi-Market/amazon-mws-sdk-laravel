@@ -212,7 +212,7 @@ class GetFulfillmentOrderResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetFulfillmentOrderResponse from provided XML. 
+        throw new \Exception('Unable to construct GetFulfillmentOrderResponse from provided XML.
                                   Make sure that GetFulfillmentOrderResponse is a root element');
     }
 

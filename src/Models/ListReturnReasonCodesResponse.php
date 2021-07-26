@@ -212,7 +212,7 @@ class ListReturnReasonCodesResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListReturnReasonCodesResponse from provided XML. 
+        throw new \Exception('Unable to construct ListReturnReasonCodesResponse from provided XML.
                                   Make sure that ListReturnReasonCodesResponse is a root element');
     }
 

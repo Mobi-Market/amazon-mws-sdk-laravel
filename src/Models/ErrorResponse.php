@@ -72,7 +72,7 @@ class ErrorResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ErrorResponse from provided XML. 
+        throw new \Exception('Unable to construct ErrorResponse from provided XML.
                                   Make sure that ErrorResponse is a root element');
     }
 

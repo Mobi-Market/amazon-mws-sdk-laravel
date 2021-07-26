@@ -212,7 +212,7 @@ class ListRecommendationsByNextTokenResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListRecommendationsByNextTokenResponse from provided XML. 
+        throw new \Exception('Unable to construct ListRecommendationsByNextTokenResponse from provided XML.
                                   Make sure that ListRecommendationsByNextTokenResponse is a root element');
     }
 

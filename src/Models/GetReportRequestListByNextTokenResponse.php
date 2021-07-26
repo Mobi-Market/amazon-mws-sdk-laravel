@@ -72,7 +72,7 @@ class GetReportRequestListByNextTokenResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetReportRequestListByNextTokenResponse from provided XML. 
+        throw new \Exception('Unable to construct GetReportRequestListByNextTokenResponse from provided XML.
                                   Make sure that GetReportRequestListByNextTokenResponse is a root element');
     }
 

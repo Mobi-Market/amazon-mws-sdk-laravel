@@ -212,7 +212,7 @@ class DeleteSubscriptionResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct DeleteSubscriptionResponse from provided XML. 
+        throw new \Exception('Unable to construct DeleteSubscriptionResponse from provided XML.
                                   Make sure that DeleteSubscriptionResponse is a root element');
     }
 

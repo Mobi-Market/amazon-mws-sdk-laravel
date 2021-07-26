@@ -228,7 +228,7 @@ class GetLowestOfferListingsForSKUResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetLowestOfferListingsForSKUResponse from provided XML. 
+        throw new \Exception('Unable to construct GetLowestOfferListingsForSKUResponse from provided XML.
                                   Make sure that GetLowestOfferListingsForSKUResponse is a root element');
     }
 

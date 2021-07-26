@@ -212,7 +212,7 @@ class ListInventorySupplyResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListInventorySupplyResponse from provided XML. 
+        throw new \Exception('Unable to construct ListInventorySupplyResponse from provided XML.
                                   Make sure that ListInventorySupplyResponse is a root element');
     }
 

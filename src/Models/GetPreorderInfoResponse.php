@@ -212,7 +212,7 @@ class GetPreorderInfoResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetPreorderInfoResponse from provided XML. 
+        throw new \Exception('Unable to construct GetPreorderInfoResponse from provided XML.
                                   Make sure that GetPreorderInfoResponse is a root element');
     }
 

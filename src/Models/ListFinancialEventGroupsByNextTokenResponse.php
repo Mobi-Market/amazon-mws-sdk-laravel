@@ -212,7 +212,7 @@ class ListFinancialEventGroupsByNextTokenResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListFinancialEventGroupsByNextTokenResponse from provided XML. 
+        throw new \Exception('Unable to construct ListFinancialEventGroupsByNextTokenResponse from provided XML.
                                   Make sure that ListFinancialEventGroupsByNextTokenResponse is a root element');
     }
 

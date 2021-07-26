@@ -212,7 +212,7 @@ class GetTransportContentResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetTransportContentResponse from provided XML. 
+        throw new \Exception('Unable to construct GetTransportContentResponse from provided XML.
                                   Make sure that GetTransportContentResponse is a root element');
     }
 

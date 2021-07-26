@@ -72,7 +72,7 @@ class GetFeedSubmissionListByNextTokenResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetFeedSubmissionListByNextTokenResponse from provided XML. 
+        throw new \Exception('Unable to construct GetFeedSubmissionListByNextTokenResponse from provided XML.
                                   Make sure that GetFeedSubmissionListByNextTokenResponse is a root element');
     }
 

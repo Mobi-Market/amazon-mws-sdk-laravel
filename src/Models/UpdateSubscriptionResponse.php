@@ -212,7 +212,7 @@ class UpdateSubscriptionResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct UpdateSubscriptionResponse from provided XML. 
+        throw new \Exception('Unable to construct UpdateSubscriptionResponse from provided XML.
                                   Make sure that UpdateSubscriptionResponse is a root element');
     }
 

@@ -212,7 +212,7 @@ class GetProductCategoriesForASINResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetProductCategoriesForASINResponse from provided XML. 
+        throw new \Exception('Unable to construct GetProductCategoriesForASINResponse from provided XML.
                                   Make sure that GetProductCategoriesForASINResponse is a root element');
     }
 

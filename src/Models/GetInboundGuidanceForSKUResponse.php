@@ -212,7 +212,7 @@ class GetInboundGuidanceForSKUResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetInboundGuidanceForSKUResponse from provided XML. 
+        throw new \Exception('Unable to construct GetInboundGuidanceForSKUResponse from provided XML.
                                   Make sure that GetInboundGuidanceForSKUResponse is a root element');
     }
 

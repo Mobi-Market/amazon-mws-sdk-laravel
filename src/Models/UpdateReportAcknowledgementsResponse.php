@@ -72,7 +72,7 @@ class UpdateReportAcknowledgementsResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct UpdateReportAcknowledgementsResponse from provided XML. 
+        throw new \Exception('Unable to construct UpdateReportAcknowledgementsResponse from provided XML.
                                   Make sure that UpdateReportAcknowledgementsResponse is a root element');
     }
 

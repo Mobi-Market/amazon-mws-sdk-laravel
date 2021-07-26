@@ -212,7 +212,7 @@ class EstimateTransportRequestResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct EstimateTransportRequestResponse from provided XML. 
+        throw new \Exception('Unable to construct EstimateTransportRequestResponse from provided XML.
                                   Make sure that EstimateTransportRequestResponse is a root element');
     }
 

@@ -212,7 +212,7 @@ class GetSubscriptionResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetSubscriptionResponse from provided XML. 
+        throw new \Exception('Unable to construct GetSubscriptionResponse from provided XML.
                                   Make sure that GetSubscriptionResponse is a root element');
     }
 

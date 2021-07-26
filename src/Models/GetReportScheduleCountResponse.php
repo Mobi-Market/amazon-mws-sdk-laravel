@@ -72,7 +72,7 @@ class GetReportScheduleCountResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetReportScheduleCountResponse from provided XML. 
+        throw new \Exception('Unable to construct GetReportScheduleCountResponse from provided XML.
                                   Make sure that GetReportScheduleCountResponse is a root element');
     }
 

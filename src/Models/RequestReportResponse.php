@@ -72,7 +72,7 @@ class RequestReportResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct RequestReportResponse from provided XML. 
+        throw new \Exception('Unable to construct RequestReportResponse from provided XML.
                                   Make sure that RequestReportResponse is a root element');
     }
 

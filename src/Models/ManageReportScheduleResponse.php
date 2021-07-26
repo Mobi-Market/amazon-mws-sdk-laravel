@@ -72,7 +72,7 @@ class ManageReportScheduleResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ManageReportScheduleResponse from provided XML. 
+        throw new \Exception('Unable to construct ManageReportScheduleResponse from provided XML.
                                   Make sure that ManageReportScheduleResponse is a root element');
     }
 

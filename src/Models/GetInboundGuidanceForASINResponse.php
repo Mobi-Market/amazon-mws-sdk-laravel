@@ -212,7 +212,7 @@ class GetInboundGuidanceForASINResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetInboundGuidanceForASINResponse from provided XML. 
+        throw new \Exception('Unable to construct GetInboundGuidanceForASINResponse from provided XML.
                                   Make sure that GetInboundGuidanceForASINResponse is a root element');
     }
 

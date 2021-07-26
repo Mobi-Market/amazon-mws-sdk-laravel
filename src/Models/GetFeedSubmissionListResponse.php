@@ -72,7 +72,7 @@ class GetFeedSubmissionListResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetFeedSubmissionListResponse from provided XML. 
+        throw new \Exception('Unable to construct GetFeedSubmissionListResponse from provided XML.
                                   Make sure that GetFeedSubmissionListResponse is a root element');
     }
 

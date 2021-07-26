@@ -72,7 +72,7 @@ class GetReportScheduleListResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetReportScheduleListResponse from provided XML. 
+        throw new \Exception('Unable to construct GetReportScheduleListResponse from provided XML.
                                   Make sure that GetReportScheduleListResponse is a root element');
     }
 

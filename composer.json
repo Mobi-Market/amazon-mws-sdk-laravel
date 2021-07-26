@@ -3,13 +3,13 @@
     "type": "library",
     "description": "Amazon MWS SDK Laravel Package",
     "require": {
-        "php": "^7.2",
-        "spatie/array-to-xml": "^2.1",
-        "league/csv": "^8.1"
+        "php": "^7.4|^8.0",
+        "spatie/array-to-xml": "^2.16",
+        "league/csv": "^8.2",
+        "illuminate/support": ">=5.8 <9.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.15",
-        "illuminate/support": "~5.5.0"
+        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "license": "proprietary",
     "authors": [
@@ -22,8 +22,6 @@
             "email": "scott.jones@autumndev.co.uk"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "MobiMarket\\Amazon\\": "src/"
@@ -44,11 +42,18 @@
                 "AmazonMerchantFulfillment": "MobiMarket\\Amazon\\Facades\\MerchantFulfillmentFacade",
                 "AmazonOrders": "MobiMarket\\Amazon\\Facades\\OrdersFacade",
                 "AmazonProducts": "MobiMarket\\Amazon\\Facades\\ProductsFacade",
-                "AmazonRecommedations": "MobiMarket\\Amazon\\Facades\\RecommedationsFacade",
+                "AmazonRecommendations": "MobiMarket\\Amazon\\Facades\\RecommendationsFacade",
                 "AmazonReports": "MobiMarket\\Amazon\\Facades\\ReportsFacade",
                 "AmazonSellers": "MobiMarket\\Amazon\\Facades\\SellersFacade",
                 "AmazonSubscriptions": "MobiMarket\\Amazon\\Facades\\SubscriptionsFacade"
             }
         }
-    }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

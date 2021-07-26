@@ -212,7 +212,7 @@ class ListAllFulfillmentOrdersResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListAllFulfillmentOrdersResponse from provided XML. 
+        throw new \Exception('Unable to construct ListAllFulfillmentOrdersResponse from provided XML.
                                   Make sure that ListAllFulfillmentOrdersResponse is a root element');
     }
 

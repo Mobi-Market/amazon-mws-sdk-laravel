@@ -212,7 +212,7 @@ class GetProductCategoriesForSKUResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetProductCategoriesForSKUResponse from provided XML. 
+        throw new \Exception('Unable to construct GetProductCategoriesForSKUResponse from provided XML.
                                   Make sure that GetProductCategoriesForSKUResponse is a root element');
     }
 

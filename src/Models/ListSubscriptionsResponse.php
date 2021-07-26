@@ -212,7 +212,7 @@ class ListSubscriptionsResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListSubscriptionsResponse from provided XML. 
+        throw new \Exception('Unable to construct ListSubscriptionsResponse from provided XML.
                                   Make sure that ListSubscriptionsResponse is a root element');
     }
 

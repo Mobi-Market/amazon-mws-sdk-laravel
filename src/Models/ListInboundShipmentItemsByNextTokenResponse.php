@@ -212,7 +212,7 @@ class ListInboundShipmentItemsByNextTokenResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListInboundShipmentItemsByNextTokenResponse from provided XML. 
+        throw new \Exception('Unable to construct ListInboundShipmentItemsByNextTokenResponse from provided XML.
                                   Make sure that ListInboundShipmentItemsByNextTokenResponse is a root element');
     }
 

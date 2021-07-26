@@ -212,7 +212,7 @@ class GetShipmentResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct GetShipmentResponse from provided XML. 
+        throw new \Exception('Unable to construct GetShipmentResponse from provided XML.
                                   Make sure that GetShipmentResponse is a root element');
     }
 

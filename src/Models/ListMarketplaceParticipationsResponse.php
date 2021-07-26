@@ -212,7 +212,7 @@ class ListMarketplaceParticipationsResponse extends Model
             return new self(($response->item(0)));
         }
 
-        throw new \Exception('Unable to construct ListMarketplaceParticipationsResponse from provided XML. 
+        throw new \Exception('Unable to construct ListMarketplaceParticipationsResponse from provided XML.
                                   Make sure that ListMarketplaceParticipationsResponse is a root element');
     }
 
